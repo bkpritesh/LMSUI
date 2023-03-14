@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DefaultLayoutComponent } from './default-layout.component';
 import { DefaultHeaderComponent } from './default-header/default-header.component';
 import { DefaultFooterComponent } from './default-footer/default-footer.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,8 @@ import { DefaultFooterComponent } from './default-footer/default-footer.componen
     DefaultFooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     DefaultHeaderComponent,

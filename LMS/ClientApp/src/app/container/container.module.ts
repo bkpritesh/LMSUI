@@ -14,7 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   exports: [
     DefaultLayoutModule,
-    DashboardComponent,
-  ]
+    DashboardComponent
+  ],
 })
 export class ContainerModule { }
