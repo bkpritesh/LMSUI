@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+//import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ServiceService } from './Service/service.service';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -15,7 +17,8 @@ import { CategoryComponent } from './category/category.component';
   ],
   imports: [
     CommonModule,
-    LayoutModule,
+    FormsModule,
+    LayoutModule,    
     AdminRoutingModule,    
   ],
   exports: [
@@ -23,5 +26,8 @@ import { CategoryComponent } from './category/category.component';
     LayoutModule,
     CategoryComponent
   ],
+  providers: [
+    ServiceService
+  ]
 })
 export class AdminModule { }

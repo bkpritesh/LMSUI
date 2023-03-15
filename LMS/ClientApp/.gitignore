@@ -38,3 +38,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+
+#Pre install project File
+.vs/
+.node_modules/
+.angular/cache/

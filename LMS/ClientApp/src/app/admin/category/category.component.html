@@ -1,1 +1,123 @@
-<p>category works!</p>
+<div class="page-content-wrapper border">
+  <div class="row mb-3">
+    <div class="col-12 d-sm-flex justify-content-between align-items-center">
+      <h1 class="h3 mb-2 mb-sm-0">
+        Category Page
+        <!--<span class="badge bg-orange bg-opacity-10 text-orange">245</span>-->
+      </h1>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-sm btn-primary mb-0" data-toggle="modal"
+              (click)="openFormModal()">
+        Create a Category
+      </button>
+      <!-- Button trigger modal -->
+    </div>
+  </div>
+  <!-- Card START -->
+  <div class="card bg-transparent border">
+    <!-- Card header START -->
+    <div class="card-header bg-light border-bottom">
+      <!-- Search and select START -->
+      <div class="row g-3 align-items-center justify-content-between">
+        <!-- Search bar -->
+        <div class="col-md-8">
+          <form class="rounded position-relative">
+            <input class="form-control bg-body" type="search" placeholder="Search"
+                   aria-label="Search" />
+            <button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset"
+                    type="submit">
+              <i class="fas fa-search fs-6 "></i>
+            </button>
+          </form>
+        </div>
+        <!-- Select option -->
+        <div class="col-md-3">
+          <!-- Short by filter -->
+          <form>
+            <select class="form-select js-choice border-0 z-index-9"
+                    aria-label=".form-select-sm">
+              <option value="">Sort by</option>
+              <option>Newest</option>
+              <option>Oldest</option>
+              <option>Accepted</option>
+              <option>Rejected</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <!-- Search and select END -->
+    </div>
+    <!-- Card header END -->
+    <!-- Card body START -->
+    <div class="card-body">
+      <!-- Course table START -->
+      <div class="table-responsive border-0 rounded-3">
+        <!-- Table START -->
+        <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+          <!-- Table head -->
+          <thead>
+            <tr>
+              <th scope="col" class="border-0 rounded-start">#</th>
+              <th scope="col" class="border-0">Category</th>
+              <th scope="col" class="border-0">Description</th>
+              <th scope="col" class="border-0 rounded-end">Action</th>
+            </tr>
+          </thead>
+          <!-- Table body START -->
+          <tbody>
+            <!-- Table row -->
+            <tr *ngFor="let cate of categories">
+              <!-- Table data -->
+              <td>{{cate.categoryId}}</td>
+              <!-- Table data -->
+              <!-- Table data -->
+              <td> {{cate.name}}</td>
+
+              <!-- Table data -->
+              <td> {{cate.description}}</td>
+
+              <!-- Table data -->
+              <td>
+                <button class="btn btn-sm btn-success me-1 mb-1 mb-md-0" data-bs-toggle="modal"
+                        (click)="openFormModal()">
+                  Edit
+                </button>
+                <button class="btn btn-sm btn-danger mb-0">Delete</button> <!--(click)="deleteCategory(categoryid)"-->
+              </td>
+            </tr>
+            <!-- Table row -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Popup modal for Add Category START-->
+  <div class="modal fade" id="addcategory" tabindex="-1" role="dialog" aria-labelledby="AddCategoryLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="AddCategoryLabel">Add Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeFormModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3" #AddCategory>
+            <div class="mb-3">
+              <label for="Category_name" class="form-label">Category Name</label>
+              <input type="text" class="form-control" id="Category_name" name="Category_name" placeholder="Enter category" [(ngModel)]="category.name">
+            </div>
+            <div class="mb-3">
+              <label for="Category_des" class="form-label">Description</label>
+              <textarea class="form-control" id="Category_des" name="Category_des" placeholder="Enter Description" [(ngModel)]="category.description"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeFormModal()">Close</button>
+          <button type="submit" class="btn btn-primary" (click)="addCategory()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>

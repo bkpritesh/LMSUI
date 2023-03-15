@@ -32,4 +32,10 @@ export class AuthserviceService {
       return account;
     }));
   }
+
+  ForgotPass(data: any) {
+    return this.http.post('https://localhost:7027/api/ResetPassword', data).subscribe(res => {
+     return res;
+    });
+  }
 }

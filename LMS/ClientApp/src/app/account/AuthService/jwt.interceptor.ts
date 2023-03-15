@@ -16,7 +16,7 @@ export class JWTInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const account = this.baseService.accountValue;
-    const isLoggedIn = account && account.jwtToken;
+    const isLoggedIn = account && account.jwtToken && account.refreshToken;
     const isApiUrl = request.url.startsWith("https://localhost:7027/api");
     if (isLoggedIn && isApiUrl) {
       debugger

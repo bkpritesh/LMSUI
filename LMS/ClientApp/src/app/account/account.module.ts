@@ -4,11 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
   declarations: [
-    SignInComponent
+    SignInComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +21,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
   ],
   exports: [
     AccountRoutingModule,
-    SignInComponent
+    SignInComponent,
+    ForgotPasswordComponent
   ],
 })
 export class AccountModule { }

@@ -233,3 +233,4 @@ _Pvt_Extensions
 #Pre install project File
 .vs/
 .node_modules/
+.angular/cache/
