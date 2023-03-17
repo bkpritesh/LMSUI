@@ -1,5 +1,6 @@
-import { Component, OnInit, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { Data, Router } from '@angular/router';
+import { Observable, Observer } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { AuthserviceService } from '../AuthService/authservice.service';
 
@@ -13,13 +14,33 @@ import { AuthserviceService } from '../AuthService/authservice.service';
 
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor(private apiservice: AuthserviceService, private router: Router) { }
+  constructor(private apiservice: AuthserviceService, private router: Router) {
+    if (this.apiservice.accountValue) {
+      this.router.navigate(['forgetpassword']);
+    }
+  }
 
-  ngOnInit() { }
+  ngOnInit() {  }
 
   uForgetPass(data: any) {
-    this.apiservice.ForgotPass(data).subscribe(data => {
-      this.router.navigate(['category']);
-    });
-  }
+    debugger
+    //this.apiservice.ForgotPass(data).pipe(first()).subscribe(data => {
+    //  //console.log(data);
+    //  this.router.navigate(['resetpassword']);
+    //}
+    ////  ,
+    ////error => {
+    ////  alert("Incorrect email!");
+    ////  }
+    //);
+
+    this.apiservice.ForgotPass1(data).subscribe(data => {
+      debugger
+      window.alert("Please Check Your Mail!");
+      //this.router.navigate(['resetpassword']);
+    }, error => {
+      window.alert("Incorrect Email!");
+    }
+    );
+  }   
 }

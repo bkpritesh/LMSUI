@@ -7,3 +7,6 @@ export class Account {
   'jwtToken': string
   'refreshToken': string
 }
+export class UserEmail {
+  'email': string
+}
