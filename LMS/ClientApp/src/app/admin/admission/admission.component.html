@@ -1,0 +1,215 @@
+  <!-- Payment method START -->
+<div class="card bg-transparent border rounded-3 mb-4 z-index-9">
+  <!-- Card header START -->
+  <div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom">
+    <h3 class="mb-2 mb-sm-0">New Admission</h3>
+    <!--<a href="#" class="btn btn-sm btn-primary mb-0" data-bs-toggle="modal" data-bs-target="#addNewcard">Add new student</a>-->
+  </div>
+  <!-- Card header END -->    <!-- Card body START -->
+
+  <div class="card-body">
+    <div class="accordion accordion-circle" id="accordioncircle">
+      <!-- Credit or debit card START -->
+      <div class="accordion-item mb-3" id="collapse-1">
+        <div class="accordion-body">
+          <form>
+            <div class="row" aria-labelledby="heading-1">
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="form-label">First Name</label><br />
+                  <input class="form-control" maxlength="3" type="text" id="" name="" />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Middle Name</label><br />
+                  <input class="form-control" maxlength="3" type="text" id="" name="" />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Last Name</label><br />
+                  <input class="form-control" maxlength="3" type="text" id="" name="" />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="" name="" />
+                </div>
+                <div class="col-md-6">
+                  <label for="" class="form-label">Mobile</label>
+                  <input type="text" class="form-control" id="" name="" />
+                </div>
+              </div>
+
+              <div class="row">
+                <label class="form-label"> Address </label>
+                <textarea class="form-control"></textarea>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="form-label">State</label>
+                  <select class="form-control">
+                    <option>Default</option>
+                    <option>Hello</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">City</label>
+                  <select class="form-control">
+                    <option>Default</option>
+                    <option>Hello</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="form-label">Education</label>
+                  <select class="form-control">
+                    <option>Default</option>
+                    <option>bca</option>
+                    <option>bsc-it</option>
+                    <option>msc-it</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label select">Skills</label>
+                  <ng-multiselect-dropdown [settings]="settings"
+                                           [data]="dropdownData"
+                                           formcontrolname="myitems"
+                                           [placeholder]="'Select the data'">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+
+              <div class="row">
+               
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="form-label">Category</label>
+                  <select class="form-control">
+                    <option>Default</option>
+                    <option>Hello</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Course</label>
+                  <select class="form-control">
+                    <option>Default</option>
+                    <option>Hello</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="form-label">Admission Date : </label><br />
+                  <ngx-datepicker [(ngModel)]="date" [options]="options" [ngModelOptions]="{standalone: true}"></ngx-datepicker>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Joining Date : </label> <br />
+                  <ngx-datepicker [(ngModel)]="date" [options]="options" [ngModelOptions]="{standalone: true}"></ngx-datepicker>
+                </div>
+                <div class="col-md-4">
+                  <label for="" class="form-label">Payed Fees : </label>
+                  <input type="text" class="form-control" id="" name="" />
+                </div>
+                </div>
+              <div class="row">
+                  <div class="col-lg-3">
+                      <label class="form-label">Course Fee:</label>
+                      <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-lg-3">
+                      <label class="form-label">Discount:</label>
+                      <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-lg-3">
+                      <label class="form-label">Total Fees:</label>
+                      <input type="text" class="form-control" />
+                  </div>
+                    <div class="col-lg-3">
+                      <label for="paid" class="form-label">IsPaid</label>
+                      <input class="form-check-input me-lg-9 form-control" type="checkbox" value="yes" id="paid" name="paid" />
+                    </div>
+                </div>
+              
+                <!--
+  <div class="row">
+                 </div>
+  <div class="row">
+
+  </div>
+  <div class="row">
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <label class="form-label">Category</label>
+      <select class="form-control">
+        <option>Default</option>
+        <option>Hello</option>
+      </select>
+    </div>
+    <div class="col">
+      <label class="form-label">Course</label>
+      <select class="form-control">
+        <option>Default</option>
+        <option>Hello</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="" class="form-label">Fees</label>
+      <input type="text" class="form-control" id="" name="" />
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col p-md-2">
+          <div class="row">
+            <label class="form-label">Course Fee:</label>
+            <input type="text" class="form-control" />
+          </div>
+          <div class="row">
+            <label class="form-label">Discount:</label>
+            <input type="text" class="form-control" />
+          </div>
+          <div class="row">
+            <label class="form-label">Total Fees:</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <input class="form-check-input me-2" type="checkbox" value="yes" id="paid" name="paid" />
+      <label for="paid" class="form-label">IsPaid</label>
+    </div>
+  </div>-->
+              </div>
+              <div class="row center">
+                <button class="btn btn-primary m-3">Submit</button>
+              </div>
+</form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Card body START -->
+</div>
+<!-- Payment method END -->
+<!-- Main content END -->
+
+
+
+
+
+<!--<ng-select [(ngModel)]="selectedCar">
+  <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
+</ng-select>-->

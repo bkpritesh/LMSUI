@@ -3,6 +3,7 @@ import { Data, Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { AuthserviceService } from '../AuthService/authservice.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 @Component({
@@ -14,7 +15,7 @@ import { AuthserviceService } from '../AuthService/authservice.service';
 
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor(private apiservice: AuthserviceService, private router: Router) {
+  constructor(private apiservice: AuthserviceService, private router: Router, private toastrService: ToastrService) {
     if (this.apiservice.accountValue) {
       this.router.navigate(['forgetpassword']);
     }
@@ -36,10 +37,9 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.apiservice.ForgotPass1(data).subscribe(data => {
       debugger
-      window.alert("Please Check Your Mail!");
-      //this.router.navigate(['resetpassword']);
+      this.toastrService.success('Please Check Your Mail!');
     }, error => {
-      window.alert("Incorrect Email!");
+      this.toastrService.error('Incorrect Email!');
     }
     );
   }   

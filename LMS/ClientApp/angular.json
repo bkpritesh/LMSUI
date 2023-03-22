@@ -28,9 +28,12 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/ngx-toastr/bundles/ngx-toastr.umd.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -97,7 +100,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [ ]
           }
         },
         "server": {

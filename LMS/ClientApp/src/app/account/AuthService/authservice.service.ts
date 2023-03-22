@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, pipe, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Account, UserEmail } from '../../modal/account';
+//import { ResetPassword } from '../../modal/ResetPassword';
 import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -35,6 +36,11 @@ export class AuthserviceService {
     }));
   }
 
+  ValidateResetToken(data: any) {
+    return this.http.get('https://localhost:7027/api/ValidateResetToken/ResetPassword/' + data).subscribe(res => {
+      console.log(res);
+    });
+  }
   
   ForgotPass1(dt: any) {
     debugger
@@ -70,5 +76,12 @@ export class AuthserviceService {
   }*/
   //another method
 
-  
+
+
+  reset(data: any) {
+    return this.http.post('https://localhost:7027/api/ResetPassword', data).pipe(map(res => {
+      console.log(res);
+      return res;
+    }));
+  }
 }
