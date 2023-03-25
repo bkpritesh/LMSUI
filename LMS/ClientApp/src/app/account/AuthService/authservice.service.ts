@@ -17,11 +17,13 @@ export class AuthserviceService {
  // public IsSend: Observable<boolean>;
  
   constructor(private http: HttpClient, private router: Router) {
+    debugger
     this.accounttitle = new BehaviorSubject<Account>(JSON.parse(localStorage.getItem('account')!));
     this.account = this.accounttitle.asObservable();
   }
 
   public get accountValue(): Account {
+    debugger
     return this.accounttitle.value;
   }
 
@@ -29,8 +31,9 @@ export class AuthserviceService {
     debugger
     return this.http.post<Account>(`https://localhost:7027/api/Account/authenticate`, data).pipe(map(account => {
       debugger
-      localStorage.setItem('access_token', JSON.stringify(account.jwtToken));
-      localStorage.setItem('refress_token', JSON.stringify(account.refreshToken));
+      //localStorage.setItem('access_token', JSON.stringify(account.jwtToken));
+      //localStorage.setItem('refress_token', JSON.stringify(account.refreshToken));
+      localStorage.setItem('account', JSON.stringify(account));
       this.accounttitle.next(account);
       return account;
     }));
@@ -83,5 +86,11 @@ export class AuthserviceService {
       console.log(res);
       return res;
     }));
+  }
+
+  logout() {
+    alert('Your session are expired!');
+    localStorage.clear();
+    this.router.navigateByUrl('');
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Category } from '../../modal/category';
@@ -8,19 +8,21 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceService {
+export class ServiceService implements HttpInterceptor {
 
   constructor(private httpservice: HttpClient, private router: Router) { }
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        throw new Error('Method not implemented.');
+    }
+
+
+  //Category Section
 
   baseURL: string = "https://localhost:7027/api/Categories";
 
   getData(){
     debugger
     return this.httpservice.get<Category[]>(this.baseURL);
-  }
-
-  gotoCategoryData(id: string) {
-    return this.httpservice.get<Category>(`https://localhost:7027/api/Categories/` + id);
   }
 
   addCategoryData(category: Category): Observable<any> {
@@ -32,14 +34,21 @@ export class ServiceService {
     return this.httpservice.post(this.baseURL, body, options)
   }
 
+  gotoCategoryData(id: string) {
+    return this.httpservice.get<Category>(this.baseURL + '/' + id);
+  }
+
   editCategory(updatedData: any) {
-    return this.httpservice.put(`https://localhost:7027/api/Categories/` + updatedData.categoryId, updatedData);
+    return this.httpservice.put(this.baseURL + '/' + updatedData.categoryId, updatedData);
   }
 
   deleteCategory(deleteData: any) {
     debugger
-    return this.httpservice.delete(`https://localhost:7027/api/Categories/` + deleteData);
+    return this.httpservice.delete(this.baseURL + '/' + deleteData);
   }
+
+  //Category Section
+
 
 
 
