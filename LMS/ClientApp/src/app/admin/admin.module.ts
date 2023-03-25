@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { DatepickerModule } from 'ng2-datepicker';
+import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ServiceService } from './Service/service.service';
@@ -22,6 +23,12 @@ import { AdmissionComponent } from './admission/admission.component';
     BrowserModule,
     CommonModule,
     FormsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      timeOut: 8000,
+      progressBar: true,
+      progressAnimation: 'decreasing'
+    }), 
     LayoutModule,    
     AdminRoutingModule,
     NgMultiSelectDropDownModule,
@@ -33,7 +40,8 @@ import { AdmissionComponent } from './admission/admission.component';
     CategoryComponent,
     AdmissionComponent,
     NgMultiSelectDropDownModule,
-    DatepickerModule
+    DatepickerModule,
+    ToastrModule
   ],
   providers: [
     ServiceService

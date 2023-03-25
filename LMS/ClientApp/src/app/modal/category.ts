@@ -1,5 +1,5 @@
 export class Category {
-  'categoryId': number
+  'categoryId': string
   'name': string
   'description': string
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 declare var window: any;
 import { Category } from '../../modal/category';
 import { ServiceService } from '../Service/service.service';
+import { ToastrService } from 'ngx-toastr';
+//import {  } from '@ng';
 
 
 @Component({
@@ -11,42 +13,102 @@ import { ServiceService } from '../Service/service.service';
   ]
 })
 export class CategoryComponent implements OnInit {
+  //@ViewChild('addCategory') addCategory;
+  //@ViewChild('deleteCategory') deleteCategory;
 
+  AddformModal: any;
+  EditformModal: any;
+  DeleteformModal: any;
   formModal: any;
   categories: Category[] | undefined;
   category = new Category();
+  categoryId:string='';
 
+  constructor(private apibased: ServiceService, private toastrService: ToastrService) { }
 
-  constructor(private apibased: ServiceService) { }
-
-  openFormModal() {
-    this.formModal.show();
+  openAddFormmodal() {
+    this.AddformModal.show();
   }
 
+  openDeleteFormModal(Cid: string) {
+    this.categoryId = Cid;
+    this.DeleteformModal.show();
+  }
+
+  openEditFormModal(Cid :string) {
+    this.categoryId = Cid;
+    this.EditformModal.show();
+    this.getData();
+    }
+   
+
   closeFormModal() {
-    this.formModal.hide();
+    this.AddformModal.hide();
+    this.EditformModal.hide();
+    this.DeleteformModal.hide();
   }
 
   ngOnInit(): void {
 
     this.load();
 
-    this.formModal = new window.bootstrap.Modal(
-      document.getElementById('addcategory')
+    this.AddformModal = new window.bootstrap.Modal(
+      document.getElementById('addcategory')     
+    );
+
+    this.EditformModal = new window.bootstrap.Modal(
+      document.getElementById('editcategory')
+    );
+
+    this.DeleteformModal = new window.bootstrap.Modal(
+      document.getElementById('deletecategory')
     );
   }
 
-   load() {
+  load() {
+     debugger
     this.apibased.getData().subscribe(res => {
+      debugger
       this.categories = res;
       this.closeFormModal();
     });
-  }
+   }  
 
   addCategory() {
-    this.apibased.addCategoryData(this.category).subscribe(data => {
-      console.log(data)
+    this.apibased.addCategoryData(this.category).subscribe(() => {   
+      this.closeFormModal();
       this.load();
+      this.toastrService.success('The Category is Added!');
+    }, error => {
+      this.toastrService.error('Try Again!');
     });
+  }
+
+  getData() {
+    this.apibased.gotoCategoryData(this.categoryId).subscribe(data => {
+      this.category = data;
+      console.log(data);
+    })
+  }
+
+  editCategory() {
+    this.apibased.editCategory(this.category).subscribe(() => {
+      this.closeFormModal();     
+      this.toastrService.success('The Category is Updated!');
+      this.load();
+    }, error => {
+      this.toastrService.error('Try Again!');
+    });
+  }
+
+  deleteCategory() {
+    this.apibased.deleteCategory(this.categoryId).subscribe(() => {
+      this.closeFormModal();      
+      this.toastrService.success('The Category is Delete!');
+      this.load();
+    }, error => {
+      this.toastrService.error('Try Again!');
+    });
+    
   }
 }
