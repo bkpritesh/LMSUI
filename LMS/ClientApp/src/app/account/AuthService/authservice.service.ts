@@ -17,20 +17,20 @@ export class AuthserviceService {
  // public IsSend: Observable<boolean>;
  
   constructor(private http: HttpClient, private router: Router) {
-    debugger
+    //debugger
     this.accounttitle = new BehaviorSubject<Account>(JSON.parse(localStorage.getItem('account')!));
     this.account = this.accounttitle.asObservable();
   }
 
   public get accountValue(): Account {
-    debugger
+    //debugger
     return this.accounttitle.value;
   }
 
   login(data:any) {
-    debugger
+    //debugger
     return this.http.post<Account>(`https://localhost:7027/api/Account/authenticate`, data).pipe(map(account => {
-      debugger
+     // debugger
       //localStorage.setItem('access_token', JSON.stringify(account.jwtToken));
       //localStorage.setItem('refress_token', JSON.stringify(account.refreshToken));
       localStorage.setItem('account', JSON.stringify(account));
@@ -46,7 +46,7 @@ export class AuthserviceService {
   }
   
   ForgotPass1(dt: any) {
-    debugger
+   // debugger
     return this.http.post(`https://localhost:7027/api/ForgotPassword`, dt).pipe(
       /*map(res => {localStorage.setItem('access_token', JSON.stringify(res.));
        return res;
@@ -55,7 +55,7 @@ export class AuthserviceService {
   }
 
   errorHandl(error: any) {
-    debugger;
+    //debugger;
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error

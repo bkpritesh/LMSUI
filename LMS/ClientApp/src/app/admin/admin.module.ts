@@ -12,13 +12,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutModule } from './layout/layout.module';
 import { CategoryComponent } from './category/category.component';
 import { AdmissionComponent } from './admission/admission.component';
+import { StudentComponent } from './student/student.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CategoryComponent,
-    AdmissionComponent
+    AdmissionComponent,
+    StudentComponent
   ],
+
   imports: [
     BrowserModule,
     CommonModule,
@@ -31,9 +34,10 @@ import { AdmissionComponent } from './admission/admission.component';
     }), 
     LayoutModule,    
     AdminRoutingModule,
-    NgMultiSelectDropDownModule,
+    NgMultiSelectDropDownModule.forRoot(),
     DatepickerModule
   ],
+
   exports: [
     DashboardComponent,
     LayoutModule,
@@ -41,8 +45,10 @@ import { AdmissionComponent } from './admission/admission.component';
     AdmissionComponent,
     NgMultiSelectDropDownModule,
     DatepickerModule,
-    ToastrModule
+    ToastrModule,
+    StudentComponent,
   ],
+
   providers: [
     ServiceService
   ]

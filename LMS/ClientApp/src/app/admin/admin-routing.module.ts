@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CategoryComponent } from './category/category.component';
 import { AdmissionComponent } from './admission/admission.component';
+import { StudentComponent } from './student/student.component';
 
 const routes: Routes = [
   {
@@ -18,8 +19,9 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'category', component: CategoryComponent },
       { path: 'InsertStudent', component: AdmissionComponent },
+      { path: 'student', component: StudentComponent }
     ]
-  }
+  } 
 
 ];
 
