@@ -13,8 +13,6 @@ import { ToastrService } from 'ngx-toastr';
   ]
 })
 export class CategoryComponent implements OnInit {
-  //@ViewChild('addCategory') addCategory;
-  //@ViewChild('deleteCategory') deleteCategory;
 
   AddformModal: any;
   EditformModal: any;

@@ -14,12 +14,18 @@ import { CategoryComponent } from './category/category.component';
 import { AdmissionComponent } from './admission/admission.component';
 import { StudentComponent } from './student/student.component';
 
+//import { CourseModule } from './course/course.module';
+import { CourseComponent } from './course/course.component';
+//import { ListComponent } from './course/list/list.component';
+
 @NgModule({
   declarations: [
     DashboardComponent,
     CategoryComponent,
     AdmissionComponent,
-    StudentComponent
+    StudentComponent,
+    CourseComponent,
+    //ListComponent
   ],
 
   imports: [
@@ -35,7 +41,8 @@ import { StudentComponent } from './student/student.component';
     LayoutModule,    
     AdminRoutingModule,
     NgMultiSelectDropDownModule.forRoot(),
-    DatepickerModule
+    DatepickerModule,
+   // CourseModule
   ],
 
   exports: [
@@ -47,6 +54,7 @@ import { StudentComponent } from './student/student.component';
     DatepickerModule,
     ToastrModule,
     StudentComponent,
+    CourseComponent
   ],
 
   providers: [

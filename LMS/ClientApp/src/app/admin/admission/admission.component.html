@@ -66,7 +66,7 @@
                 <div class="col-md-4">
                   <label for="city" class="form-label">City</label>
                   <select class="form-control" [(ngModel)]="student2.city" name="city" id="city">
-                    <option *ngFor="let onecity of cities" [value]="onecity.city">
+                    <option *ngFor="let onecity of cities" [value]="onecity.id">
                       {{onecity.city}}
                     </option>
                   </select>
@@ -105,7 +105,7 @@
                 <div class="col-md-6">
                   <label for="courseCode" class="form-label">Course</label>
                   <select class="form-control" [(ngModel)]="student2.courseCode" name="courseCode" id="courseCode">
-                    <option *ngFor="let course of course" [value]="course.CourseName">
+                    <option *ngFor="let course of course" [value]="course.courseCode">
                       {{course.CourseName}}
                     </option>
                   </select>
@@ -113,26 +113,27 @@
               </div>
 
               <div class="row">
-                <div class="col-md-4">
-                  <label for="birthdate" class="form-label">Birth Date : </label><br />
-                  <ngx-datepicker [(ngModel)]="birthDate" [options]="options" name="birthdate" (ngModelChange)="HiddenBirthField($event)"></ngx-datepicker>
-                  <input type="hidden" [value]="HiddenBirthField" name="birthDate" [(ngModel)]="student2.birthdate" />
-                </div>
-                <div class="col-md-4">
+                <div class="col-lg-3">
                   <label for="joiningDate" class="form-label">Joining Date : </label> <br />
-                  <ngx-datepicker name="joiningDate" [(ngModel)]="joiningDate" [options]="options" (ngModelChange)="HiddenJoiningField($event)"></ngx-datepicker>
+                  <ngx-datepicker name="joiningDate" [(ngModel)]="joiningDate" [options]="options" (ngModelChange)="HiddenJoiningField()"></ngx-datepicker>
                   <input type="hidden" [value]="hiddenJoiningDate" name="joiningDate" [(ngModel)]="student2.joiningDate" />
                 </div>
-                <div class="col-md-4">
-                  <label for="paidfees" class="form-label">Payed Fees : </label>
-                  <input type="text" class="form-control" id="paidfees" name="paidfees" [(ngModel)]="student2.paidAmount" />
+                <div class="col-lg-3">
+                  <label for="birthdate" class="form-label">Birth Date : </label> <br />
+                  <ngx-datepicker name="birthdate" [(ngModel)]="birthdate" [options]="options" (ngModelChange)="HiddenBirthField()"></ngx-datepicker>
+                  <input type="hidden" [value]="hiddenJoiningDate" name="birthdate" [(ngModel)]="student2.birthdate" />
+                </div>
+                <div class="col-lg-3">
+                  <label for="coursefees" class="form-label">Course Fee:</label>
+                  <input type="text" class="form-control" [(ngModel)]="student2.courseFees" id="coursefees" name="coursefees" /> <!--[value]="course.price"-->
+                </div>
+                <div class="col-lg-3">
+                  <label for="paid" class="form-label">IsPaid</label>
+                  <input class="form-check-input me-lg-9 form-control" type="checkbox" value="yes" id="paid" name="paid" [(ngModel)]="student2.isPaid" />
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-3">
-                  <label for="coursefees" class="form-label">Course Fee:</label>
-                  <input type="text" class="form-control" [(ngModel)]="student2.courseFees" id="coursefees" name="coursefees" />
-                </div>
+                
                 <div class="col-lg-3">
                   <label for="discount" class="form-label">Discount:</label>
                   <input type="text" class="form-control" [(ngModel)]="student2.discount" id="discount" name="discount" />
@@ -141,9 +142,9 @@
                   <label for="totalfees" class="form-label">Total Fees:</label>
                   <input type="text" class="form-control" [(ngModel)]="student2.totalFees" id="totalfees" name="totalfees" />
                 </div>
-                <div class="col-lg-3">
-                  <label for="paid" class="form-label">IsPaid</label>
-                  <input class="form-check-input me-lg-9 form-control" type="checkbox" value="yes" id="paid" name="paid" [(ngModel)]="student2.isPaid" />
+                <div class="col-md-3">
+                  <label for="paidfees" class="form-label">Payed Fees : </label>
+                  <input type="text" class="form-control" id="paidfees" name="paidfees" [(ngModel)]="student2.paidAmount" />
                 </div>
               </div>
             </div>
@@ -159,8 +160,3 @@
 </div>
 <!-- Payment method END -->
 <!-- Main content END -->
-
-
-<!--<ng-select [(ngModel)]="selectedCar">
-  <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
-</ng-select>-->

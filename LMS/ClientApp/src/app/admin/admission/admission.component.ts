@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DatepickerOptions } from 'ng2-datepicker';
 import { getYear } from 'date-fns';
-import locale from 'date-fns/locale/en-US';
 import { ToastrService } from 'ngx-toastr';
 import { Student2 } from '../../modal/Student';
 import { ServiceService } from '../Service/service.service';
 import { Category } from '../../modal/category';
-import { DatePipe } from '@angular/common';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-admission',
   templateUrl: './admission.component.html',
-  styles: [  ]
+  styles: [],
+  providers: []
 })
 export class AdmissionComponent implements OnInit {
 
@@ -28,18 +27,16 @@ export class AdmissionComponent implements OnInit {
 
   settings: IDropdownSettings = {};
 
-  form!: FormGroup;
-  selectedItems: any[] = [];
-
   joiningDate: Date = new Date();
-  hiddenJoiningDate: string = '';
-  birthDate: Date = new Date();
-  hiddenBirthDate: string = '';
+  hiddenJoiningDate: any;
+  birthdate: Date = new Date();
+  hiddenBirthDate: any;
 
   student2 = new Student2();
 
-  constructor(private apibased: ServiceService, private toastrService: ToastrService, private fb: FormBuilder) { }
+  constructor(private apibased: ServiceService, private toastrService: ToastrService) {  }
 
+  
   options: DatepickerOptions = {
     minYear: getYear(new Date()) - 30, // minimum available and selectable year
     maxYear: getYear(new Date()) + 30, // maximum available and selectable year
@@ -49,7 +46,7 @@ export class AdmissionComponent implements OnInit {
     position: 'top',
     inputClass: 'form-control ', // custom input CSS class to be applied
     calendarClass: 'datepicker-default form-label', // custom datepicker calendar CSS class to be applied
-    scrollBarColor: '#dfe3e9', // in case you customize you theme, here you define scroll bar color
+    scrollBarColor: '#dfe3e9', // in case you customize you theme, here you define scroll bar color    
   };
 
 
@@ -77,13 +74,7 @@ export class AdmissionComponent implements OnInit {
       textField: 'Skills',
       allowSearchFilter: true,
     };
-
-    this.form = this.fb.group({
-      myItems: [this.selectedItems]
-    });
   }
-
-
 
 
   onStateChange(state: string) {
@@ -98,32 +89,50 @@ export class AdmissionComponent implements OnInit {
     this.apibased.getCourseByCategoryId(cate).subscribe(res => {
       debugger
       this.course = res;
-      //console.log(this.course);
     });
   }
 
 
-  HiddenBirthField(event: any): void {
-    this.hiddenBirthDate = this.birthDate.toISOString().substr(0, 10);
-    console.log(this.hiddenBirthDate);
+  
+
+  HiddenBirthField() {
+    debugger
+    this.hiddenBirthDate = this.formatDate(this.birthdate);
   }
   
  
-
-
-  HiddenJoiningField(event: any): void  {
-    this.hiddenJoiningDate = this.joiningDate.toISOString().substr(0, 10);
-    console.log(this.hiddenJoiningDate); 
+  HiddenJoiningField()  {
+    debugger
+    this.hiddenJoiningDate = this.formatDate(this.joiningDate);
   }
 
 
-   
+  formatDate(date: Date) {
+  var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2)
+    month = '0' + month;
+  if (day.length < 2)
+    day = '0' + day;
+
+  return [year, month, day].join('-');
+  }
+
+
 
   addStudent() {
     debugger
+    this.student2.birthdate = this.hiddenBirthDate;
+    this.student2.joiningDate = this.hiddenJoiningDate;
+    this.student2.isStudent = true;
+    this.student2.country = '1005';
+    this.student2.skillSet = JSON.stringify(this.student2.skillSet);
+    this.student2.accountType = "Student";
     this.apibased.addStudentData(this.student2).subscribe(() => {
-      debugger
-     
+      debugger      
       this.toastrService.success('The Student is Added!');
     }, error => {
       debugger

@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { Category } from '../../modal/category';
 import { Student, Student2 } from '../../modal/Student';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { Course } from '../../modal/Course';
 
 @Injectable({
   providedIn: 'root'
