@@ -66,6 +66,7 @@ export class ServiceService implements HttpInterceptor {
   }
   //Education
 
+
   //State & City
   getstate(): Observable<any>{
     return this.httpservice.get<any>(`${this.apiUrl}/api/StateAndCities`);
@@ -79,9 +80,40 @@ export class ServiceService implements HttpInterceptor {
 
 
   //Course
+  courseapi: string = `${this.apiUrl}/api/Course`; 
+
   getCourseByCategoryId(id: string) {
     return this.httpservice.get(`${this.apiUrl}/api/Categories/Course/${id}`)
   }
+
+  getCourseData() {
+    return this.httpservice.get<Course[]>(this.courseapi) ;
+  }
+
+  gotoCourseData(id: string) {
+    debugger
+    return this.httpservice.get<Course>(this.courseapi + '/CourseCode?CourseCode=' + id);
+  }
+
+  deleteCourse(deleteData: any) {
+    debugger
+    return this.httpservice.delete(this.courseapi + '/' + deleteData);
+  }
+
+  addCourse(course: Course): Observable < any > {
+    const httpheaders = { 'content-type': 'application/json' }
+    const body = JSON.stringify(course);
+      let options = {
+        headers: httpheaders
+    };
+    return this.httpservice.post(this.courseapi, body, options)
+  }
+
+  editCourse(updatedData: any) {
+    return this.httpservice.put(this.courseapi + '/CourseCode?Coursecode=' + updatedData.courseCode, updatedData);
+  }
+
+ 
   //Course
 
   //Student Section

@@ -1,0 +1,115 @@
+<div class="page-content-wrapper border">
+  <div class="row mb-3">
+    <div class="col-12 d-sm-flex justify-content-between align-items-center">
+      <h1 class="h3 mb-2 mb-sm-0">
+        Course Page
+        <!--<span class="badge bg-orange bg-opacity-10 text-orange">245</span>-->
+      </h1>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-sm btn-primary mb-0" routerLink="/course/addcourse"> Create a Course </button>
+      <!-- Button trigger modal -->
+    </div>
+  </div>
+  <!-- Card START -->
+  <div class="card bg-transparent border">
+    <!-- Card header START -->
+    <div class="card-header bg-light border-bottom">
+      <!-- Search and select START -->
+      <div class="row g-3 align-items-center justify-content-between">
+        <!-- Search bar -->
+        <div class="col-md-8">
+          <form class="rounded position-relative">
+            <input class="form-control bg-body" type="search" placeholder="Search"
+                   aria-label="Search" />
+            <button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset"
+                    type="submit">
+              <i class="fas fa-search fs-6 "></i>
+            </button>
+          </form>
+        </div>
+        <!-- Select option -->
+        <div class="col-md-3">
+          <!-- Short by filter -->
+          <form>
+            <select class="form-select js-choice border-0 z-index-9"
+                    aria-label=".form-select-sm">
+              <option value="">Sort by</option>
+              <option>Newest</option>
+              <option>Oldest</option>
+              <option>Accepted</option>
+              <option>Rejected</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <!-- Search and select END -->
+    </div>
+    <!-- Card header END -->
+    <!-- Card body START -->
+    <div class="card-body">
+      <!-- Course table START -->
+      <div class="table-responsive border-0 rounded-3">
+        <!-- Table START -->
+        <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+          <!-- Table head -->
+          <thead>
+            <tr>
+              <th scope="col" class="border-0 rounded-start">#</th>
+              <th scope="col" class="border-0">Course</th>
+              <th scope="col" class="border-0">Level</th>
+              <th scope="col" class="border-0">Fees</th>
+              <th scope="col" class="border-0 rounded-end">Action</th>
+            </tr>
+          </thead>
+          <!-- Table body START -->
+          <tbody>
+            <!-- Table row -->
+            <tr *ngFor="let course of courses">
+              <!-- Table data -->
+              <td>{{course.courseCode}}</td>
+              <!-- Table data -->
+              <!-- Table data -->
+              <td> {{course.courseName}}</td>
+
+              <!-- Table data -->
+              <td> {{course.level}}</td>
+
+              <!-- Table data -->
+              <td> {{course.courseFee}}</td>
+              <!-- Table data -->
+              <td>
+                <button class="btn btn-sm btn-success me-1 mb-1 mb-md-0" routerLink="/course/editcourse/{{course.courseCode}}"> Edit </button>
+                <button class="btn btn-sm btn-danger mb-0" [attr.cid]="course.courseCode" (click)="openDeleteFormModal(course.courseCode)">Delete</button>
+              </td>
+            </tr>
+            <!-- Table row -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup modal for Delete Category START-->
+<div class="modal fade" id="deleteCourse" tabindex="-1" role="dialog" aria-labelledby="DeleteCourseLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="DeleteCourseLabel">Are you sure?</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeFormModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3" #DeleteCourse>
+          <input type="hidden" value="{{courseId}}"/>
+          <p>Do you really want to delete these records? This process cannot be undone.</p>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeFormModal()">Cancel</button>
+        <button type="submit" class="btn btn-danger" (click)="deleteCourse()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

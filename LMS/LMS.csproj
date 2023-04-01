@@ -26,10 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\modal\Course.ts" />
     <None Remove="ClientApp\src\app\modal\Student.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\modal\Course.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Student.ts" />
   </ItemGroup>
 

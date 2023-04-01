@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../Service/service.service';
-import { Student } from '../../modal/Student';
+import { ServiceService } from '../../Service/service.service';
+import { Student } from '../../../modal/Student';
+
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  styles: [
+  ]
 })
 export class StudentComponent implements OnInit {
 
@@ -23,6 +25,5 @@ export class StudentComponent implements OnInit {
       debugger
       this.student = res;
     });
-  }  
-
+  }
 }

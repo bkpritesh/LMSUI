@@ -11,21 +11,13 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutModule } from './layout/layout.module';
 import { CategoryComponent } from './category/category.component';
-import { AdmissionComponent } from './admission/admission.component';
-import { StudentComponent } from './student/student.component';
-
-//import { CourseModule } from './course/course.module';
-import { CourseComponent } from './course/course.component';
-//import { ListComponent } from './course/list/list.component';
+import { StudentModule } from './student/student.module';
+import { CourseModule } from './course/course.module';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CategoryComponent,
-    AdmissionComponent,
-    StudentComponent,
-    CourseComponent,
-    //ListComponent
   ],
 
   imports: [
@@ -42,21 +34,19 @@ import { CourseComponent } from './course/course.component';
     AdminRoutingModule,
     NgMultiSelectDropDownModule.forRoot(),
     DatepickerModule,
-   // CourseModule
+    CourseModule,
+    StudentModule,
   ],
-
   exports: [
     DashboardComponent,
     LayoutModule,
     CategoryComponent,
-    AdmissionComponent,
     NgMultiSelectDropDownModule,
     DatepickerModule,
     ToastrModule,
-    StudentComponent,
-    CourseComponent
+    CourseModule,
+    StudentModule
   ],
-
   providers: [
     ServiceService
   ]

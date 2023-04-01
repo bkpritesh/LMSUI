@@ -3,9 +3,9 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DatepickerOptions } from 'ng2-datepicker';
 import { getYear } from 'date-fns';
 import { ToastrService } from 'ngx-toastr';
-import { Student2 } from '../../modal/Student';
-import { ServiceService } from '../Service/service.service';
-import { Category } from '../../modal/category';
+import { Student2 } from '../../../modal/Student';
+import { ServiceService } from '../../Service/service.service';
+import { Category } from '../../../modal/category';
 import { formatDate } from '@angular/common';
 
 @Component({
@@ -91,8 +91,6 @@ export class AdmissionComponent implements OnInit {
       this.course = res;
     });
   }
-
-
   
 
   HiddenBirthField() {

@@ -1,0 +1,79 @@
+  <!-- Payment method START -->
+<div class="card bg-transparent border rounded-3 mb-4 z-index-9">
+  <!-- Card header START -->
+  <div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom">
+    <h3 class="mb-2 mb-sm-0">Add New Course</h3>
+    <!--<a href="#" class="btn btn-sm btn-primary mb-0" data-bs-toggle="modal" data-bs-target="#addNewcard">Add new student</a>-->
+  </div>
+  <!-- Card header END -->    <!-- Card body START -->
+
+  <div class="card-body">
+    <div class="accordion accordion-circle" id="accordioncircle">
+      <!-- Credit or debit card START -->
+      <div class="accordion-item mb-3" id="collapse-1">
+        <div class="accordion-body">
+          <form>
+            <div class="row" aria-labelledby="heading-1">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="category" class="form-label">Category</label><br />
+                  <select class="form-control" [(ngModel)]="course.categoryCode" #category name="category">
+                    <option *ngFor="let cate of categoryCode" [value]="cate.categoryId">
+                      {{cate.name}}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="coursename" class="form-label">Course Name</label><br />
+                  <input class="form-control" type="text" id="coursename" name="coursename" [(ngModel)]="course.courseName" />
+                </div>
+                <div class="col-md-4">
+                  <label for="coursefee" class="form-label">Course Fee</label><br />
+                  <input class="form-control" type="text" id="coursefee" name="coursefee" [(ngModel)]="course.courseFee" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="duration" class="form-label">Duration Week</label><br />
+                  <input class="form-control" type="text" id="duration" name="duration" [(ngModel)]="course.durationWeek" />
+                </div>
+                <div class="col-md-4">
+                  <label for="lecture" class="form-label">Lectures</label><br />
+                  <input class="form-control" type="text" id="lecture" name="lecture" [(ngModel)]="course.lectures" />
+                </div>
+                <div class="col-md-4">
+                  <label for="text" class="form-label">Level</label>
+                  <select class="form-control" id="level" name="level" [(ngModel)]="course.level" >
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Advance</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5">
+                  <label for="description" class="form-label">Description</label><br />
+                  <textarea class="form-control" [(ngModel)]="course.description" id="description" name="description"></textarea>
+                </div>
+                <div class="col-md-5">
+                  <label for="skill" class="form-label">Skill Tags</label><br />
+                  <textarea class="form-control" [(ngModel)]="course.skillTags" id="skill" name="skill"></textarea>
+                </div>
+                <div class="col-md-2">
+                  <label for="free" class="form-label">IsFree</label>
+                  <input class="form-check-input me-lg-9 form-control" type="checkbox" value="yes" id="free" name="free" [(ngModel)]="course.isFree" />
+                </div>
+              </div>
+            </div>
+            <div class="row center">
+              <button class="btn btn-primary m-3" (click)="addCourse()">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Card body START -->
+</div>
+<!-- Payment method END -->
+<!-- Main content END -->

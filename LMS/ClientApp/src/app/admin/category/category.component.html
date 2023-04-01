@@ -138,7 +138,7 @@
           <input type="hidden" value="{{categoryId}}" [(ngModel)]="category.categoryId"/>
           <div class="mb-3">
             <label for="Category_name" class="form-label">Category Name</label>
-            <input type="text" class="form-control" id="Category_name" name="Category_name" placeholder="Enter category" [(ngModel)]="category.name">
+            <input type="text" class="form-control" id="Category_name" name="Category_name" placeholder="Enter category" [(ngModel)]="category.name" [required]="true">
           </div>
           <div class="mb-3">
             <label for="Category_des" class="form-label">Description</label>

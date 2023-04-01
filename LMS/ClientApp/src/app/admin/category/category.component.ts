@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 declare var window: any;
 import { Category } from '../../modal/category';
 import { ServiceService } from '../Service/service.service';
 import { ToastrService } from 'ngx-toastr';
-//import {  } from '@ng';
 
 
 @Component({
