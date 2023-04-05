@@ -39,6 +39,14 @@ export class AuthserviceService {
     }));
   }
 
+  getCurrentUser() {
+    const user = localStorage.getItem('account');
+    if (user) {
+      return JSON.parse(user);
+    }
+    return null;
+  }
+
   ValidateResetToken(data: any) {
     return this.http.get('https://localhost:7027/api/ValidateResetToken/ResetPassword/' + data).subscribe(res => {
       console.log(res);

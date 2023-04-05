@@ -19,6 +19,9 @@ export class EditCourseComponent implements OnInit {
   courseId: string = '';
   selectedOption: string | null = null;
   id: string | null = null;
+  document = File;
+  currentUser: any;
+  DocumentId: any;
 
   constructor(private apibased: ServiceService, private toastrService: ToastrService, private route: Router, private activeroute: ActivatedRoute, private http: HttpClient) { }
 
@@ -46,6 +49,23 @@ export class EditCourseComponent implements OnInit {
     else {
       this.toastrService.error('SomeThing Went Wrong, So Try Again!');
     }
+  }
+
+  uploadFile(event: any) {
+    const file: File = event.target.files[0];
+    this.uploadFileData(file, this.currentUser.accountId, "CourseImage");
+  }
+
+  uploadFileData(file: File, account: string, type: string) {
+    this.apibased.addDocument(file, account, type).subscribe((data: any) => {
+      debugger
+      //console.log(data);
+      this.DocumentId = data.documentID;
+      this.course.docID = this.DocumentId;
+      console.log('File uploaded successfully');
+    }, error => {
+      console.log('File upload failed:', error)
+    });
   }
 
   editCourse() {

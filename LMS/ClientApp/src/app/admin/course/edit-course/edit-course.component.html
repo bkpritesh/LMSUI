@@ -21,7 +21,7 @@
                   <select class="form-control" [(ngModel)]="course.categoryCode" #category name="category">
                     <option *ngFor="let cate of categoryCode" [value]="cate.categoryId">
                       {{cate.name}}
-                    </option> 
+                    </option>
                   </select>
                 </div>
                 <div class="col-md-4">
@@ -63,6 +63,16 @@
                 <div class="col-md-2">
                   <label for="paid" class="form-label">IsFree</label>
                   <input class="form-check-input me-lg-9 form-control" type="checkbox" value="yes" id="paid" name="paid" [(ngModel)]="course.isFree" />
+                </div>
+              </div>
+              <div class="row">
+                <label for="formFile" class="form-label">Banner Upload</label>
+                <div class="col">
+                  <img src="localhost:7027/{{course.courseBanner}}" class="w-25" alt="Banner" />
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-info" (click)="formFile.click()">Change</button>
+                  <input class="form-control" type="file" #formFile id="formFile" name="formFile" (change)="uploadFile($event)" placeholder="Choose file" hidden [(ngModel)]="course.courseBanner"> 
                 </div>
               </div>
             </div>

@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CategoryComponent implements OnInit {
 
-  AddformModal: any;
+  AddformModal: any ;
   EditformModal: any;
   DeleteformModal: any;
   formModal: any;
@@ -45,13 +45,19 @@ export class CategoryComponent implements OnInit {
     this.DeleteformModal.hide();
   }
 
+  //resetForm() {
+  //  this.AddformModal.form=null;
+  //}
+
   ngOnInit(): void {
 
     this.load();
 
     this.AddformModal = new window.bootstrap.Modal(
-      document.getElementById('addcategory')     
+      document.getElementById('addcategory') 
     );
+
+//    this.resetForm();
 
     this.EditformModal = new window.bootstrap.Modal(
       document.getElementById('editcategory')
@@ -60,6 +66,7 @@ export class CategoryComponent implements OnInit {
     this.DeleteformModal = new window.bootstrap.Modal(
       document.getElementById('deletecategory')
     );
+
   }
 
   load() {

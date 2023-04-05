@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CategoryComponent } from './category/category.component';
-import { StudentRoutingModule } from './student/student-routing.module';
-import { CourseRoutingModule } from './course/course-routing.module';
+import { AuthGuard } from '../account/AuthService/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +16,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'category', component: CategoryComponent },
+      { path: 'category', component: CategoryComponent, canActivate: [AuthGuard] },
       { path: 'course', loadChildren: () => import('./course/course-routing.module').then(m => m.CourseRoutingModule) },
       { path: 'student', loadChildren: () => import('./student/student-routing.module').then(m=> m.StudentRoutingModule) },
     ]

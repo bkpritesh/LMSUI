@@ -6,13 +6,15 @@ import { CourseRoutingModule } from './course-routing.module';
 import { ListComponent } from './list/list.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
+import { BatchComponent } from './batch/batch.component';
 
 
 @NgModule({
   declarations: [
     ListComponent,
     AddCourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
+    BatchComponent
   ],
   imports: [
     CommonModule,

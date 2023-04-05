@@ -77,7 +77,18 @@ export class ServiceService implements HttpInterceptor {
   }
   //State & City
 
+  //Document Upload
+  documentapi: string = 'https://localhost:7027/api/DocumentUpload';
+  addDocument(file: File, AccountId: string, DocumentType: string) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('AccountId', AccountId);
+    formData.append('DocumentType', DocumentType);
+    debugger
+    return this.httpservice.post(this.documentapi + '?AccountId=' + AccountId + '&DocumentType=' + DocumentType, formData);
+  }
 
+  //Document Upload
 
   //Course
   courseapi: string = `${this.apiUrl}/api/Course`; 
