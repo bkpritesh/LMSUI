@@ -24,6 +24,7 @@ export class StudentComponent implements OnInit {
     this.apibased.getStudentData().subscribe(res => {
       debugger
       this.student = res;
+      console.log(this.student);
     });
   }
 }

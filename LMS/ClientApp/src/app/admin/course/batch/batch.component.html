@@ -1,0 +1,101 @@
+<!--<p (click)="getDataForSelectedOption( ) ">batch works!</p>-->
+ <!--Payment method START--> 
+<div class="card bg-transparent border rounded-3 mb-4 z-index-9">
+
+  <!--Card header START-->
+  <div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom">
+    <h3 class="mb-2 mb-sm-0">Add New Batch</h3>
+    <!--<a href="#" class="btn btn-sm btn-primary mb-0" data-bs-toggle="modal" data-bs-target="#addNewcard">Add new student</a>-->
+  </div>
+  <!--Card header END -->
+
+  <!--Card body START-->
+  <div class="card-body">
+    <div class="accordion accordion-circle" id="accordioncircle">
+      <!--Credit or debit card START-->
+      <div class="accordion-item mb-3" id="collapse-1">
+        <div class="accordion-body">
+          <form>
+            <div class="row" aria-labelledby="heading-1">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="course" class="form-label">Course</label><br />
+                  <select class="form-control" [(ngModel)]="batch.courseCode" #course name="course" (ngModelChange)="getDataForSelectedOption(course.value)">
+                    <option *ngFor="let course of courseCode" [value]="course.courseCode">
+                      {{course.courseName}}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="batch" class="form-label">Batch</label><br />
+                  <input class="form-control" type="text" id="batch" name="batch" [(ngModel)]="batch.batchCode" disabled />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="duration" class="form-label">Duration Week</label><br />
+                  <input class="form-control" type="text" id="duration" name="duration" [(ngModel)]="courseId.durationWeek" />
+                </div>
+                <div class="col-md-6">
+                  <label for="lecture" class="form-label">Lectures</label><br />
+                  <input class="form-control" type="text" id="lecture" name="lecture" [(ngModel)]="courseId.lectures" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="description" class="form-label">Course Description</label><br />
+                  <textarea class="form-control" [(ngModel)]="courseId.description" id="description" name="description"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="assignment" class="form-label">Total Assignment</label><br />
+                  <input type="text" class="form-control" [(ngModel)]="batch.assessment" id="assignment" name="assignment" />
+                </div>
+                <div class="col-md-6">
+                  <label for="student" class="form-label">Student</label>
+                  <ng-multiselect-dropdown [settings]="dropdownSetting"
+                                           [data]="student"
+                                           [placeholder]="'Select the data'"
+                                           [(ngModel)]="batch.students"
+                                           name="student" id="student">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="Stime" class="form-label">Start Time</label><br />
+                  <input type="time" class="form-control" [(ngModel)]="batch.startTIme" id="Stime" name="Stime" />
+                </div>
+                <div class="col-md-4">
+                  <label for="Etime" class="form-label">End Time</label><br />
+                  <input type="time" class="form-control" [(ngModel)]="batch.endTIme" id="Etime" name="Etime" />
+                </div>
+                <div class="col-md-4">
+                  <label for="instructor" class="form-label">Instructor</label><br />
+                  <select class="form-control" [(ngModel)]="batch.instructorCode" #instructor name="instructor">
+                    <option *ngFor="let teacher of teacher" [value]="teacher.InstructorCode">
+                      {{teacher.FName}}&nbsp;{{teacher.LName}}
+                    </option>
+                  </select> 
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="batchdescription" class="form-label">Batch Description</label><br />
+                  <textarea class="form-control" [(ngModel)]="batch.description" id="batchdescription" name="batchdescription"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <button type="submit" class="btn btn-primary m-3" (click)="addBatch()">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Card body START-->
+</div>
+<!-- Payment method END -->
+<!-- Main content END -->

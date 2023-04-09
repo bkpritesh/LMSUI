@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Student2 } from '../../../modal/Student';
 import { ServiceService } from '../../Service/service.service';
 import { Category } from '../../../modal/category';
-import { formatDate } from '@angular/common';
+import { formatDate } from '@angular/common'
 
 @Component({
   selector: 'app-admission',
@@ -23,7 +23,7 @@ export class AdmissionComponent implements OnInit {
   skills: any = '';
 
   categoryCode: Category[] | undefined;
-  course: any = '';
+  courseCode: any = '';
 
   settings: IDropdownSettings = {};
 
@@ -73,6 +73,7 @@ export class AdmissionComponent implements OnInit {
       idField: 'SkillId',
       textField: 'Skills',
       allowSearchFilter: true,
+      itemsShowLimit: 2,
     };
   }
 
@@ -88,7 +89,7 @@ export class AdmissionComponent implements OnInit {
   onCategoryChange(cate:string) {
     this.apibased.getCourseByCategoryId(cate).subscribe(res => {
       debugger
-      this.course = res;
+      this.courseCode = res;
     });
   }
   
@@ -127,6 +128,7 @@ export class AdmissionComponent implements OnInit {
     this.student2.joiningDate = this.hiddenJoiningDate;
     this.student2.isStudent = true;
     this.student2.country = '1005';
+    //this.student2.skillSet = JSON.parse(this.student2.skillSet.replace(/\\"/g, '"'));
     this.student2.skillSet = JSON.stringify(this.student2.skillSet);
     this.student2.accountType = "Student";
     this.apibased.addStudentData(this.student2).subscribe(() => {

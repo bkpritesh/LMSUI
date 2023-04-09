@@ -4,6 +4,8 @@ import { AuthserviceService } from '../AuthService/authservice.service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, takeWhile, timer } from 'rxjs';
 import { ResetPassword } from '../../modal/ResetPassword';
+import { FormGroup, ValidatorFn, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+
 
 
 @Component({
@@ -14,11 +16,21 @@ import { ResetPassword } from '../../modal/ResetPassword';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  constructor(private router: Router, private activeroute: ActivatedRoute, private apiservice: AuthserviceService, private toastrService: ToastrService) { }
+  //ResetPassword: FormGroup;
+
+
+  constructor(private router: Router, private activeroute: ActivatedRoute, private apiservice: AuthserviceService, private toastrService: ToastrService) {
+    //this.ResetPassword = this.fb.group({
+    //  password: ['', Validators.required],
+    //  Cpassword: ['', Validators.required]
+    //}, {
+    //  validator: passwordsMatchValidator
+    //});
+  }
 
   alive: boolean = true;
-  RSToken: string= '';
-
+  RSToken: string = '';
+  
   ngOnInit() {
     this.activeroute.queryParams.subscribe(params => {
       console.log(params.RestToken);
@@ -34,7 +46,6 @@ export class ResetPasswordComponent implements OnInit {
   }
 
 
-
   uReset(data: any) {
     let obj = new ResetPassword;
     obj.password = data.password;
@@ -48,3 +59,14 @@ export class ResetPasswordComponent implements OnInit {
   }
 
 }
+
+//function passwordsMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+//  const password = control.get('password');
+//  const Cpassword = control.get('Cpassword');
+
+//  if (password?.value !== Cpassword?.value) {
+//    return { passwordsMismatch: true };
+//  }
+
+//  return null;
+//}

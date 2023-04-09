@@ -7,6 +7,8 @@ import { Category } from '../../modal/category';
 import { Student, Student2 } from '../../modal/Student';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { Course } from '../../modal/Course';
+import { Batch } from '../../modal/Batch';
+import { Instructor } from '../../modal/Instructor';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +17,8 @@ export class ServiceService implements HttpInterceptor {
 
   constructor(private httpservice: HttpClient, private router: Router) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        throw new Error('Method not implemented.');
-    }
+    throw new Error('Method not implemented.');
+  }
 
   private apiUrl = environment.API_URL;
 
@@ -24,7 +26,7 @@ export class ServiceService implements HttpInterceptor {
 
   baseURL: string = `${this.apiUrl}/api/Categories`;
 
-  getData(){
+  getData() {
     debugger
     return this.httpservice.get<Category[]>(this.baseURL);
   }
@@ -68,7 +70,7 @@ export class ServiceService implements HttpInterceptor {
 
 
   //State & City
-  getstate(): Observable<any>{
+  getstate(): Observable<any> {
     return this.httpservice.get<any>(`${this.apiUrl}/api/StateAndCities`);
   }
 
@@ -91,14 +93,14 @@ export class ServiceService implements HttpInterceptor {
   //Document Upload
 
   //Course
-  courseapi: string = `${this.apiUrl}/api/Course`; 
+  courseapi: string = `${this.apiUrl}/api/Course`;
 
   getCourseByCategoryId(id: string) {
     return this.httpservice.get(`${this.apiUrl}/api/Categories/Course/${id}`)
   }
 
   getCourseData() {
-    return this.httpservice.get<Course[]>(this.courseapi) ;
+    return this.httpservice.get<Course[]>(this.courseapi);
   }
 
   gotoCourseData(id: string) {
@@ -111,11 +113,11 @@ export class ServiceService implements HttpInterceptor {
     return this.httpservice.delete(this.courseapi + '/' + deleteData);
   }
 
-  addCourse(course: Course): Observable < any > {
+  addCourse(course: Course): Observable<any> {
     const httpheaders = { 'content-type': 'application/json' }
     const body = JSON.stringify(course);
-      let options = {
-        headers: httpheaders
+    let options = {
+      headers: httpheaders
     };
     return this.httpservice.post(this.courseapi, body, options)
   }
@@ -123,16 +125,46 @@ export class ServiceService implements HttpInterceptor {
   editCourse(updatedData: any) {
     return this.httpservice.put(this.courseapi + '/CourseCode?Coursecode=' + updatedData.courseCode, updatedData);
   }
-
- 
   //Course
 
+
+  //Batch
+  batchapi: string = `${this.apiUrl}/api/Batch`;
+
+  getBatch() {
+    return this.httpservice.get(this.batchapi);
+  }
+
+  getNewBatch() {
+    return this.httpservice.get(this.batchapi + '/batchId')
+  }
+
+  getCourseBatch(id:string) {
+    return this.httpservice.get(this.batchapi + '/' + id);
+  }
+
+  addNewBatch(batch: Batch): Observable<any> {
+    debugger
+    const httpheaders = { 'content-type': 'application/json' }
+    const body = JSON.stringify(batch);
+    let options = {
+      headers: httpheaders
+    };
+    return this.httpservice.post(this.batchapi, body, options);
+  }
+
+  //Batch
+
+
+
+
+
   //Student Section
-  StudentBaseUrl: string = `${this.apiUrl}/api/Student`;
+  StudentBaseUrl: string = `${this.apiUrl}/api/`;
 
   getStudentData() {
     debugger
-    return this.httpservice.get<Student[]>(this.StudentBaseUrl);
+    return this.httpservice.get<Student[]>(this.StudentBaseUrl + 'Student');
   }
 
 
@@ -145,8 +177,18 @@ export class ServiceService implements HttpInterceptor {
       headers: httpheaders
     };
     debugger
-    return this.httpservice.post(`${this.apiUrl}/api/Register/Student`, body, options);
+    return this.httpservice.post(this.StudentBaseUrl + 'Register/Student', body, options);
   }
 
   //Student Section
+
+
+  //Instructor Section
+  InstructorApi: string = `${this.apiUrl}/api/`;
+
+  getInstructor() {
+    return this.httpservice.get<Instructor[]>(this.InstructorApi + 'Instructor');
+  }
+
+  //Instructor Section
 }

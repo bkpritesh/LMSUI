@@ -105,7 +105,7 @@
                 <div class="col-md-6">
                   <label for="courseCode" class="form-label">Course</label>
                   <select class="form-control" [(ngModel)]="student2.courseCode" name="courseCode" id="courseCode">
-                    <option *ngFor="let course of course" [value]="course.courseCode">
+                    <option *ngFor="let course of courseCode" [value]="course.CourseCode">
                       {{course.CourseName}}
                     </option>
                   </select>

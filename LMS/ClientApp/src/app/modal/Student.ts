@@ -1,17 +1,20 @@
 export class Student {
-  "studentID": string
-  "firstName": string
-  "lastName": string
-  "emailID": string
-  "dateOfBirth": string
-  "address": string
-  "city": string
-  "pinCode": string
-  "state": string
-  "country": string
-  "mobileNo": string  
-  "qualification": string
-  "courseName": string
+  "UGUID": number
+  "Email": string
+  "FName": string
+  "MName": string
+  "LName": string
+  "Address": string
+  "State": string
+  "City": string
+  "Country": string
+  "ContactNo": string
+  "Education": string
+  "SkillSet": string
+  "BirthDate": string
+  "JoiningDate": string
+  "ProfileImg": string
+  "StudentCode": string  
 }
 
 
@@ -32,10 +35,10 @@ export class Student2 {
   "accountType": string
   "categoryCode": string
   "courseCode": string
-  "courseFees": Number
-  "discount": Number
-  "totalFees": Number
+  "courseFees": number
+  "discount": number
+  "totalFees": number
   "isPaid": boolean
-  "paidAmount": Number
+  "paidAmount": number
   "isStudent": boolean  
 }

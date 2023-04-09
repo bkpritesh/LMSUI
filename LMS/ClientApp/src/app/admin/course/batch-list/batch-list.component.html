@@ -1,14 +1,13 @@
+<!--<p>batch-list works!</p>-->
 <div class="page-content-wrapper border">
   <div class="row mb-3">
     <div class="col-12 d-sm-flex justify-content-between align-items-center">
       <h1 class="h3 mb-2 mb-sm-0">
-        Student Page
+        Batch Page
         <!--<span class="badge bg-orange bg-opacity-10 text-orange">245</span>-->
       </h1>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-sm btn-primary mb-0" data-toggle="modal" routerLink="/student/InsertStudent">
-        Add New Student
-      </button>
+      <button type="button" class="btn btn-sm btn-primary mb-0" routerLink="/course/batch/add"> Create a Batch </button>
       <!-- Button trigger modal -->
     </div>
   </div>
@@ -57,51 +56,61 @@
           <thead>
             <tr>
               <th scope="col" class="border-0 rounded-start">#</th>
-              <th scope="col" class="border-0">Name</th>
-              <th scope="col" class="morder-0">Email ID</th>
-              <th scope="col" class="morder-0">Birthdate</th>
-              <th scope="col" class="morder-0">Mobile No</th>
-              <th scope="col" class="morder-0">Address</th>
+              <th scope="col" class="border-0">Course</th>
+              <th scope="col" class="border-0">Description</th>
+              <th scope="col" class="border-0">Assessment</th>
               <th scope="col" class="border-0 rounded-end">Action</th>
             </tr>
           </thead>
+
+
+
           <!-- Table body START -->
           <tbody>
-            <!-- Table row -->
-            <tr *ngFor="let stud of student">
-              <!--Table data-->
-              <td>{{stud.StudentCode}}</td>
-              <!--Table data-->
-              <!--Table data-->
-              <td> {{stud.FName}}&nbsp;{{stud.LName}}</td>
-              <!--Table data-->
-              <!--Table data-->
-              <td> {{stud.Email}}</td>
-              <!--Table data-->
-              <!--Table data-->
-              <td> {{stud.BirthDate}}</td>
-              <!--Table data-->
-              <!--Table data-->
-              <td> {{stud.ContactNo}}</td>
-              <!--Table data-->
-              <!--Table data-->
-              <td> {{stud.Address}}</td>
-              <!--Table data-->
-              <td>
-                <button class="btn btn-sm btn-success me-1 mb-1 mb-md-0" data-bs-toggle="modal">
-                  <!--(click)="openEditFormModal(cate.categoryId)"-->
-                  Edit
-                </button>
-                <button class="btn btn-sm btn-danger mb-0">Delete</button> <!-- [attr.cid]="cate.categoryId" (click)="openDeleteFormModal(cate.categoryId)"-->
-              </td>
-            </tr> 
-            <!-- Table row -->
+          <!-- Table row -->
+          <tr *ngFor="let batch of batches">
+          <!-- Table data -->
+          <td>{{batch.batchCode}}</td>
+          <!-- Table data -->
+          <td value="batch.courseCode">{{batch.courseName}}</td>
+          <!-- Table data -->
+          <td> {{batch.description}}</td>
+          <!-- Table data -->
+          <td> {{batch.assessment}}</td>
+          <!-- Table data -->
+          <td>
+            <button class="btn btn-sm btn-success me-1 mb-1 mb-md-0" routerLink="/course/editcourse/{{batch.batchCode}}">Edit </button>
+            <!--<button class="btn btn-sm btn-danger mb-0" [attr.cid]="course.courseCode" (click)="openDeleteFormModal(course.courseCode)">Delete</button>-->
+          </td>
+  </tr>
+          <!-- Table row -->
           </tbody>
         </table>
-      </div>
+</div>
     </div>
   </div>
 </div>
 
-
-
+<!-- Popup modal for Delete Category START-->
+<!--<div class="modal fade" id="deleteCourse" tabindex="-1" role="dialog" aria-labelledby="DeleteCourseLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="DeleteCourseLabel">Are you sure?</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeFormModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3" #DeleteCourse>
+          <input type="hidden" value="{{courseId}}" />
+          <p>Do you really want to delete these records? This process cannot be undone.</p>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeFormModal()">Cancel</button>
+        <button type="submit" class="btn btn-danger" (click)="deleteCourse()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>-->
