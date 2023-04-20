@@ -1,0 +1,64 @@
+<!--Main content START-->
+<div class="card bg-transparent border rounded-3 mb-4 z-index-9">
+
+  <!--Card header START-->
+  <div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom">
+    <h3 class="mb-2 mb-sm-0">Upload Student Assessment</h3>
+  </div>
+  <!--Card header END -->
+  <!--Card body START-->
+  <div class="card-body">
+    <div class="accordion accordion-circle" id="accordioncircle">
+      <!--Credit or debit card START-->
+      <div class="accordion-item mb-3" id="collapse-1">
+        <div class="accordion-body">
+          <form #UploadAssessment="ngForm">
+            <div class="row" aria-labelledby="heading-1">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="course" class="form-label">Course</label><br />
+                  <select class="form-control" [(ngModel)]="Assessment.CourseCode" #course="ngModel" ngModel required name="course">
+                    <option *ngFor="let course of courseCode" [value]="course.courseCode">
+                      {{course.courseName}}
+                    </option>
+                  </select>
+                  <div class="alert alert-danger" *ngIf="course.invalid && (course.dirty || course.touched)">
+                    <div *ngIf="course.errors?.['required']">
+                      Please select Course.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="assessment" class="form-label">Assessment Name</label><br />
+                  <input class="form-control" type="text" id="assessment" name="assessment" [(ngModel)]="Assessment.AssessmentName"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="formFile" class="form-label">Upload Assessment</label>
+                  <a href="../../../../assets/document/Assessment/Assistment1.xlsx" style="float:right">
+                    <i class="bi bi-info-circle">Sample Assessment</i>
+                  </a>
+                  <br />
+                  <input class="form-control" type="file" #file id="formFile" name="formFile" placeholder="Choose file" #formFile="ngModel" ngModel accept=".xls,.xlsx" (change)="uploadFile($event)">
+                  <div class="alert alert-danger" *ngIf="formFile.invalid && (formFile.dirty || formFile.touched)">
+                    <div *ngIf="formFile.errors?.['required']">
+                      Please Upload Spread-Sheet(Excel Sheet).
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <button type="submit" class="btn btn-primary m-3" [class.disabled]="!UploadAssessment.valid" (click)="UploadSyllabuses()">Submit</button>
+              </div>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Card body START-->
+</div>
+<!-- Main content END -->

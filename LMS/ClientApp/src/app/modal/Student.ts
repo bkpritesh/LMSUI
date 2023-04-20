@@ -1,27 +1,8 @@
 export class Student {
-  "UGUID": number
-  "Email": string
-  "FName": string
-  "MName": string
-  "LName": string
-  "Address": string
-  "State": string
-  "City": string
-  "Country": string
-  "ContactNo": string
-  "Education": string
-  "SkillSet": string
-  "BirthDate": string
-  "JoiningDate": string
-  "ProfileImg": string
-  "StudentCode": string  
-}
-
-
-export class Student2 {
   "fName": string
   "mName": string
   "lName": string
+  "fullName": string
   "email": string
   "address": string
   "state": string
@@ -30,7 +11,7 @@ export class Student2 {
   "contactNo": string
   "education": string
   "skillSet": string
-  "birthdate": Date
+  "birthDate": Date
   "joiningDate": Date
   "accountType": string
   "categoryCode": string
@@ -38,7 +19,12 @@ export class Student2 {
   "courseFees": number
   "discount": number
   "totalFees": number
-  "isPaid": boolean
+  "isPaid": true
   "paidAmount": number
-  "isStudent": boolean  
+  "isStudent": true
+  "studentCode": string
+  "courseName": string
+  "amount": number
+  "price": number
+  
 }

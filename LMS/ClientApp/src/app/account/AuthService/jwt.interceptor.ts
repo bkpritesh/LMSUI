@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class JWTInterceptor implements HttpInterceptor {
 
-  constructor(private baseService: AuthserviceService) {}
+  constructor(private baseService: AuthserviceService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //debugger
@@ -33,4 +33,5 @@ export class JWTInterceptor implements HttpInterceptor {
   AddTokenheader(request: HttpRequest<any>, token: any) {
     return request.clone({ headers: request.headers.set('Authorization', 'bearer' + token) });
   }
+
 }

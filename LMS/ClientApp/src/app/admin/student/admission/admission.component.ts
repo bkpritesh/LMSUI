@@ -3,7 +3,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DatepickerOptions } from 'ng2-datepicker';
 import { getYear } from 'date-fns';
 import { ToastrService } from 'ngx-toastr';
-import { Student2 } from '../../../modal/Student';
+import { Student } from '../../../modal/Student';
 import { ServiceService } from '../../Service/service.service';
 import { Category } from '../../../modal/category';
 import { formatDate } from '@angular/common'
@@ -24,6 +24,7 @@ export class AdmissionComponent implements OnInit {
 
   categoryCode: Category[] | undefined;
   courseCode: any = '';
+  Fees: any;
 
   settings: IDropdownSettings = {};
 
@@ -32,7 +33,7 @@ export class AdmissionComponent implements OnInit {
   birthdate: Date = new Date();
   hiddenBirthDate: any;
 
-  student2 = new Student2();
+  student2 = new Student();
 
   constructor(private apibased: ServiceService, private toastrService: ToastrService) {  }
 
@@ -46,7 +47,7 @@ export class AdmissionComponent implements OnInit {
     position: 'top',
     inputClass: 'form-control ', // custom input CSS class to be applied
     calendarClass: 'datepicker-default form-label', // custom datepicker calendar CSS class to be applied
-    scrollBarColor: '#dfe3e9', // in case you customize you theme, here you define scroll bar color    
+    scrollBarColor: '#dfe3e9', // in case you customize you theme, here you define scroll bar color
   };
 
 
@@ -92,12 +93,20 @@ export class AdmissionComponent implements OnInit {
       this.courseCode = res;
     });
   }
+
+  onCourseSelect(course: string) {
+    debugger
+    this.apibased.gotoCourseData(course).subscribe(res => {
+      debugger
+      this.Fees = res.courseFee;
+    });
+  }
   
 
   HiddenBirthField() {
     debugger
     this.hiddenBirthDate = this.formatDate(this.birthdate);
-  }
+  } 
   
  
   HiddenJoiningField()  {
@@ -121,15 +130,22 @@ export class AdmissionComponent implements OnInit {
   }
 
 
+  //calculation() {
+  //  var coursefee = this.student2.courseFees;
+  //  var discount =;
+  //  var payedfee =;
+  //  var Totalfee = coursefee - payedfee - (discount / 100);
+  //}
 
+   
   addStudent() {
     debugger
-    this.student2.birthdate = this.hiddenBirthDate;
+    this.student2.birthDate = this.hiddenBirthDate;
     this.student2.joiningDate = this.hiddenJoiningDate;
     this.student2.isStudent = true;
     this.student2.country = '1005';
     //this.student2.skillSet = JSON.parse(this.student2.skillSet.replace(/\\"/g, '"'));
-    this.student2.skillSet = JSON.stringify(this.student2.skillSet);
+    this.student2.skillSet = JSON.stringify(this.student2.skillSet).toString();
     this.student2.accountType = "Student";
     this.apibased.addStudentData(this.student2).subscribe(() => {
       debugger      

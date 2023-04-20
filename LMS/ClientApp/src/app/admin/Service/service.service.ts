@@ -4,10 +4,11 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { Category } from '../../modal/category';
-import { Student, Student2 } from '../../modal/Student';
+import { Student } from '../../modal/Student';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { Course } from '../../modal/Course';
-import { Batch } from '../../modal/Batch';
+import { Batch, BatchDetail } from '../../modal/Batch';
+import { Assessment } from '../../modal/Assessment';
 import { Instructor } from '../../modal/Instructor';
 
 @Injectable({
@@ -80,7 +81,7 @@ export class ServiceService implements HttpInterceptor {
   //State & City
 
   //Document Upload
-  documentapi: string = 'https://localhost:7027/api/DocumentUpload';
+  documentapi: string = `${this.apiUrl}/api/DocumentUpload`;
   addDocument(file: File, AccountId: string, DocumentType: string) {
     const formData = new FormData();
     formData.append('file', file);
@@ -122,7 +123,9 @@ export class ServiceService implements HttpInterceptor {
     return this.httpservice.post(this.courseapi, body, options)
   }
 
+  
   editCourse(updatedData: any) {
+    debugger
     return this.httpservice.put(this.courseapi + '/CourseCode?Coursecode=' + updatedData.courseCode, updatedData);
   }
   //Course
@@ -132,11 +135,11 @@ export class ServiceService implements HttpInterceptor {
   batchapi: string = `${this.apiUrl}/api/Batch`;
 
   getBatch() {
-    return this.httpservice.get(this.batchapi);
+    return this.httpservice.get<Batch[]>(this.batchapi);
   }
 
   getNewBatch() {
-    return this.httpservice.get(this.batchapi + '/batchId')
+    return this.httpservice.get(this.batchapi + '/GetLastBatchID')
   }
 
   getCourseBatch(id:string) {
@@ -151,6 +154,26 @@ export class ServiceService implements HttpInterceptor {
       headers: httpheaders
     };
     return this.httpservice.post(this.batchapi, body, options);
+  }
+
+  gotoBatchData(id: string) {
+    debugger
+    return this.httpservice.get<Batch>(this.batchapi + '/' + id);
+  }
+
+  editBatch(updateData: any) {
+    debugger
+    return this.httpservice.put(this.batchapi + '/BatchCode?BatchCode=' + updateData.batchCode, updateData);
+  }
+
+  addBatchDetail(batch: BatchDetail): Observable<any>{
+    debugger
+    const formData = new FormData();
+    formData.append('File', batch.File);
+    formData.append('batchCode', batch.batchCode);
+    formData.append('CourseCode', batch.CourseCode);
+    debugger
+    return this.httpservice.post(`${this.apiUrl}/api/BatchDetail`, formData);
   }
 
   //Batch
@@ -168,7 +191,7 @@ export class ServiceService implements HttpInterceptor {
   }
 
 
-  addStudentData(student: Student2): Observable<any> {
+  addStudentData(student: Student): Observable<any> {
     debugger
     const httpheaders = { 'content-type': 'application/json' }
     debugger
@@ -180,13 +203,37 @@ export class ServiceService implements HttpInterceptor {
     return this.httpservice.post(this.StudentBaseUrl + 'Register/Student', body, options);
   }
 
+  getStudentById(id: string) {
+    return this.httpservice.get<Student>(this.StudentBaseUrl + 'Register/StudentCode?StudentCode=' + id);
+  }
+
+  editStudent(updatedData: any) {
+    return this.httpservice.put(this.StudentBaseUrl + 'Register/StudentCode?StudentCode=' + updatedData.studentCode, updatedData);
+  }
+
   //Student Section
+
+
+
+  //Assessment
+
+  addAssessment(assessment: Assessment): Observable<any>{
+    const formData = new FormData();
+    formData.append('File', assessment.File);
+    formData.append('AssessmentName', assessment.AssessmentName);
+    formData.append('CourseCode', assessment.CourseCode);
+    debugger
+    return this.httpservice.post(`${ this.apiUrl }/api/Assistment`, formData);
+  }
+  //Assessment
+
 
 
   //Instructor Section
   InstructorApi: string = `${this.apiUrl}/api/`;
 
   getInstructor() {
+    debugger
     return this.httpservice.get<Instructor[]>(this.InstructorApi + 'Instructor');
   }
 

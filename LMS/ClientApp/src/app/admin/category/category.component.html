@@ -20,7 +20,7 @@
       <!-- Search and select START -->
       <div class="row g-3 align-items-center justify-content-between">
         <!-- Search bar -->
-        <div class="col-md-8">
+        <div class="col-md-12">
           <form class="rounded position-relative">
             <input class="form-control bg-body" type="search" placeholder="Search"
                    aria-label="Search" />
@@ -28,20 +28,6 @@
                     type="submit">
               <i class="fas fa-search fs-6 "></i>
             </button>
-          </form>
-        </div>
-        <!-- Select option -->
-        <div class="col-md-3">
-          <!-- Short by filter -->
-          <form>
-            <select class="form-select js-choice border-0 z-index-9"
-                    aria-label=".form-select-sm">
-              <option value="">Sort by</option>
-              <option>Newest</option>
-              <option>Oldest</option>
-              <option>Accepted</option>
-              <option>Rejected</option>
-            </select>
           </form>
         </div>
       </div>
@@ -103,20 +89,30 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="row g-3" #AddCategory>
+        <form class="row g-3" #AddCategory="ngForm">
           <div class="mb-3">
             <label for="Category_name" class="form-label">Category Name</label>
-            <input type="text" class="form-control" id="Category_name" name="Category_name" placeholder="Enter category" [(ngModel)]="category.name">
+            <input type="text" class="form-control" id="Category_name" name="Category_name" placeholder="Enter category" [(ngModel)]="category.name" required #Category_name="ngModel" ngModel>
+            <div class="alert alert-danger" *ngIf="Category_name.invalid && (Category_name.dirty || Category_name.touched)">
+              <div *ngIf="Category_name.errors?.['required']">
+                Category is required.
+              </div>
+            </div>
           </div>
           <div class="mb-3">
             <label for="Category_des" class="form-label">Description</label>
-            <textarea class="form-control" id="Category_des" name="Category_des" placeholder="Enter Description" [(ngModel)]="category.description"></textarea>
+            <textarea class="form-control" id="Category_des" name="Category_des" placeholder="Enter Description" [(ngModel)]="category.description" required #Category_des="ngModel" ngModel></textarea>
+            <div class="alert alert-danger" *ngIf="Category_des.invalid && (Category_des.dirty || Category_des.touched)">
+              <div *ngIf="Category_des.errors?.['required']">
+                Category Description is required.
+              </div>
+            </div>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeFormModal()">Close</button>
-        <button type="submit" class="btn btn-primary" (click)="addCategory()">Save</button>
+        <button type="submit" class="btn btn-primary" [class.disabled]="!AddCategory.valid" (click)="addCategory()">Save</button>
       </div>
     </div>
   </div>
@@ -134,21 +130,31 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="row g-3" #EditCategory>
+        <form class="row g-3" #EditCategory="ngForm">
           <input type="hidden" value="{{categoryId}}" [(ngModel)]="category.categoryId"/>
           <div class="mb-3">
-            <label for="Category_name" class="form-label">Category Name</label>
-            <input type="text" class="form-control" id="Category_name" name="Category_name" placeholder="Enter category" [(ngModel)]="category.name" [required]="true">
+            <label for="Edit_Category_name" class="form-label">Category Name</label>
+            <input type="text" class="form-control" id="Edit_Category_name" name="Edit_Category_name" placeholder="Enter category" [(ngModel)]="category.name" required #Edit_Category_name="ngModel" ngModel>
+            <div class="alert alert-danger" *ngIf="Edit_Category_name.invalid && (Edit_Category_name.dirty || Edit_Category_name.touched)">
+              <div *ngIf="Edit_Category_name.errors?.['required']">
+                Category is required.
+              </div>
+            </div>  
           </div>
           <div class="mb-3">
-            <label for="Category_des" class="form-label">Description</label>
-            <textarea class="form-control" id="Category_des" name="Category_des" placeholder="Enter Description" [(ngModel)]="category.description"></textarea>
+            <label for="Edit_Category_des" class="form-label">Description</label>
+            <textarea class="form-control" id="Edit_Category_des" name="Edit_Category_des" placeholder="Enter Description" [(ngModel)]="category.description" required #Edit_Category_des="ngModel" ngModel></textarea>
+            <div class="alert alert-danger" *ngIf="Edit_Category_des.invalid && (Edit_Category_des.dirty || Edit_Category_des.touched)">
+              <div *ngIf="Edit_Category_des.errors?.['required']">
+                Category Description is required.
+              </div>
+            </div>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeFormModal()">Close</button>
-        <button type="submit" class="btn btn-primary" (click)="editCategory()">Save</button>
+        <button type="submit" class="btn btn-primary" [class.disabled]="!EditCategory.valid" (click)="editCategory()">Save</button>
       </div>
     </div>
   </div>

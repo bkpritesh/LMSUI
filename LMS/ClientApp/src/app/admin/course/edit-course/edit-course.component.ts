@@ -5,6 +5,8 @@ import { ServiceService } from '../../Service/service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+import { AuthserviceService } from '../../../account/AuthService/authservice.service';
 
 @Component({
   selector: 'app-edit-course',
@@ -14,7 +16,10 @@ import { HttpClient } from '@angular/common/http';
 
 export class EditCourseComponent implements OnInit {
 
+  api = environment.API_URL;
+
   categoryCode: Category[] | undefined;
+  category: string = '';
   course = new Course();
   courseId: string = '';
   selectedOption: string | null = null;
@@ -23,19 +28,23 @@ export class EditCourseComponent implements OnInit {
   currentUser: any;
   DocumentId: any;
 
-  constructor(private apibased: ServiceService, private toastrService: ToastrService, private route: Router, private activeroute: ActivatedRoute, private http: HttpClient) { }
+  constructor(private apibased: ServiceService, private toastrService: ToastrService, private authservice: AuthserviceService, private route: Router, private activeroute: ActivatedRoute, private http: HttpClient) {
+    this.currentUser = this.authservice.getCurrentUser();
+  }
 
   ngOnInit(): void {
+    this.activeroute.paramMap.subscribe((params: any) => {
+      this.id = params.get('id');
+      console.log(this.id);
+      this.getData();
+    });
+
     this.apibased.getData().subscribe((res: any) => {
       debugger
       console.log(res);
       this.categoryCode = res;
     });
-    this.activeroute.paramMap.subscribe((params:any) => {
-      this.id = params.get('id');
-      console.log(this.id);
-      this.getData(); 
-      });
+    
   }
 
   getData() {
@@ -43,6 +52,8 @@ export class EditCourseComponent implements OnInit {
       debugger
       this.apibased.gotoCourseData(this.id).subscribe(data => {       
         this.course = data;
+        debugger
+        this.category = data.name;
         console.log(this.course);
       });
     }
@@ -52,14 +63,15 @@ export class EditCourseComponent implements OnInit {
   }
 
   uploadFile(event: any) {
+    debugger
     const file: File = event.target.files[0];
     this.uploadFileData(file, this.currentUser.accountId, "CourseImage");
   }
 
   uploadFileData(file: File, account: string, type: string) {
+    debugger
     this.apibased.addDocument(file, account, type).subscribe((data: any) => {
       debugger
-      //console.log(data);
       this.DocumentId = data.documentID;
       this.course.docID = this.DocumentId;
       console.log('File uploaded successfully');

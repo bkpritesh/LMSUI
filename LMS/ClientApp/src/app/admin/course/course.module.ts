@@ -7,8 +7,6 @@ import { CourseRoutingModule } from './course-routing.module';
 import { ListComponent } from './list/list.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
-import { BatchComponent } from './batch/batch.component';
-import { BatchListComponent } from './batch-list/batch-list.component';
 
 
 @NgModule({
@@ -16,8 +14,6 @@ import { BatchListComponent } from './batch-list/batch-list.component';
     ListComponent,
     AddCourseComponent,
     EditCourseComponent,
-    BatchComponent,
-    BatchListComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +25,7 @@ import { BatchListComponent } from './batch-list/batch-list.component';
     CourseRoutingModule,
     ListComponent,
     AddCourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
   ],
 })
 export class CourseModule { }

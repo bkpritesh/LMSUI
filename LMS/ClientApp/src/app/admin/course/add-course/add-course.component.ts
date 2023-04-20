@@ -37,6 +37,7 @@ export class AddCourseComponent implements OnInit {
   }
 
   uploadFile(event: any) {
+    debugger
     const file: File = event.target.files[0];
     this.uploadFileData(file, this.currentUser.accountId, "CourseImage");
   }
@@ -57,6 +58,7 @@ export class AddCourseComponent implements OnInit {
     debugger
     //const docvalue = this.uploadFileData.bind(data.bind(this.DocumentId));
     //this.course.documentID = docvalue;
+    debugger
     this.apibased.addCourse(this.course).subscribe(res => {
       debugger      
       this.toastrService.success('The Course is Added!');

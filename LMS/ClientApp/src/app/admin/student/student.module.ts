@@ -8,12 +8,14 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DatepickerModule } from 'ng2-datepicker';
 import { ToastrModule } from 'ngx-toastr';
 import { EditStudentComponent } from './edit-student/edit-student.component';
+import { AssessmentComponent } from './assessment/assessment.component';
 
 @NgModule({
   declarations: [
     StudentComponent,
     AdmissionComponent,
     EditStudentComponent,
+    AssessmentComponent,
   ],
   imports: [
     CommonModule,

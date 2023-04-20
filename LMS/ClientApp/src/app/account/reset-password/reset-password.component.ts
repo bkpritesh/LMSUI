@@ -16,17 +16,17 @@ import { FormGroup, ValidatorFn, Validators, FormBuilder, AbstractControl } from
 })
 export class ResetPasswordComponent implements OnInit {
 
-  //ResetPassword: FormGroup;
+  ResetPassword: FormGroup;
 
 
-  constructor(private router: Router, private activeroute: ActivatedRoute, private apiservice: AuthserviceService, private toastrService: ToastrService) {
-    //this.ResetPassword = this.fb.group({
-    //  password: ['', Validators.required],
-    //  Cpassword: ['', Validators.required]
-    //}, {
-    //  validator: passwordsMatchValidator
-    //});
-  }
+  constructor(private router: Router, private activeroute: ActivatedRoute, private apiservice: AuthserviceService, private toastrService: ToastrService, private fb: FormBuilder) {
+    this.ResetPassword = this.fb.group({
+      password: ['', Validators.required],
+      Cpassword: ['', Validators.required]
+    }, {
+      validator: this.passwordsMatchValidator
+    });
+  } 
 
   alive: boolean = true;
   RSToken: string = '';
@@ -34,6 +34,7 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit() {
     this.activeroute.queryParams.subscribe(params => {
       console.log(params.RestToken);
+      debugger
       if (params.RestToken) {
         this.RSToken = params.RestToken;
         let x = this.apiservice.ValidateResetToken(params.RestToken);
@@ -57,6 +58,17 @@ export class ResetPasswordComponent implements OnInit {
       this.toastrService.error('Try Again!');
     });
   }
+
+  passwordsMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const password = control.get('password');
+  const Cpassword = control.get('Cpassword');
+
+  if (password?.value !== Cpassword?.value) {
+    this.toastrService.error('Please check your password!');
+    return { passwordsMismatch: true }
+  }
+  return null;
+}
 
 }
 

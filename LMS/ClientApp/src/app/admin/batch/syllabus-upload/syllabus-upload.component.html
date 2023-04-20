@@ -1,0 +1,67 @@
+<!--Main content START-->
+<div class="card bg-transparent border rounded-3 mb-4 z-index-9">
+
+  <!--Card header START-->
+  <div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom">
+    <h3 class="mb-2 mb-sm-0">Upload Batch Syllabus</h3>
+  </div>
+  <!--Card header END -->
+  <!--Card body START-->
+  <div class="card-body">
+    <div class="accordion accordion-circle" id="accordioncircle">
+      <!--Credit or debit card START-->
+      <div class="accordion-item mb-3" id="collapse-1">
+        <div class="accordion-body">  
+          <form #UploadSyllabus="ngForm">
+            <div class="row" aria-labelledby="heading-1">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="batchs" class="form-label">Batch</label><br />
+                  <select class="form-control" [(ngModel)]="batch.batchCode" #batchs="ngModel" ngModel required name="batchs" (ngModelChange)="getDataForSelectedOption(batchs.value)">
+
+                    <option *ngFor="let batch of batchCode" [value]="batch.batchCode">
+                      {{batch.batchCode}}
+                    </option>
+                  </select>
+                  <div class="alert alert-danger" *ngIf="batchs.invalid && (batchs.dirty || batchs.touched)">
+                    <div *ngIf="batchs.errors?.['required']">
+                      Please select Batch.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="course" class="form-label">Course</label><br />
+                  <input class="form-control" type="hidden" id="course" name="course" [(ngModel)]="courseId.courseCode" />
+                  <input class="form-control" type="text" id="course" name="course" [(ngModel)]="courseId.courseName" disabled />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="formFile" class="form-label">Upload Syllabus</label>                  
+                    <a href="../../../../assets/document/Syllabus/Sample.xlsx" style="float:right">
+                      <i class="bi bi-info-circle">Sample Syllabus</i>
+                    </a>
+                  
+                  <br />
+                  <input class="form-control" type="file" #file id="formFile" name="formFile" placeholder="Choose file" #formFile="ngModel" ngModel accept=".xls,.xlsx" (change)="uploadFile($event)">
+                  <div class="alert alert-danger" *ngIf="formFile.invalid && (formFile.dirty || formFile.touched)">
+                    <div *ngIf="formFile.errors?.['required']">
+                      Please Upload Spread-Sheet(Excel Sheet).
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <button type="submit" class="btn btn-primary m-3" [class.disabled]="!UploadSyllabus.valid" (click)="UploadSyllabuses()">Submit</button>
+              </div>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Card body START-->
+</div>
+<!-- Main content END -->

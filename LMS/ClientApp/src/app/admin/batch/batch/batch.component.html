@@ -15,16 +15,21 @@
       <!--Credit or debit card START-->
       <div class="accordion-item mb-3" id="collapse-1">
         <div class="accordion-body">
-          <form>
+          <form #addBtach="ngForm">
             <div class="row" aria-labelledby="heading-1">
               <div class="row">
                 <div class="col-md-6">
                   <label for="course" class="form-label">Course</label><br />
-                  <select class="form-control" [(ngModel)]="batch.courseCode" #course name="course" (ngModelChange)="getDataForSelectedOption(course.value)">
+                  <select class="form-control" [(ngModel)]="batch.courseCode" #course="ngModel" ngModel required name="course" (ngModelChange)="getDataForSelectedOption(course.value)">
                     <option *ngFor="let course of courseCode" [value]="course.courseCode">
                       {{course.courseName}}
                     </option>
                   </select>
+                  <div class="alert alert-danger" *ngIf="course.invalid && (course.dirty || course.touched)">
+                    <div *ngIf="course.errors?.['required']">
+                      Please select Course Name.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <label for="batch" class="form-label">Batch</label><br />
@@ -34,50 +39,75 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="duration" class="form-label">Duration Week</label><br />
-                  <input class="form-control" type="text" id="duration" name="duration" [(ngModel)]="courseId.durationWeek" />
+                  <input class="form-control" type="text" id="duration" name="duration" [(ngModel)]="courseId.durationWeek" disabled />
                 </div>
                 <div class="col-md-6">
                   <label for="lecture" class="form-label">Lectures</label><br />
-                  <input class="form-control" type="text" id="lecture" name="lecture" [(ngModel)]="courseId.lectures" />
+                  <input class="form-control" type="text" id="lecture" name="lecture" [(ngModel)]="courseId.lectures" disabled/>
                 </div>
               </div>
               <div class="row">
                 <div class="col">
                   <label for="description" class="form-label">Course Description</label><br />
-                  <textarea class="form-control" [(ngModel)]="courseId.description" id="description" name="description"></textarea>
+                  <textarea class="form-control" [(ngModel)]="courseId.description" id="description" name="description" disabled></textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label for="assignment" class="form-label">Total Assignment</label><br />
-                  <input type="text" class="form-control" [(ngModel)]="batch.assessment" id="assignment" name="assignment" />
+                  <input type="text" class="form-control" [(ngModel)]="batch.assessment" id="assignment" name="assignment" #assignment="ngModel" ngModel required/>
+                  <div class="alert alert-danger" *ngIf="assignment.invalid && (assignment.dirty || assignment.touched)">
+                    <div *ngIf="assignment.errors?.['required']">
+                      Assignment is required.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label for="student" class="form-label">Student</label>
+                  <label for="studentes" class="form-label">Student</label>
                   <ng-multiselect-dropdown [settings]="dropdownSetting"
                                            [data]="student"
                                            [placeholder]="'Select the data'"
                                            [(ngModel)]="batch.students"
-                                           name="student" id="student">
+                                           name="studentes" id="studentes" #studentes="ngModel" ngModel required>
                   </ng-multiselect-dropdown>
+                   <div class="alert alert-danger" *ngIf="studentes.invalid && (studentes.dirty || studentes.touched)">
+                    <div *ngIf="studentes.errors?.['required']">
+                      Select Students.
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4">
                   <label for="Stime" class="form-label">Start Time</label><br />
-                  <input type="time" class="form-control" [(ngModel)]="batch.startTIme" id="Stime" name="Stime" />
+                  <input type="time" class="form-control" [(ngModel)]="batch.startTIme" id="Stime" name="Stime" #Stime="ngModel" ngModel required />
+                  <div class="alert alert-danger" *ngIf="Stime.invalid && (Stime.dirty || Stime.touched)">
+                    <div *ngIf="Stime.errors?.['required']">
+                     Starting Time is required.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label for="Etime" class="form-label">End Time</label><br />
-                  <input type="time" class="form-control" [(ngModel)]="batch.endTIme" id="Etime" name="Etime" />
+                  <input type="time" class="form-control" [(ngModel)]="batch.endTIme" id="Etime" name="Etime" #Etime="ngModel" ngModel required />
+                  <div class="alert alert-danger" *ngIf="Etime.invalid && (Etime.dirty || Etime.touched)">
+                    <div *ngIf="Etime.errors?.['required']">
+                     End Time is required.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label for="instructor" class="form-label">Instructor</label><br />
-                  <select class="form-control" [(ngModel)]="batch.instructorCode" #instructor name="instructor">
+                  <select class="form-control" [(ngModel)]="batch.instructorCode"  name="instructor" #instructor="ngModel" ngModel required>
                     <option *ngFor="let teacher of teacher" [value]="teacher.InstructorCode">
                       {{teacher.FName}}&nbsp;{{teacher.LName}}
                     </option>
-                  </select> 
+                  </select>
+                  <div class="alert alert-danger" *ngIf="instructor.invalid && (instructor.dirty || instructor.touched)">
+                    <div *ngIf="instructor.errors?.['required']">
+                      Select Instructor.
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -87,7 +117,7 @@
                 </div>
               </div>
               <div class="row">
-                <button type="submit" class="btn btn-primary m-3" (click)="addBatch()">Submit</button>
+                <button type="submit" class="btn btn-primary m-3" [class.disabled]="!addBtach.valid"  (click)="addBatch()">Submit</button>
               </div>
             </div>
           </form>

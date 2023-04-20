@@ -20,15 +20,13 @@
 
         <!-- Title -->
         <!--<li class="nav-item ms-2 my-2">Pages</li>-->
-
         <!-- menu item 2 -->
         <!--<li class="nav-item"> <a class="nav-link" routerLink="/Course"><i class="bi bi-basket fa-fw me-2"></i>Courses</a></li>-->
-
         <!-- Menu item 2-->
         <li class="nav-item"> <a class="nav-link" routerLink="/category"><i class="fas fa-clipboard-list fa-fw me-2"></i>Category</a></li>
 
 
-        <!-- menu item 5 -->
+        <!-- menu item 3 -->
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#collapsepage" role="button" aria-expanded="false" aria-controls="collapsepage">
             <i class="bi bi-basket fa-fw me-2"></i>Courses
@@ -37,12 +35,25 @@
           <ul class="nav collapse flex-column" id="collapsepage" data-bs-parent="#navbar-sidebar">
             <li class="nav-item"> <a class="nav-link" routerLink="/course">List of Courses</a></li>
             <li class="nav-item"> <a class="nav-link" routerLink="/course/addcourse">Add Course</a></li>
-            <li class="nav-item"> <a class="nav-link" routerLink="/course/batch">Batch</a></li>
           </ul>
         </li>
 
 
-        <!-- Menu item 4-->
+        <!-- menu item 4 -->
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapsebatchpage" role="button" aria-expanded="false" aria-controls="collapsebatchpage">
+            <i class="bi bi-person-add fa-fw me-2"></i>Batch
+          </a>
+          <!--submenu-->
+          <ul class="nav collapse flex-column" id="collapsebatchpage" data-bs-parent="#navbar-sidebar">
+            <li class="nav-item"> <a class="nav-link" routerLink="/Batch">List of Batch</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/Batch/addBatch">Add Batch</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/Batch/Syllabus">Syllabus Upload</a></li>
+          </ul>
+        </li>
+
+
+        <!-- Menu item 5-->
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#collapsestudentpage" role="button" aria-expanded="false" aria-controls="collapsestudentpage">
             <i class="fas fa-user-graduate fa-fw me-2"></i>Student
@@ -51,7 +62,7 @@
           <ul class="nav collapse flex-column" id="collapsestudentpage" data-bs-parent="#navbar-sidebar">
             <li class="nav-item"> <a class="nav-link" routerLink="/student">List</a></li>
             <li class="nav-item"> <a class="nav-link" routerLink="/student/InsertStudent">Add Student</a></li>
-            <li class="nav-item"> <a class="nav-link" routerLink="/student/">Assignment</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/student/Assessment">Assessment</a></li>
           </ul>
         </li>
       </ul>
@@ -65,7 +76,7 @@
             <a class="h5 mb-0 text-body" href="index-2.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Home">
               <i class="bi bi-globe"></i>
             </a>
-            <a class="h5 mb-0 text-body" href="sign-in.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Sign out">
+            <a class="h5 mb-0 text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Sign out">
               <i class="bi bi-power"></i>
             </a>
           </div>
@@ -83,10 +94,7 @@
   <nav class="navbar top-bar navbar-light border-bottom py-0 py-xl-3">
     <div class="container-fluid p-0">
       <div class="d-flex align-items-center w-100">
-        <!--<div class="p-0 w-25">
-          <img src="../../../../assets/images/logoName2.png" alt="Responsive image"/>
-          </div>-->
-
+       
         <!-- Logo START -->
         <div class="d-flex align-items-center d-xl-none">
           <a class="navbar-brand" href="index-2.html">
@@ -124,18 +132,16 @@
                       <img class="avatar-img rounded-circle shadow" src="assets/images/avatar/01.jpg" alt="avatar">
                     </div>
                     <div>
-                      <a class="h6 mt-2 mt-sm-0" href="#">Lori Ferguson</a>
-                      <p class="small m-0">example@gmail.com</p>
+                      <a class="h6 mt-2 mt-sm-0">{{accountDeatil.firstName}}&nbsp;{{accountDeatil.lastName}}</a>
+                      <p class="small m-0">{{accountDeatil.email}}</p>
                     </div>
                   </div>
                 </li>
                 <li> <hr class="dropdown-divider"></li>
                 <!-- Links -->
-                <li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
-                <li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
-                <li> <hr class="dropdown-divider"></li>
-
-               
+                <li><a class="dropdown-item" routerLink="/EditProfile"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
+                <li><a class="dropdown-item bg-danger-soft-hover" (click)="onLogout()"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+                <li> <hr class="dropdown-divider"></li>               
               </ul>
               <!-- Profile dropdown END -->
             </li>

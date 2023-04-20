@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 declare var window: any;
 import { Category } from '../../modal/category';
 import { ServiceService } from '../Service/service.service';
@@ -13,7 +13,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CategoryComponent implements OnInit {
 
-  AddformModal: any ;
+  AddformModal: any;
+  @ViewChild('AddCategory') AddCategory: any;
+  
   EditformModal: any;
   DeleteformModal: any;
   formModal: any;
@@ -21,9 +23,11 @@ export class CategoryComponent implements OnInit {
   category = new Category();
   categoryId:string='';
 
-  constructor(private apibased: ServiceService, private toastrService: ToastrService) { }
+  constructor(private apibased: ServiceService, private toastrService: ToastrService) {
+  }
 
   openAddFormmodal() {
+    this.AddCategory.reset();
     this.AddformModal.show();
   }
 
@@ -45,10 +49,6 @@ export class CategoryComponent implements OnInit {
     this.DeleteformModal.hide();
   }
 
-  //resetForm() {
-  //  this.AddformModal.form=null;
-  //}
-
   ngOnInit(): void {
 
     this.load();
@@ -56,8 +56,6 @@ export class CategoryComponent implements OnInit {
     this.AddformModal = new window.bootstrap.Modal(
       document.getElementById('addcategory') 
     );
-
-//    this.resetForm();
 
     this.EditformModal = new window.bootstrap.Modal(
       document.getElementById('editcategory')
@@ -96,8 +94,9 @@ export class CategoryComponent implements OnInit {
   }
 
   editCategory() {
+    debugger
     this.apibased.editCategory(this.category).subscribe(() => {
-      this.closeFormModal();     
+      this.closeFormModal();
       this.toastrService.success('The Category is Updated!');
       this.load();
     }, error => {

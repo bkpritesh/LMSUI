@@ -30,13 +30,18 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {  }
 
-  ulogin(data: any) {
-    
+  ulogin(data: any) {    
 
     debugger
     this.apiservice.login(data).pipe(first()).subscribe(data => {
-      this.toastrService.success('Welcome to LMS!');
-      timer(9000).pipe(takeWhile(() => this.alive)).subscribe(_ => { this.router.navigate(['dashboard']) });
+      debugger
+      if (data !== null) {
+        this.toastrService.success('Welcome to LMS!');
+        timer(9000).pipe(takeWhile(() => this.alive)).subscribe(_ => { this.router.navigate(['dashboard']) });
+      }
+      else {
+        this.toastrService.error('Email and Password is Invalid');
+      }      
     },
       error => {
         this.toastrService.error('Email and Password is Invalid');

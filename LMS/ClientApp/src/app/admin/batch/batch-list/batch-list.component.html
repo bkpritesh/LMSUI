@@ -7,7 +7,7 @@
         <!--<span class="badge bg-orange bg-opacity-10 text-orange">245</span>-->
       </h1>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-sm btn-primary mb-0" routerLink="/course/batch/add"> Create a Batch </button>
+      <button type="button" class="btn btn-sm btn-primary mb-0" routerLink="/Batch/addBatch"> Create a Batch </button>
       <!-- Button trigger modal -->
     </div>
   </div>
@@ -18,7 +18,7 @@
       <!-- Search and select START -->
       <div class="row g-3 align-items-center justify-content-between">
         <!-- Search bar -->
-        <div class="col-md-8">
+        <div class="col-md-12">
           <form class="rounded position-relative">
             <input class="form-control bg-body" type="search" placeholder="Search"
                    aria-label="Search" />
@@ -27,21 +27,7 @@
               <i class="fas fa-search fs-6 "></i>
             </button>
           </form>
-        </div>
-        <!-- Select option -->
-        <div class="col-md-3">
-          <!-- Short by filter -->
-          <form>
-            <select class="form-select js-choice border-0 z-index-9"
-                    aria-label=".form-select-sm">
-              <option value="">Sort by</option>
-              <option>Newest</option>
-              <option>Oldest</option>
-              <option>Accepted</option>
-              <option>Rejected</option>
-            </select>
-          </form>
-        </div>
+        </div>       
       </div>
       <!-- Search and select END -->
     </div>
@@ -63,8 +49,6 @@
             </tr>
           </thead>
 
-
-
           <!-- Table body START -->
           <tbody>
           <!-- Table row -->
@@ -74,12 +58,12 @@
           <!-- Table data -->
           <td value="batch.courseCode">{{batch.courseName}}</td>
           <!-- Table data -->
-          <td> {{batch.description}}</td>
+          <td> {{batch.description}}</td> 
           <!-- Table data -->
           <td> {{batch.assessment}}</td>
           <!-- Table data -->
           <td>
-            <button class="btn btn-sm btn-success me-1 mb-1 mb-md-0" routerLink="/course/editcourse/{{batch.batchCode}}">Edit </button>
+            <button class="btn btn-sm btn-success me-1 mb-1 mb-md-0" routerLink="/Batch/editBatch/{{batch.batchCode}}">Edit </button>
             <!--<button class="btn btn-sm btn-danger mb-0" [attr.cid]="course.courseCode" (click)="openDeleteFormModal(course.courseCode)">Delete</button>-->
           </td>
   </tr>

@@ -9,18 +9,20 @@ import { Batch } from '../../../modal/Batch';
 import { Student } from '../../../modal/Student';
 import { Instructor } from '../../../modal/Instructor';
 import { data } from 'jquery';
+
 @Component({
   selector: 'app-batch',
   templateUrl: './batch.component.html',
   styles: [
   ]
 })
+
 export class BatchComponent implements OnInit {
 
   courseCode: Course[] | undefined;
   courseId: any = '';
   batch = new Batch();
-  student: any=[];
+  student: any= [];
 
   dropdownList = [];
   students = [];
@@ -51,22 +53,22 @@ export class BatchComponent implements OnInit {
       console.log(error);
     });
 
-    this.apibased.getInstructor().subscribe((data:any) => {
+    this.apibased.getInstructor().subscribe((data: any[]) => {
+      debugger
       this.teacher = data;
     });
 
-    this.apibased.getStudentData().subscribe((data:any[]) => {
+    this.apibased.getStudentData().subscribe((data: any) => {
+      debugger
       this.student = data;
     });
 
     this.dropdownSetting = {
-      idField: 'StudentCode',
-      textField: 'FName',
+      idField: 'studentCode',
+      textField: 'fullName',
       allowSearchFilter: true,
       itemsShowLimit: 3,
     };
-
-
   }
 
   getDataForSelectedOption(course: string) {
@@ -79,7 +81,8 @@ export class BatchComponent implements OnInit {
   
   addBatch() {
     debugger
-    
+    this.batch.students = JSON.stringify(this.batch.students).toString(); 
+    debugger
     this.apibased.addNewBatch(this.batch).subscribe(() => {
       debugger
       this.toastrService.success('The Batch is Added!');

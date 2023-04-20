@@ -1,6 +1,7 @@
 export class Course {
   "courseCode": string 
-  "categoryCode": string 
+  "categoryCode": string
+  "name": string
   "courseName": string
   "courseBanner": string
   "description": string 

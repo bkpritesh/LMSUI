@@ -13,15 +13,15 @@ export class StudentComponent implements OnInit {
 
   constructor(private apibased: ServiceService) { }
 
-  student: Student[] | undefined;
+  student : Student[] | undefined;
 
   ngOnInit(): void {
-    this.load();
+    this.load(); 
   }
 
   load() {
     debugger
-    this.apibased.getStudentData().subscribe(res => {
+    this.apibased.getStudentData().subscribe((res:any) => {
       debugger
       this.student = res;
       console.log(this.student);

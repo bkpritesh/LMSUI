@@ -10,3 +10,9 @@ export class Batch {
   "instructorCode": string
   "courseName": string
 }
+
+export class BatchDetail {
+  "CourseCode": string
+  "batchCode": string
+  "File": File
+}

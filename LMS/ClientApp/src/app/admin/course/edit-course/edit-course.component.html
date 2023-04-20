@@ -12,72 +12,108 @@
       <!-- Credit or debit card START -->
       <div class="accordion-item mb-3" id="collapse-1">
         <div class="accordion-body">
-          <form>
+          <form #EditCourse="ngForm">
             <input type="hidden" [value]="id" [(ngModel)]="id" />
             <div class="row" aria-labelledby="heading-1">
               <div class="row">
                 <div class="col-md-4">
                   <label for="category" class="form-label">Category</label><br />
-                  <select class="form-control" [(ngModel)]="course.categoryCode" #category name="category">
+                  <select class="form-control" [(ngModel)]="course.categoryCode" name="category" #category="ngModel" ngModel required>
                     <option *ngFor="let cate of categoryCode" [value]="cate.categoryId">
                       {{cate.name}}
                     </option>
                   </select>
+                  <div class="alert alert-danger" *ngIf="category.invalid && (category.dirty || category.touched)">
+                    <div *ngIf="category.errors?.['required']">
+                      Please select category.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label for="coursename" class="form-label">Course Name</label><br />
-                  <input class="form-control" type="text" id="coursename" name="coursename" [(ngModel)]="course.courseName" [value]="course.courseName" />
+                  <input class="form-control" type="text" id="coursename" name="coursename" [(ngModel)]="course.courseName" [value]="course.courseName" #coursename="ngModel" ngModel required/>
+                  <div class="alert alert-danger" *ngIf="coursename.invalid && (coursename.dirty || coursename.touched)">
+                    <div *ngIf="coursename.errors?.['required']">
+                      Course Name is required.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label for="coursefee" class="form-label">Course Fee</label><br />
-                  <input class="form-control" type="text" id="coursefee" name="coursefee" [(ngModel)]="course.courseFee" />
+                  <input class="form-control" type="text" id="coursefee" name="coursefee" [(ngModel)]="course.courseFee" #coursefee="ngModel" ngModel required />
+                  <div class="alert alert-danger" *ngIf="coursefee.invalid && (coursefee.dirty || coursefee.touched)">
+                    <div *ngIf="coursefee.errors?.['required']">
+                      Coursefee is required.
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4">
                   <label for="duration" class="form-label">DurationWeek</label><br />
-                  <input class="form-control" type="text" id="duration" name="duration" [(ngModel)]="course.durationWeek" />
+                  <input class="form-control" type="text" id="duration" name="duration" [(ngModel)]="course.durationWeek" #duration="ngModel" ngModel required />
+                  <div class="alert alert-danger" *ngIf="duration.invalid && (duration.dirty || duration.touched)">
+                    <div *ngIf="duration.errors?.['required']">
+                      Duration is required.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label for="lecture" class="form-label">Lectures</label><br />
-                  <input class="form-control" type="text" id="lecture" name="lecture" [(ngModel)]="course.lectures" />
+                  <input class="form-control" type="text" id="lecture" name="lecture" [(ngModel)]="course.lectures" #lecture="ngModel" ngModel required />
+                  <div class="alert alert-danger" *ngIf="lecture.invalid && (lecture.dirty || lecture.touched)">
+                    <div *ngIf="lecture.errors?.['required']">
+                      Lecture is required.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label for="level" class="form-label">Level</label>
-                  <select class="form-control" id="level" name="level" [(ngModel)]="course.level">
+                  <select class="form-control" id="level" name="level" [(ngModel)]="course.level" #level="ngModel" ngModel required>
                     <option [value]="1">Beginner</option>
                     <option [value]="2">Intermediate</option>
                     <option [value]="3">Advance</option>
                   </select>
+                  <div class="alert alert-danger" *ngIf="level.invalid && (level.dirty || level.touched)">
+                    <div *ngIf="level.errors?.['required']">
+                      Please select Level.
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-5">
-                  <label for="L_Name" class="form-label">Description</label><br />
-                  <textarea class="form-control" [(ngModel)]="course.description" id="address" name="address"></textarea>
+                  <label for="description" class="form-label">Description</label><br />
+                  <textarea class="form-control" [(ngModel)]="course.description" id="description" name="description" #description="ngModel" ngModel required></textarea>
+                  <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">
+                    <div *ngIf="description.errors?.['required']">
+                      Description is required.
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-5">
-                  <label for="L_Name" class="form-label">Skill Tags</label><br />
-                  <textarea class="form-control" [(ngModel)]="course.skillTags" id="address" name="address"></textarea>
+                  <label for="skill" class="form-label">Skill Tags</label><br />
+                  <textarea class="form-control" [(ngModel)]="course.skillTags" id="skill" name="skill"></textarea>
                 </div>
                 <div class="col-md-2">
-                  <label for="paid" class="form-label">IsFree</label>
-                  <input class="form-check-input me-lg-9 form-control" type="checkbox" value="yes" id="paid" name="paid" [(ngModel)]="course.isFree" />
+                  <label for="free" class="form-label">IsFree</label>
+                  <input class="form-check-input me-lg-9 form-control" type="checkbox" value="yes" id="free" name="free" [(ngModel)]="course.isFree" />
                 </div>
               </div>
               <div class="row">
                 <label for="formFile" class="form-label">Banner Upload</label>
                 <div class="col">
-                  <img src="localhost:7027/{{course.courseBanner}}" class="w-25" alt="Banner" />
+                  <img src="{{api}}/{{course.courseBanner}}" class="w-25" alt="Banner" name="course.courseBanner" [(ngModel)]="course.courseBanner" accept="image/png, image/gif, image/jpeg"/>
+                  <input type="hidden" [value]="course.docID" [ngModel]="course.docID"/>
                 </div>
                 <div class="col">
-                  <button type="button" class="btn btn-info" (click)="formFile.click()">Change</button>
-                  <input class="form-control" type="file" #formFile id="formFile" name="formFile" (change)="uploadFile($event)" placeholder="Choose file" hidden [(ngModel)]="course.courseBanner"> 
+                  <button type="button" class="btn btn-info" (click)="file.click()">Change</button>
+                  <input class="form-control" type="file" #file id="formFile" name="formFile" (change)="uploadFile($event)" placeholder="Choose file" hidden [(ngModel)]="course.courseBanner" accept="image/png, image/gif, image/jpeg">
                 </div>
               </div>
             </div>
             <div class="center row">
-                <button type="submit" class="btn btn-primary btn-md m-3" (click)="editCourse()">Submit</button>             
+                <button type="submit" class="btn btn-primary btn-md m-3" [class.disabled]="!EditCourse.valid" (click)="editCourse()">Submit</button>             
                 <button type="button" class="btn btn-danger btn-md m-3" routerLink="/course">Cancel</button>
             </div>
           </form>

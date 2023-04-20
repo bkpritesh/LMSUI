@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, pipe, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Account, UserEmail } from '../../modal/account';
-//import { ResetPassword } from '../../modal/ResetPassword';
 import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -28,7 +27,7 @@ export class AuthserviceService {
   }
 
   login(data:any) {
-    //debugger
+    debugger
     return this.http.post<Account>(`https://localhost:7027/api/Account/authenticate`, data).pipe(map(account => {
      // debugger
       //localStorage.setItem('access_token', JSON.stringify(account.jwtToken));
@@ -48,7 +47,9 @@ export class AuthserviceService {
   }
 
   ValidateResetToken(data: any) {
+    debugger
     return this.http.get('https://localhost:7027/api/ValidateResetToken/ResetPassword/' + data).subscribe(res => {
+      debugger
       console.log(res);
     });
   }
@@ -97,8 +98,9 @@ export class AuthserviceService {
   }
 
   logout() {
-    alert('Your session are expired!');
+    //alert('Your session are expired!');
     localStorage.clear();
+    debugger
     this.router.navigateByUrl('');
   }
 }
