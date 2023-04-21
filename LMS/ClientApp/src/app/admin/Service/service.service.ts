@@ -225,6 +225,15 @@ export class ServiceService implements HttpInterceptor {
     debugger
     return this.httpservice.post(`${ this.apiUrl }/api/Assistment`, formData);
   }
+
+  getAssessmentByCourseCode(id: string) {
+    return this.httpservice.get<Assessment>(`${this.apiUrl}/api/Assistment/CourseCode?CourseCode=` + id);
+  }
+
+  getAssessmentExam(id:string) {
+    return this.httpservice.get(`${this.apiUrl}/api/Assistment/AssessmentCode?AssessmentCode=`+id);
+  }
+  
   //Assessment
 
 

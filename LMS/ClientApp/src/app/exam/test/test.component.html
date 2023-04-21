@@ -1,0 +1,310 @@
+<main class="bg-blue">
+  <div class="row">
+    <!-- Welcome START -->
+    <div class="col-xl-3">
+      <!--<input type="hidden" [value]="id" />-->
+    </div>
+    <div class="col-xl-6">
+      <div class="card border">
+
+        <div class="card-header border-bottom m-auto">
+          <div class="row g-0">
+            <img src="../../../assets/images/Quiz/images.jpg" class="rounded" alt="Card image">
+          </div>
+          <div class="row g-0 mt-2">
+            <div class="card border border-dark border-2 m-auto ">
+
+              <div class="card-header border-bottom">
+
+                <h3 class="h3 mb-2"> General Information: </h3>
+                <ol class="list-group">
+                  <li class="list-group-item">The examination will comprise of Objective type Multiple Choice Questions (MCQs).</li>
+                  <li class="list-group-item">All questions are compulsory and each carries One mark.</li>
+                  <li class="list-group-item">
+                    The total number of questions, duration of examination, will be different based on
+                    the course, the detail is available on your screen.
+                  </li>
+                  <li class="list-group-item">The Subjects or topics covered in the exam will be as per the Syllabus.</li>
+                  <li class="list-group-item"> There will be NO NEGATIVE MARKING for the wrong answers.</li>
+                </ol>
+
+                <!--<div class="text-center m-2">
+                  <button (click)="redirectExam(id)" class="btn btn-outline-success w-25">Start</button> &nbsp; &nbsp;
+                  <button (click)="returnAssessment(id)" class="btn btn-outline-danger w-25">Cancel</button>
+                </div>-->
+                <!-- Welcome END -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3"></div>
+  </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--<link rel="stylesheet" type="text/css" href="../../../assets/vendor/font-awesome/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">-->
+  <style>
+  </style>
+</head>
+<body>
+  <!-- Main content START -->
+  <div class="row">
+    <div class="col-xl-2"></div>
+    <div class="col-xl-8">
+
+      <!-- Course item START -->
+      <div class="card border">
+
+        <div class="card-header border-bottom">
+          <!-- Course list START -->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="row g-0">
+                  <div class="col-md-2">
+                    <img src="assets/images/courses/4by3/01.jpg" class="rounded-2" alt="Card image">
+                  </div>
+                  <div class="col-md-10">
+                    <div class="card-body">
+                      <!-- Title -->
+                      <h3 class="card-title"><a href="#">The Complete Digital Marketing Course - 12 Courses in 1</a></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Course list END -->
+        </div>
+
+        <div class="card-body">
+          <!-- Step content START -->
+          <div class="card bg-transparent border rounded-3 mb-1">
+            <div id="stepper" class="bs-stepper stepper-outline">
+              <!-- Card header -->
+              <div class="card-header bg-light border-bottom px-lg-5">
+                <!-- Step Buttons START -->
+                <div class="bs-stepper-header" role="tablist">
+                  <!-- Step 1 -->
+                  <div class="step" data-target="#step">
+                    <div class="d-grid text-center align-items-center">
+                      <button type="button" class="btn btn-link step-trigger mb-0" role="tab" id="steppertrigger1" aria-controls="step">
+                        <span class="bs-stepper-circle"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="line"></div>
+                </div>
+                <!-- Step Buttons END -->
+              </div>
+
+              <!-- Card body START -->
+              <div class="card-body">
+
+                <h6 class="text-danger text-end mb-0"><i class="bi bi-clock-history me-2"></i>Time Left: 00:01:30</h6>
+
+                <!-- Step content START -->
+                <div class="bs-stepper-content">
+                  <form>
+
+                    <!-- Step 1 content START -->
+                    <div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
+                      <!-- Title -->
+                      <h4>How do you protect your business against cyber-crime?</h4>
+
+                      <hr> <!-- Divider -->
+                      <div class="vstack gap-2">
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option1">
+                          <label class="btn btn-outline-primary w-100" for="option1">We have cybersecurity insurance coverage</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option2">
+                          <label class="btn btn-outline-primary w-100" for="option2">Our dedicated staff will protect us</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option3">
+                          <label class="btn btn-outline-primary w-100" for="option3">We give regular training for best practices</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option4">
+                          <label class="btn btn-outline-primary w-100" for="option4">Third-party vendor protection</label>
+                        </div>
+                      </div>
+
+                      <!-- Step 1 button -->
+                      <div class="d-flex justify-content-center mt-3">
+                        <button type="button" class="btn btn-primary next-btn mb-0">Next question</button>
+                      </div>
+
+                    </div>
+                    <!-- Step 1 content END -->
+                    <!-- Step 2 content START -->
+                    <div id="step-2" role="tabpanel" class="content fade" aria-labelledby="steppertrigger2">
+                      <!-- Title -->
+                      <h4>What is SEO?</h4>
+
+                      <hr> <!-- Divider -->
+                      <div class="vstack gap-2">
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option11">
+                          <label class="btn btn-outline-primary w-100" for="option11">We have cybersecurity insurance coverage</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option22">
+                          <label class="btn btn-outline-primary w-100" for="option22">Our dedicated staff will protect us</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option33">
+                          <label class="btn btn-outline-primary w-100" for="option33">We give regular training for best practices</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option44">
+                          <label class="btn btn-outline-primary w-100" for="option44">Third-party vendor protection</label>
+                        </div>
+                      </div>
+
+                      <!-- Next button -->
+                      <div class="d-flex justify-content-center mt-3">
+                        <button type="button" class="btn btn-primary next-btn mb-0">Next question</button>
+                      </div>
+                    </div>
+                    <!-- Step 2 content END -->
+                    <!-- Step 3 content START -->
+                    <div id="step-3" role="tabpanel" class="content fade" aria-labelledby="steppertrigger3">
+                      <!-- Title -->
+                      <h4>Who should join this course?</h4>
+
+                      <hr> <!-- Divider -->
+                      <div class="vstack gap-2">
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option111">
+                          <label class="btn btn-outline-primary w-100" for="option111">We have cybersecurity insurance coverage</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option222">
+                          <label class="btn btn-outline-primary w-100" for="option222">Our dedicated staff will protect us</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option333">
+                          <label class="btn btn-outline-primary w-100" for="option333">We give regular training for best practices</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option444">
+                          <label class="btn btn-outline-primary w-100" for="option444">Third-party vendor protection</label>
+                        </div>
+                      </div>
+
+                      <!-- Next button -->
+                      <div class="d-flex justify-content-center mt-3">
+                        <button type="button" class="btn btn-primary next-btn mb-0">Next question</button>
+                      </div>
+
+                    </div>
+                    <!-- Step 3 content END -->
+                    <!-- Step 4 content START -->
+                    <div id="step-4" role="tabpanel" class="content fade" aria-labelledby="steppertrigger4">
+                      <!-- Title -->
+                      <h4>What are the T&C for this program?</h4>
+
+                      <hr> <!-- Divider -->
+                      <div class="vstack gap-2">
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option1111">
+                          <label class="btn btn-outline-primary w-100" for="option1111">We have cybersecurity insurance coverage</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option2222">
+                          <label class="btn btn-outline-primary w-100" for="option2222">Our dedicated staff will protect us</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option3333">
+                          <label class="btn btn-outline-primary w-100" for="option3333">We give regular training for best practices</label>
+                        </div>
+                        <!-- Feed ques item -->
+                        <div>
+                          <input type="radio" class="btn-check" name="ques" id="option4444">
+                          <label class="btn btn-outline-primary w-100" for="option4444">Third-party vendor protection</label>
+                        </div>
+                      </div>
+
+                      <!-- Next button -->
+                      <div class="d-flex justify-content-center mt-3">
+                        <button type="button" class="btn btn-success next-btn mb-0">View result</button>
+                      </div>
+
+                    </div>
+                    <!-- Step 4 content END -->
+
+                  </form>
+                </div>
+              </div>
+              <!-- Card body END -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Course item END -->
+
+    </div>
+
+    <div class="col-xl-2"></div>
+  </div>
+  <!-- Main content END -->
+</body>
+</html>

@@ -1,0 +1,72 @@
+<div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom mb-4">
+  <h3 class="mb-2 mb-sm-0">My Course</h3>
+  <!--<a href="#" class="btn btn-sm btn-primary mb-0" data-bs-toggle="modal" data-bs-target="#addNewcard">Add new student</a>-->
+</div>
+<!-- Card header END -->    <!-- Card body START -->
+<div class="card-body">
+  <!--<div class="accordion accordion-circle" id="accordioncircle">-->
+  <!-- Credit or debit card START -->
+  <div class="accordion-item mb-3" id="collapse-1">
+    <div class="accordion-body">
+
+
+      <div class="row">
+        <!-- Main content START -->
+        <div class="col-xl-12 col-xxl-8">
+
+          <!-- Course list START -->
+          <div class="row g-4">
+            <!-- Card list START -->
+            <div class="col-12" *ngFor="let course of CourseList">
+              <div class="card shadow overflow-hidden p-2">
+                <div class="row g-0">
+                  <div class="col-md-5 overflow-hidden">
+                    <img src="assets/images/courses/4by3/06.jpg" class="rounded-2" alt="Card image">
+                    <!-- Ribbon -->
+                    <!--<div class="card-img-overlay">
+                      <div class="ribbon"><span>Free</span></div>
+                    </div>-->
+                  </div>
+                  <div class="col-md-7">
+                    <div class="card-body">
+                      <!-- Badge  -->
+                      <div class="d-flex justify-content-between align-items-center mb-2">
+                        <!-- Badge -->
+                        <!--<a href="#" class="badge text-bg-primary mb-2 mb-sm-0>Category</a>-->
+                      </div>
+
+                      <!-- Title -->
+                      <h5 class="card-title"><a href="#"> {{course.courseName}}</a></h5>
+                      <p class="text-truncate-2 d-none d-lg-block"> {{course.description}} </p>
+
+                      <!-- Info -->
+                      <ul class="list-inline">
+                        <!--<li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="far fa-clock text-danger me-2"></i>21h 56m</li>-->
+                        <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>{{course.lectures}} lectures</li>
+                        <li class="list-inline-item h6 fw-light" *ngIf="(course.level===1)"><i class="fas fa-signal text-success me-2"></i>Beginner</li>
+                        <li class="list-inline-item h6 fw-light" *ngIf="(course.level===2)"><i class="fas fa-signal text-success me-2"></i>Intermediate</li>
+                        <li class="list-inline-item h6 fw-light" *ngIf="(course.level===3)"><i class="fas fa-signal text-success me-2"></i>Advance</li>
+                      </ul>
+
+                      <!-- Price and avatar -->
+                      <div class="d-sm-flex justify-content-lg-end align-items-center">
+                        <!-- Price -->
+                        <div class="mt-3 mt-sm-0">
+                          <a class="btn btn-dark" routerLink="/CourseList/AssessmentList/{{course.courseCode}}"> View Assessment </a><br />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card list END -->
+          </div>
+          <!-- Course list END -->
+        </div>
+        <!-- Main content END -->
+      </div>
+    </div>
+  </div>
+</div>
+

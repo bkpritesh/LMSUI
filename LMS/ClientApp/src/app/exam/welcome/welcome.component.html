@@ -1,0 +1,43 @@
+<main class="bg-blue">
+  <div class="row">
+    <!-- Welcome START -->
+    <div class="col-xl-3">
+      <input type="hidden" [value]="id" />
+    </div>
+    <div class="col-xl-6">
+      <div class="card border">
+
+        <div class="card-header border-bottom m-auto">
+          <div class="row g-0">
+            <img src="../../../assets/images/Quiz/images.jpg" class="rounded" alt="Card image">
+          </div>
+          <div class="row g-0 mt-2">
+            <div class="card border border-dark border-2 m-auto ">
+
+              <div class="card-header border-bottom">
+
+                <h3 class="h3 mb-2"> General Information: </h3>
+                <ol class="list-group">
+                  <li class="list-group-item">The examination will comprise of Objective type Multiple Choice Questions (MCQs).</li>
+                  <li class="list-group-item">All questions are compulsory and each carries One mark.</li>
+                  <li class="list-group-item">The total number of questions, duration of examination, will be different based on
+                    the course, the detail is available on your screen.</li>
+                  <li class="list-group-item">The Subjects or topics covered in the exam will be as per the Syllabus.</li>
+                  <li class="list-group-item"> There will be NO NEGATIVE MARKING for the wrong answers.</li>
+                </ol>
+
+                <div class="text-center m-2">
+                  <button (click)="redirectExam(id)" class="btn btn-outline-success w-25">Start</button> &nbsp; &nbsp;
+                  <button (click)="returnAssessment(id)" class="btn btn-outline-danger w-25">Cancel</button>
+                </div>              
+                <!-- Welcome END -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3"></div>
+  </div>
+</main>

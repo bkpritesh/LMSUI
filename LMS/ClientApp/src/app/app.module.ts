@@ -13,7 +13,8 @@ import { DatepickerModule } from 'ng2-datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ControlsModule } from './controls/controls.module';
 import { JWTInterceptor } from './account/AuthService/jwt.interceptor';
-//import { LoaderInterceptor } from './controls/loader/loader.interceptor';
+import { StudentModule } from './student/student.module';
+import { ExamModule } from './exam/exam.module';
 
 const routes: Routes = [
   
@@ -38,6 +39,8 @@ const routes: Routes = [
     AccountModule,
     LayoutModule,
     AdminModule,
+    StudentModule,
+    ExamModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     //{ provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

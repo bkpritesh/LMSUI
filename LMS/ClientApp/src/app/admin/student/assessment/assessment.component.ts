@@ -40,7 +40,6 @@ export class AssessmentComponent implements OnInit {
 
   UploadSyllabuses() {
     debugger
-    this.Assessment.CourseCode = this.course.courseCode;
     this.apiservice.addAssessment(this.Assessment).subscribe(() => {
       debugger
       this.toastrService.success('The Assessment is Uploaded!');
