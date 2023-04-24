@@ -30,6 +30,7 @@
     <None Remove="ClientApp\src\app\modal\Assessment.ts" />
     <None Remove="ClientApp\src\app\modal\Batch.ts" />
     <None Remove="ClientApp\src\app\modal\Course.ts" />
+    <None Remove="ClientApp\src\app\modal\Exam.ts" />
     <None Remove="ClientApp\src\app\modal\Instructor.ts" />
     <None Remove="ClientApp\src\app\modal\Student.ts" />
     <None Remove="ClientApp\src\app\student\course-list\exam\exam-routing.module.ts" />
@@ -40,6 +41,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\modal\Assessment.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Batch.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Course.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modal\Exam.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Instructor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Student.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\student\course-list\exam\exam-routing.module.ts" />

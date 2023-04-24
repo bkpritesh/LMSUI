@@ -12,8 +12,8 @@
   <div class="offcanvas offcanvas-start flex-row custom-scrollbar h-100" data-bs-backdrop="true" tabindex="-1" id="offcanvasSidebar">
     <div class="offcanvas-body sidebar-content d-flex flex-column bg-dark">
 
-      <!-- Sidebar menu START -->
-      <ul class="navbar-nav flex-column" id="navbar-sidebar">
+      <!-- Sidebar Admin menu START -->
+      <ul class="navbar-nav flex-column" id="navbar-sidebar" *ngIf="accountType==='Admin'">
 
         <!-- Menu item 1 -->
         <li class="nav-item"><a routerLink="/dashboard" class="nav-link"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
@@ -66,24 +66,129 @@
           </ul>
         </li>
       </ul>
-        <!-- Sidebar menu end -->
-        <!-- Sidebar footer START -->
-        <div class="px-3 mt-auto pt-3">
-          <div class="d-flex align-items-center justify-content-between text-primary-hover">
-            <a class="h5 mb-0 text-body" href="admin-setting.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-              <i class="bi bi-gear-fill"></i>
-            </a>
-            <a class="h5 mb-0 text-body" href="index-2.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Home">
-              <i class="bi bi-globe"></i>
-            </a>
-            <a class="h5 mb-0 text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Sign out">
-              <i class="bi bi-power"></i>
-            </a>
-          </div>
-        </div>
-        <!-- Sidebar footer END -->
+      <!-- Sidebar Admin menu end -->
 
-</div>
+      <!-- Sidebar Student menu START -->
+      <ul class="navbar-nav flex-column" id="navbar-sidebar" *ngIf="accountType==='Student'">
+
+        <!-- Menu item 1 -->
+        <li class="nav-item"><a routerLink="/dashboard" class="nav-link"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
+
+        
+        <!-- Menu item 2-->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/CourseList" data-bs-toggle="collapse" href="#collapsepage" role="button" aria-expanded="false" aria-controls="collapsepage">
+            <i class="bi bi-basket fa-fw me-2"></i>My Course
+          </a>
+          <!--submenu-->
+          <!--<ul class="nav collapse flex-column" id="collapsepage" data-bs-parent="#navbar-sidebar">
+            <li class="nav-item"> <a class="nav-link">List of Courses</a></li>
+          </ul>-->
+        </li>
+
+
+        <!-- menu item 4 -->
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapsebatchpage" role="button" aria-expanded="false" aria-controls="collapsebatchpage">
+            <i class="bi bi-person-add fa-fw me-2"></i>Batch
+          </a>
+          <!--submenu-->
+          <ul class="nav collapse flex-column" id="collapsebatchpage" data-bs-parent="#navbar-sidebar">
+            <li class="nav-item"> <a class="nav-link" routerLink="/Batch">List of Batch</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/Batch/addBatch">Add Batch</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/Batch/Syllabus">Syllabus Upload</a></li>
+          </ul>
+        </li>
+
+
+        <!-- Menu item 5-->
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapsestudentpage" role="button" aria-expanded="false" aria-controls="collapsestudentpage">
+            <i class="fas fa-user-graduate fa-fw me-2"></i>Student
+          </a>
+          <!--submenu-->
+          <ul class="nav collapse flex-column" id="collapsestudentpage" data-bs-parent="#navbar-sidebar">
+            <li class="nav-item"> <a class="nav-link" routerLink="/student">List</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/student/InsertStudent">Add Student</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/student/Assessment">Assessment</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- Sidebar Student menu end -->
+
+
+      <!-- Sidebar Instructor menu START -->
+      <ul class="navbar-nav flex-column" id="navbar-sidebar" *ngIf="accountType==='Instuctor'">
+
+        <!-- Menu item 1 -->
+        <li class="nav-item"><a routerLink="/dashboard" class="nav-link"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
+
+        <!-- Title -->
+        <!--<li class="nav-item ms-2 my-2">Pages</li>-->
+        <!-- menu item 2 -->
+        <!--<li class="nav-item"> <a class="nav-link" routerLink="/Course"><i class="bi bi-basket fa-fw me-2"></i>Courses</a></li>-->
+        <!-- Menu item 2-->
+        <li class="nav-item"> <a class="nav-link" routerLink="/category"><i class="fas fa-clipboard-list fa-fw me-2"></i>Category</a></li>
+
+
+        <!-- menu item 3 -->
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapsepage" role="button" aria-expanded="false" aria-controls="collapsepage">
+            <i class="bi bi-basket fa-fw me-2"></i>Courses
+          </a>
+          <!--submenu-->
+          <ul class="nav collapse flex-column" id="collapsepage" data-bs-parent="#navbar-sidebar">
+            <li class="nav-item"> <a class="nav-link" routerLink="/course">List of Courses</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/course/addcourse">Add Course</a></li>
+          </ul>
+        </li>
+
+
+        <!-- menu item 4 -->
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapsebatchpage" role="button" aria-expanded="false" aria-controls="collapsebatchpage">
+            <i class="bi bi-person-add fa-fw me-2"></i>Batch
+          </a>
+          <!--submenu-->
+          <ul class="nav collapse flex-column" id="collapsebatchpage" data-bs-parent="#navbar-sidebar">
+            <li class="nav-item"> <a class="nav-link" routerLink="/Batch">List of Batch</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/Batch/addBatch">Add Batch</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/Batch/Syllabus">Syllabus Upload</a></li>
+          </ul>
+        </li>
+
+
+        <!-- Menu item 5-->
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapsestudentpage" role="button" aria-expanded="false" aria-controls="collapsestudentpage">
+            <i class="fas fa-user-graduate fa-fw me-2"></i>Student
+          </a>
+          <!--submenu-->
+          <ul class="nav collapse flex-column" id="collapsestudentpage" data-bs-parent="#navbar-sidebar">
+            <li class="nav-item"> <a class="nav-link" routerLink="/student">List</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/student/InsertStudent">Add Student</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/student/Assessment">Assessment</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- Sidebar Instructor menu end -->
+      <!-- Sidebar footer START -->
+      <div class="px-3 mt-auto pt-3">
+        <div class="d-flex align-items-center justify-content-between text-primary-hover">
+          <a class="h5 mb-0 text-body" href="admin-setting.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
+            <i class="bi bi-gear-fill"></i>
+          </a>
+          <a class="h5 mb-0 text-body" href="index-2.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Home">
+            <i class="bi bi-globe"></i>
+          </a>
+          <a class="h5 mb-0 text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Sign out">
+            <i class="bi bi-power"></i>
+          </a>
+        </div>
+      </div>
+      <!-- Sidebar footer END -->
+
+    </div>
   </div>
 </nav>
 <!-- Sidebar END -->

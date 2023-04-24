@@ -147,6 +147,8 @@ export class AdmissionComponent implements OnInit {
     //this.student2.skillSet = JSON.parse(this.student2.skillSet.replace(/\\"/g, '"'));
     this.student2.skillSet = JSON.stringify(this.student2.skillSet).toString();
     this.student2.accountType = "Student";
+    debugger 
+    this.student2.courseFees = this.Fees;
     this.apibased.addStudentData(this.student2).subscribe(() => {
       debugger      
       this.toastrService.success('The Student is Added!');

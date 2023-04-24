@@ -1,1 +1,200 @@
-<p>edit-student works!</p>
+<!-- Payment method START -->
+<div class="card bg-transparent border rounded-3 mb-4 z-index-9">
+  <!-- Card header START -->
+  <div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom">
+    <h3 class="mb-2 mb-sm-0">Update Admission</h3>
+    <!--<a href="#" class="btn btn-sm btn-primary mb-0" data-bs-toggle="modal" data-bs-target="#addNewcard">Add new student</a>-->
+  </div>
+  <!-- Card header END -->    <!-- Card body START -->  
+  <div class="card-body">
+    <div class="accordion accordion-circle" id="accordioncircle">
+      <!-- Credit or debit card START -->
+      <div class="accordion-item mb-3" id="collapse-1">
+        <div class="accordion-body">
+          <form #EditStudent="ngForm">
+            <input type="hidden" [value]="id" [(ngModel)]="id" />
+            <div class="row" aria-labelledby="heading-1">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="fname" class="form-label">First Name</label><br />
+                  <input class="form-control" type="text" id="fname" name="fname" [(ngModel)]="student.fName" #fname="ngModel" ngModel required [value]="student.fName" />
+                  <div class="alert alert-danger" *ngIf="fname.invalid && (fname.dirty || fname.touched)">
+                    <div *ngIf="fname.errors?.['required']">
+                      First Name is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="Mname" class="form-label">Middle Name</label><br />
+                  <input class="form-control" type="text" id="Mname" name="Mname" [(ngModel)]="student.mName" #Mname="ngModel" ngModel required />
+                  <div class="alert alert-danger" *ngIf="Mname.invalid && (Mname.dirty || Mname.touched)">
+                    <div *ngIf="Mname.errors?.['required']">
+                      Middle Name is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="LName" class="form-label">Last Name</label><br />
+                  <input class="form-control" type="text" id="LName" name="LName" [(ngModel)]="student.lName" #LName="ngModel" ngModel required />
+                  <div class="alert alert-danger" *ngIf="LName.invalid && (LName.dirty || LName.touched)">
+                    <div *ngIf="LName.errors?.['required']">
+                      Last Name is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="student.email" #email="ngModel" ngModel required />
+                  <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf="email.errors?.['required']">
+                      Email is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label">Mobile</label>
+                  <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="student.contactNo" #phone="ngModel" ngModel required />
+                  <div class="alert alert-danger" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                    <div *ngIf="phone.errors?.['required']">
+                      Contact Number is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <label for="address" class="form-label"> Address </label>
+                <textarea class="form-control" [(ngModel)]="student.address" id="address" name="address" #address="ngModel" ngModel required></textarea>
+                <div class="alert alert-danger" *ngIf="address.invalid && (address.dirty || address.touched)">
+                  <div *ngIf="address.errors?.['required']">
+                    Address is required.
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="country" class="form-label">Country</label>
+                  <input type="text" [(ngModel)]="student.country" name="country" id="country" [value]="India" class="form-control" disabled #description="ngModel" ngModel required />
+                </div>
+                <div class="col-md-4">
+                  <label for="state" class="form-label">State</label>
+                  <select class="form-control" [(ngModel)]="student.state" (change)="onStateChange(state.value)" name="state" #state="ngModel" ngModel required>
+                    <option *ngFor="let onestate of states" [value]="onestate.Id">
+                      {{onestate.Name}}
+                    </option>
+                  </select>
+                  <div class="alert alert-danger" *ngIf="state.invalid && (state.dirty || state.touched)">
+                    <div *ngIf="state.errors?.['required']">
+                      Please select State.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="city" class="form-label">City</label>
+                  <select class="form-control" [(ngModel)]="student.city" name="city" id="city" #city="ngModel" ngModel required [value]="student.city">
+                    <option *ngFor="let onecity of cities" [value]="onecity.id">
+                      {{onecity.city}}
+                    </option>
+                  </select>
+                  <div class="alert alert-danger" *ngIf="city.invalid && (city.dirty || city.touched)">
+                    <div *ngIf="city.errors?.['required']">
+                      Please select City.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="educations" class="form-label">Education</label>
+                  <select class="form-control" [(ngModel)]="student.education" name="educations" id="educations" #educations="ngModel" ngModel required>
+                    <option *ngFor="let edu of education" [value]="edu.Education">
+                      {{edu.Education}}
+                    </option>
+                  </select>
+                  <div class="alert alert-danger" *ngIf="educations.invalid && (educations.dirty || educations.touched)">
+                    <div *ngIf="educations.errors?.['required']">
+                      Please select Education.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="skillSet" class="form-label select">Skills</label>
+                  <ng-multiselect-dropdown [settings]="settings"
+                                           [data]="skills"
+                                           [placeholder]="'Select the data'"
+                                           [(ngModel)]="student.skillSet"
+                                           name="skillSet" id="skillSet" #skillSet="ngModel" ngModel required>
+                  </ng-multiselect-dropdown>
+                  <div class="alert alert-danger" *ngIf="skillSet.invalid && (skillSet.dirty || skillSet.touched)">
+                    <div *ngIf="skillSet.errors?.['required']">
+                      Please select SkillSet.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="courseName" class="form-label">Course</label>
+                   <input type="text" class="form-control" [(ngModel)]="student.courseName" id="courseName" name="courseName" disabled  />
+                </div>
+                <div class="col-lg-6">
+                  <label for="courseFees" class="form-label">Course Fee:</label>
+                  <input type="number" class="form-control" [(ngModel)]="student.price" id="courseFees" name="courseFees " disabled />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-4">
+                  <label for="discount" class="form-label">Discount:</label>
+                  <input type="number" class="form-control" [(ngModel)]="student.discount" id="discount" name="discount" #discounts="ngModel" ngModel required disabled/>
+                </div>
+                <div class="col-lg-4">
+                  <label for="totalfees" class="form-label">Total Fees:</label>
+                  <input type="number" class="form-control" [(ngModel)]="student.totalFees" id="totalfees" name="totalfees" disabled/>
+                </div>
+                <div class="col-md-4">
+                  <label for="paidfees" class="form-label">Payed Fees : </label>
+                  <input type="number" class="form-control" id="paidfees" name="paidfees" [(ngModel)]="student.amount" #paidfees="ngModel" ngModel required disabled/>
+                  <div class="alert alert-danger" *ngIf="paidfees.invalid && (paidfees.dirty || paidfees.touched)">
+                    <div *ngIf="paidfees.errors?.['required']">
+                      Paid Fees value is required, If it not paid any amount then please pass 0.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-4">
+                  <label for="joiningDate" class="form-label">Joining Date : </label> <br />
+                  <!--<ngx-datepicker name="joiningDate" [(ngModel)]="joiningDate" [options]="options" (ngModelChange)="HiddenBirthField()" [disabled]="true"></ngx-datepicker>-->
+                  <input  class="form-control" type="text" [value]="student.joiningDate" name="joiningDate" [(ngModel)]="student.joiningDate" disabled/>
+                </div>
+                <div class="col-lg-4">
+                  <label for="birthdate" class="form-label">Birth Date : </label> <br />
+                  <ngx-datepicker name="birthdate" [(ngModel)]="birthDate" [options]="options" (ngModelChange)="HiddenBirthField()" required ></ngx-datepicker>
+                  <input type="hidden" [value]="hiddenBirthDate" name="birthdate" [(ngModel)]="student.birthDate" ngx-datepicker />
+                </div>
+                <div class="col-lg-4">
+                  <label for="paid" class="form-label">IsPaid</label>
+                  <input class="form-check-input me-lg-9 form-control" type="checkbox" value="yes" id="paid" name="paid" [(ngModel)]="student.isPaid" />
+                </div>
+              </div>
+
+              <input class="form-control" type="hidden" value="yes" id="isstudent" name="isstudent" [(ngModel)]="student.isStudent" />
+            </div>
+            <div class="row justify-content-center">
+              <button class="btn btn-primary m-3 btn-sm" [class.disabled]="!EditStudent.valid" (click)="editStudent()">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Card body START -->
+</div>
+<!-- Payment method END -->
+<!-- Main content END -->

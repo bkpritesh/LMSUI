@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ExamRoutingModule } from './exam-routing.module';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -15,7 +16,8 @@ import { TestComponent } from './test/test.component';
   ],
   imports: [
     CommonModule,
-    ExamRoutingModule
+    ExamRoutingModule,
+    FormsModule
   ],
   exports: [
     WelcomeComponent,

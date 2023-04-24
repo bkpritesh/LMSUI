@@ -13,23 +13,26 @@ import { HttpClientModule } from '@angular/common/http';
 export class HeaderComponent implements OnInit {
 
   accountDeatil: any;
+  accountType: string ='';
 
   constructor(private auth: AuthserviceService, private route: RouterModule, private http: HttpClientModule) { }
 
   ngOnInit(): void {
     const account = localStorage.getItem('account');
+    
     debugger  
    
     if (account !== null) {
       debugger
       this.accountDeatil = JSON.parse(account);
+      this.accountType = this.accountDeatil.accountType;
+      console.log(this.accountType);
     }
    
   }
 
   EditProfile() {
-    alert('honey');
-    
+    alert('honey');    
   }
 
   onLogout() {

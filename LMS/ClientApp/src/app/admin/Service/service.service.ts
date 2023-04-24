@@ -10,6 +10,7 @@ import { Course } from '../../modal/Course';
 import { Batch, BatchDetail } from '../../modal/Batch';
 import { Assessment } from '../../modal/Assessment';
 import { Instructor } from '../../modal/Instructor';
+import { Exam, QuizData } from '../../modal/Exam';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,14 @@ export class ServiceService implements HttpInterceptor {
   }
 
   private apiUrl = environment.API_URL;
+
+  
+  AccountUrl: string = `${this.apiUrl}/api/Register`;
+
+  AccountDetailByID(id: string) {
+    return this.httpservice.get(this.AccountUrl + '/AccountId?AccountId=' + id);
+  }
+
 
   //Category Section
 
@@ -204,6 +213,7 @@ export class ServiceService implements HttpInterceptor {
   }
 
   getStudentById(id: string) {
+    debugger
     return this.httpservice.get<Student>(this.StudentBaseUrl + 'Register/StudentCode?StudentCode=' + id);
   }
 
@@ -230,8 +240,13 @@ export class ServiceService implements HttpInterceptor {
     return this.httpservice.get<Assessment>(`${this.apiUrl}/api/Assistment/CourseCode?CourseCode=` + id);
   }
 
-  getAssessmentExam(id:string) {
-    return this.httpservice.get(`${this.apiUrl}/api/Assistment/AssessmentCode?AssessmentCode=`+id);
+  getAssessmentExam(id: string): Observable<Exam> {
+    return this.httpservice.get<Exam>(`${this.apiUrl}/api/Assistment/AssessmentCode?AssessmentCode=` + id);
+  }
+
+  getAssessmentResult(id: any): Observable<QuizData> {
+    debugger
+    return this.httpservice.post<QuizData>(`${ this.apiUrl }/api/Assistment/submit`, id);
   }
   
   //Assessment
