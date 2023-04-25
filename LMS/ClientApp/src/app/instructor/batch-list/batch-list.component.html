@@ -1,0 +1,61 @@
+<div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom mb-4">
+<h3 class="mb-2 mb-sm-0">My Batch</h3>
+</div>
+<div class="card-body">
+  <!-- Credit or debit card START -->
+  <div class="accordion-item mb-3" id="collapse-1">
+    <div class="accordion-body">
+
+
+      <div class="row">
+        <!-- Main content START -->
+        <div class="col-xl-12 col-xxl-8">
+
+          <!-- Course list START -->
+          <div class="row g-4">
+            <!-- Card list START -->
+              <div class="card shadow overflow-hidden p-2" *ngFor="let batch of BatchList">
+                <div class="row g-0">                 
+                  <div class="col-md-12">
+                    <div class="card-body">
+                      <!-- Title -->
+                      <div class="col">
+                        <div class="col-6">
+                          <h5 class="card-title">{{batch.BatchCode}} &#9;<span>:</span>&#9; {{batch.CourseName}} </h5>
+                          <h6>
+                            <span class="list-inline-item h6 fw-light" *ngIf="(batch.BatchName===''||batch.BatchName===null)"><i class="fas fa-columns text-success me-2"></i>Not Given</span>
+                            <span class="list-inline-item h6 fw-light" *ngIf="(batch.BatchName)"><i class="fas fa-columns text-success me-2"></i>{{batch.BatchName}}</span>
+                          </h6>
+                        </div>
+
+                        <div class="col-6"><p class="text-truncate-2 d-none d-lg-block"> {{batch.Description}} </p></div>
+                      </div>
+                      <!-- Info --> 
+                      <div class="col">
+                        <ul class="list-inline">
+                          <!--<li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="far fa-clock text-danger me-2"></i>21h 56m</li>-->
+                          <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-clock text-danger me-2"></i>{{batch.StartTime}}</li>
+                          <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="bi bi-dash text-danger me-2"></i>{{batch.EndTime}}</li>                          
+                        </ul>
+                      </div>
+
+                      <!-- Price and avatar -->
+                      <div class="d-sm-flex justify-content-lg-end align-items-center">
+                        <!-- Price -->
+                        <div class="mt-3 mt-sm-0">
+                          <a class="btn btn-dark" routerLink="/Instructor/BatchDetail/{{batch.BatchCode}}"> View Assessment </a><br />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- Card list END -->
+          </div>
+          <!-- Course list END -->
+        </div>
+        <!-- Main content END -->
+      </div>
+    </div>
+  </div>
+</div>

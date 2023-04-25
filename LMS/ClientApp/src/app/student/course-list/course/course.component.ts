@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../../admin/Service/service.service';
 import { Category } from '../../../modal/category';
-import { Course } from '../../../modal/Course';
+import { StudentCourse } from '../../../modal/StudentCourse';
 
 @Component({
   selector: 'app-course',
@@ -17,8 +17,7 @@ export class CourseComponent implements OnInit {
   studentId: string = '';
   Courses: any;
 
-  Course = new Course();
-  CourseList: Course[] | undefined;
+  CourseList: StudentCourse[] | undefined;
   cate = new Category();
 
 
@@ -32,33 +31,24 @@ export class CourseComponent implements OnInit {
       debugger
       this.accountDeatil = JSON.parse(account);
       this.accountId = this.accountDeatil.accountId;
-      //console.log(this.accountDeatil);
     }
 
-    this.apiservice.AccountDetailByID(this.accountId).subscribe((res:any) => {
+    this.apiservice.AccountDetailByID(this.accountId).subscribe((res: any) => {
       debugger
       this.StudentDetail = res;
       this.studentId = this.StudentDetail.studentCode;
       console.log(this.studentId);
+      debugger
       this.getStudentcourse();
-    });  
-
-
-    
-
-    this.apiservice.gotoCourseData(this.Courses).subscribe((res: any) => {
-      //debugger
-      this.CourseList = res;
-      console.log(this.CourseList);
     });
   }
 
   getStudentcourse() {
-    this.apiservice.getStudentById(this.studentId).subscribe(res => {
+    this.apiservice.getStudentCourse(this.studentId).subscribe((res:any) => {
       debugger
-      this.Courses = res.courseCode;
-      console.log(this.Courses);
+      this.CourseList = res;
+      console.log(this.CourseList);
     });
+    
   }
-
 }

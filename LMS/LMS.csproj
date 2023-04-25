@@ -17,11 +17,15 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="ClientApp\src\app\NewFolder\**" />
+    <Compile Remove="ClientApp\src\app\student\course-list\exam\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\src\app\NewFolder\**" />
+    <Content Remove="ClientApp\src\app\student\course-list\exam\**" />
     <EmbeddedResource Remove="ClientApp\src\app\NewFolder\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\student\course-list\exam\**" />
     <None Remove="$(SpaRoot)**" />
     <None Remove="ClientApp\src\app\NewFolder\**" />
+    <None Remove="ClientApp\src\app\student\course-list\exam\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -32,8 +36,8 @@
     <None Remove="ClientApp\src\app\modal\Course.ts" />
     <None Remove="ClientApp\src\app\modal\Exam.ts" />
     <None Remove="ClientApp\src\app\modal\Instructor.ts" />
+    <None Remove="ClientApp\src\app\modal\Profile.ts" />
     <None Remove="ClientApp\src\app\modal\Student.ts" />
-    <None Remove="ClientApp\src\app\student\course-list\exam\exam-routing.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,8 +47,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\modal\Course.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Exam.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Instructor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modal\Profile.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Student.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\student\course-list\exam\exam-routing.module.ts" />
   </ItemGroup>
 
   <ItemGroup>

@@ -19,15 +19,22 @@
               <label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
                 <!-- Avatar place holder -->
                 <span class="avatar avatar-xl">
-                  <img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/images/avatar/07.jpg" alt="">
+                  <!--<div *ngIF="AccountTypeDetail.profileImg==='null'">-->
+                  <!--<input type="file" id="fileInput" style="display:none" (change)="handleFileInput($event.target.files)">
+                  <img [src]="previewImage" *ngIf="previewImage">
+
+                  <img id="uploadfile-1-preview" (click)="fileInput.click()" class="avatar-img rounded-circle border border-white border-3 shadow" src="../../assets/images/avatar/01.jpg" alt="">-->
+                  <!--src="assets/images/avatar/07.jpg"-->
+                  <!--</div>-->
+                  <!--<input type="file" class="form-control-file" id="file" (change)="onFileSelected($event)">-->
+
                 </span>
               </label>
             </div>
           </div>
           <!-- Profile picture -->
-
           <!--Account Code-->
-          <div class="col-6 justify-content-center" *ngIf="">
+          <div class="col-6 justify-content-center">
             <label class="form-label">Enrollment No:</label>
 
           </div>
@@ -38,50 +45,50 @@
         <div class="col-12">
           <label class="form-label">Full name</label>
           <div class="input-group">
-            <input type="text" class="form-control" [(ngModel)]="accountDeatil.firstName" placeholder="First name" [value]="accountDeatil.firstName">
-            <input type="text" class="form-control" placeholder="Middle name" />
-            <input type="text" class="form-control" [(ngModel)]="accountDeatil.lastName" [value]="accountDeatil.lastName" placeholder="Last name">
+            <input type="text" class="form-control" [(ngModel)]="AccountTypeDetail.fName" placeholder="First name" [ngModelOptions]="{standalone: true}" [value]="AccountTypeDetail.fName" />
+            <input type="text" class="form-control" [(ngModel)]="AccountTypeDetail.mName" placeholder="Middle name" [ngModelOptions]="{standalone: true}" [value]="AccountTypeDetail.mName" />
+            <input type="text" class="form-control" [(ngModel)]="AccountTypeDetail.lName" placeholder="Last Name" [ngModelOptions]="{standalone: true}" [value]="AccountTypeDetail.lName" />
           </div>
         </div>
 
-      
+
         <!-- Phone number -->
         <div class="col-md-6">
           <label class="form-label">Phone number</label>
-          <input type="text" class="form-control" value="1234567890" placeholder="Phone number">
+          <input type="text" class="form-control" [(ngModel)]="AccountTypeDetail.contactNo" [ngModelOptions]="{standalone: true}" [value]="AccountTypeDetail.contactNo" placeholder="Phone number">
         </div>
 
         <!-- Email id -->
         <div class="col-md-6">
           <label class="form-label">Email id</label>
-          <input class="form-control" type="email" value="example@gmail.com" placeholder="Email">
+          <input class="form-control" type="email" [(ngModel)]="AccountTypeDetail.email" [ngModelOptions]="{standalone: true}" [value]="AccountTypeDetail.email" placeholder="Email">
         </div>
 
 
         <!-- Education -->
         <div class="col-md-6">
           <label class="form-label">Education</label>
-          <input class="form-control mb-2" type="text" value="Bachelor in Computer Graphics">
+          <input class="form-control mb-2" type="text" [(ngModel)]="AccountTypeDetail.education" [ngModelOptions]="{standalone: true}" [value]="AccountTypeDetail.education">
         </div>
 
         <!-- Location -->
         <div class="col-md-6">
-          <label class="form-label">Location</label>
-          <input class="form-control" type="text" value="California">
+          <label class="form-label">Address</label>
+          <input class="form-control" type="text" [(ngModel)]="AccountTypeDetail.address" [ngModelOptions]="{standalone: true}" [value]="AccountTypeDetail.address" >
         </div>
 
         <!-- About me -->
         <div class="col-12">
           <label class="form-label">About me</label>
-          <textarea class="form-control" rows="3">I’ve found a way to get paid for my favorite hobby, and do so while following my dream of traveling the world.</textarea>
+          <textarea class="form-control" rows="3" [(ngModel)]="AccountTypeDetail.profileDes" [value]="AccountTypeDetail.profileDes" [ngModelOptions]="{standalone: true}"></textarea>
           <div class="form-text">Brief description for your profile.</div>
         </div>
 
 
         <!-- Save button -->
         <div class="d-sm-flex justify-content-center">
-          <button type="button" class="btn btn-primary mb-0">Update</button>&nbsp;&nbsp;
-          <button type="button" class="btn btn-danger mb-0">Cancel</button>
+          <button type="button" class="btn btn-primary mb-0" (click)="UpdateProfile()">Update</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-danger mb-0" routerLink="/dashboard">Cancel</button>
         </div>
       </form>
     </div>

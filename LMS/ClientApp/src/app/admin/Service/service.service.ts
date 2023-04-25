@@ -31,6 +31,10 @@ export class ServiceService implements HttpInterceptor {
     return this.httpservice.get(this.AccountUrl + '/AccountId?AccountId=' + id);
   }
 
+  UpdateAccount(updateData: any) {
+    return this.httpservice.put(this.AccountUrl + '/' + updateData.accountId, updateData);
+  }
+
 
   //Category Section
 
@@ -112,7 +116,7 @@ export class ServiceService implements HttpInterceptor {
   getCourseData() {
     return this.httpservice.get<Course[]>(this.courseapi);
   }
-
+  
   gotoCourseData(id: string) {
     debugger
     return this.httpservice.get<Course>(this.courseapi + '/CourseCode?CourseCode=' + id);
@@ -221,6 +225,10 @@ export class ServiceService implements HttpInterceptor {
     return this.httpservice.put(this.StudentBaseUrl + 'Register/StudentCode?StudentCode=' + updatedData.studentCode, updatedData);
   }
 
+  getStudentCourse(id: string) {
+    return this.httpservice.get(this.StudentBaseUrl + 'Student/' + id);
+  }
+
   //Student Section
 
 
@@ -259,6 +267,14 @@ export class ServiceService implements HttpInterceptor {
   getInstructor() {
     debugger
     return this.httpservice.get<Instructor[]>(this.InstructorApi + 'Instructor');
+  }
+
+  //getInstructorById(id: string): Observable<Instructor> {
+  //  return this.httpservice.get<Instructor>(this.InstructorApi + '');
+  //}
+
+  getBatchByInstructor(id: string) {
+    return this.httpservice.get(this.InstructorApi + 'Instructor/'+id);
   }
 
   //Instructor Section

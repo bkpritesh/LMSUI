@@ -13,6 +13,7 @@ import { DatepickerModule } from 'ng2-datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ControlsModule } from './controls/controls.module';
 import { JWTInterceptor } from './account/AuthService/jwt.interceptor';
+import { InstructorModule } from './instructor/instructor.module';
 import { StudentModule } from './student/student.module';
 import { ExamModule } from './exam/exam.module';
 
@@ -39,6 +40,7 @@ const routes: Routes = [
     AccountModule,
     LayoutModule,
     AdminModule,
+    InstructorModule,
     StudentModule,
     ExamModule,
   ],
