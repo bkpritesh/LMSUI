@@ -1,0 +1,115 @@
+<main>
+
+  <!-- Tab Content START -->
+  <div class="tab-content">
+
+    <!-- Personal Information content START -->
+    <div class="tab-pane show active" id="tab-1">
+      <div class="card shadow">
+
+        <!-- Card header -->
+        <div class="card-header border-bottom">
+          <h2 class="card-header-title text-center">Chapter : {{ChapterDetail.chapterName}}</h2>
+        </div>
+
+        <!-- Card body START -->
+        <div class="card-body">
+          <form class="row g-4 align-items-center">
+
+            <!-- Input item -->
+            <div class="col-lg-4">
+              <label class="form-label">Chapter ID</label>
+              <input type="text" class="form-control" id="chapterCode" name="chapterCode" [(ngModel)]="ChapterDetail.chapterCode" [value]="ChapterDetail.chapterCode" placeholder="Chapter ID" disabled>  <!---->
+              <div class="form-text">Chapter Code</div>
+            </div>
+
+            <!-- Input item -->
+            <div class="col-lg-4">
+              <label class="form-label">Excepted Date</label>
+              <input type="text" class="form-control" placeholder="Enter Excepted Date" name="expectedDate" id="expectedDate" [(ngModel)]="ChapterDetail.expectedDate" [value]="ChapterDetail.expectedDate">
+              <div class="form-text">Using for Contact and Send Email</div>
+            </div>
+
+            <!-- Input item -->
+            <div class="col-lg-4">
+              <label class="form-label">Completion Date</label>
+              <input type="email" class="form-control" placeholder="Enter Completion Date" name="completionDate" id="completionDate" [(ngModel)]="ChapterDetail.completionDate" [value]="ChapterDetail.completionDate">
+              <div class="form-text">For Copyrights Text</div>
+            </div>
+
+            <!-- Textarea item -->
+            <div class="col-6">
+              <label class="form-label">Meeting Link</label>
+              <textarea class="form-control" rows="3" [(ngModel)]="ChapterDetail.meetingLink" [ngModelOptions]="{standalone: true}" [value]="ChapterDetail.meetingLink"></textarea>
+              <div class="form-text">For write brief description of your organization, or a Website.</div>
+            </div>
+
+            <!-- Textarea item -->
+            <div class="col-6">
+              <label class="form-label">Recording Link</label>
+              <textarea class="form-control" rows="3" [(ngModel)]="ChapterDetail.recordingLink" [ngModelOptions]="{standalone: true}" [value]="ChapterDetail.recordingLink"></textarea>
+              <div class="form-text">Enter support Address</div>
+            </div>
+
+            <!-- Input item -->
+            <div class="col-lg-12">
+              <label class="form-label">Resource</label>
+              <input type="email" class="form-control" placeholder="Support Email" [(ngModel)]="ChapterDetail.resource" [ngModelOptions]="{standalone: true}" [value]="ChapterDetail.resource">
+              <div class="form-text">For Support Email</div>
+            </div>
+
+            <!-- Radio items -->
+            <div class="col-lg-12">
+              <label class="form-label">Student Attendence</label>
+              <table class="table table-dark-gray">
+                <thead class="text-center">
+                  <tr>
+                    <th>Student Name</th>
+                    <th colspan="2">
+                      <div class="row">
+                        <div class="col">Present</div><div class="col">Absent</div>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let stud of student">
+                    <td for="attendace">{{stud.FullName}}</td>
+                    <td colspan="2">
+                      <div class="row d-sm-flex">
+                        <!-- Radio -->
+                        <div class="form-check radio-bg-light me-4 col">
+                          <input class="form-check-input" type="radio" name="attendace" id="attendaceP" [(ngModel)]="ChapterDetail.presentStudent" (click)="onselect(stud.StudentCode,true)">
+                            <input type="hidden" id="hiddenField1"   [value]="stud.StudentCode" />
+                          </div>
+                        <!-- Radio -->
+                        <div class="form-check radio-bg-light me-4 col">
+                          <input class="form-check-input" type="radio" name="attendace" id="attendaceA" [(ngModel)]="ChapterDetail.absentStudent" (click)="onselect(stud.StudentCode,false)">                      
+                            <input type="hidden"  id="hiddenField2"  [value]="stud.StudentCode" />
+                          </div>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+
+            <!-- Save button -->
+            <div class="d-sm-flex justify-content-center">
+              <button type="button" class="btn btn btn-outline-danger mb-0" (click)="oncancel()">Cancel</button>&nbsp;
+              <button type="button" class="btn btn-outline-success mb-0" (click)="onSubmit()">Update</button>
+            </div>
+          </form>
+        </div>
+        <!-- Card body END -->
+
+      </div>
+    </div>
+    <!-- Personal Information content END -->
+
+  </div>
+  <!-- Tab Content END -->
+
+</main>

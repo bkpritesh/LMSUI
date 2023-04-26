@@ -36,6 +36,7 @@
     <None Remove="ClientApp\src\app\modal\Course.ts" />
     <None Remove="ClientApp\src\app\modal\Exam.ts" />
     <None Remove="ClientApp\src\app\modal\Instructor.ts" />
+    <None Remove="ClientApp\src\app\modal\InstructorBatch.ts" />
     <None Remove="ClientApp\src\app\modal\Profile.ts" />
     <None Remove="ClientApp\src\app\modal\Student.ts" />
   </ItemGroup>
@@ -47,6 +48,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\modal\Course.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Exam.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Instructor.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modal\InstructorBatch.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Profile.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Student.ts" />
   </ItemGroup>

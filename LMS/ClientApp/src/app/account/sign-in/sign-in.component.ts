@@ -37,7 +37,7 @@ export class SignInComponent implements OnInit {
       debugger
       if (data !== null) {
         this.toastrService.success('Welcome to LMS!');
-        timer(9000).pipe(takeWhile(() => this.alive)).subscribe(_ => { this.router.navigate(['dashboard']) });
+        timer(1000).pipe(takeWhile(() => this.alive)).subscribe(_ => { this.router.navigate(['dashboard']) });
       }
       else {
         this.toastrService.error('Email and Password is Invalid');

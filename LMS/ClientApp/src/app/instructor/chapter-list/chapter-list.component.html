@@ -1,0 +1,54 @@
+<div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom mb-4">
+  <h3 class="mb-2 mb-sm-0">Chapter List</h3>
+</div>
+<div class="card-body">
+  <!-- Credit or debit card START -->
+  <div class="accordion-item mb-3" id="collapse-1">
+    <div class="accordion-body">
+
+
+      <div class="row">
+        <!-- Main content START -->
+        <div class="col-xl-12 col-xxl-8">
+          <!-- Course list START -->
+          <div class="row g-4">
+            <!-- Card list START -->
+            <div class="card shadow overflow-hidden p-2" *ngFor="let chapter of ChapterList">
+              <div class="row g-0">
+                <div class="col-md-12">
+                  <div class="card-body">
+                    <!-- Title -->
+                    <div class="col">                      
+                      <h5 class="card-title">{{chapter.chapterCode}} &#9;<span>:</span>&#9; {{chapter.chapterName}} </h5>
+                        <h6>
+                          <span class="list-inline-item h6 fw-light" *ngIf="(chapter.chapterDescription===''||chapter.chapterDescription===null)"><i class="fas fa-columns text-success me-2"></i>Not Given</span>
+                          <span class="list-inline-item h6 fw-light" *ngIf="(chapter.chapterDescription)"><i class="fas fa-columns text-success me-2"></i>{{chapter.chapterDescription}}</span>
+                        </h6>                     
+                    </div>
+                    <!-- Info -->
+                    <div class="col">
+                      <ul class="list-inline">
+                        <li class="list-inline-item h6 fw-light mb-1 mb-sm-0" *ngIf="(chapter.createdBy===''||chapter.createdBy===null)"><i class="bi bi-exclamation-octagon-fill text-danger me-2"></i></li>
+                        <li class="list-inline-item h6 fw-light mb-1 mb-sm-0" *ngIf="(chapter.createdBy)"><i class="bi bi-check-circle-fill text-success me-2"></i></li>
+                      </ul>
+                    </div>
+                    <!-- Price and avatar -->
+                    <div class="d-sm-flex justify-content-lg-end align-items-center">
+                      <!-- Price -->
+                      <div class="mt-3 mt-sm-0">
+                        <a class="btn btn-dark" routerLink="/Instructor/ChapterDetail/{{chapter.batchCode}}/{{chapter.chapterCode}}"> View Chapter </a><br />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card list END -->
+          </div>
+          <!-- Course list END -->
+        </div>
+        <!-- Main content END -->
+      </div>
+    </div>
+  </div>
+</div>

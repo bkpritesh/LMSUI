@@ -5,8 +5,10 @@
     "\\LMS\\ClientApp",
     "\\LMS\\ClientApp\\src",
     "\\LMS\\ClientApp\\src\\app",
-    "\\LMS\\ClientApp\\src\\app\\modal"
+    "\\LMS\\ClientApp\\src\\app\\admin",
+    "\\LMS\\ClientApp\\src\\app\\admin\\student",
+    "\\LMS\\ClientApp\\src\\app\\admin\\student\\edit-student"
   ],
-  "SelectedNode": "\\LMS\\ClientApp\\src\\app\\account",
+  "SelectedNode": "\\LMS.sln",
   "PreviewInSolutionExplorer": false
 }

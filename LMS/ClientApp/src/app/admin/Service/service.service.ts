@@ -262,11 +262,11 @@ export class ServiceService implements HttpInterceptor {
 
 
   //Instructor Section
-  InstructorApi: string = `${this.apiUrl}/api/`;
+  InstructorApi: string = `${this.apiUrl}/api/Instructor`;
 
   getInstructor() {
     debugger
-    return this.httpservice.get<Instructor[]>(this.InstructorApi + 'Instructor');
+    return this.httpservice.get<Instructor[]>(this.InstructorApi );
   }
 
   //getInstructorById(id: string): Observable<Instructor> {
@@ -274,8 +274,31 @@ export class ServiceService implements HttpInterceptor {
   //}
 
   getBatchByInstructor(id: string) {
-    return this.httpservice.get(this.InstructorApi + 'Instructor/'+id);
+    return this.httpservice.get(this.InstructorApi + '/'+id);
   }
 
   //Instructor Section
+
+
+  //ChapterList
+  Chapterapi: string = `${this.apiUrl}/api/BatchDetail`; 
+
+  getBatchStudent(id: string) {
+    return this.httpservice.get(this.Chapterapi + '/' + id);
+  }
+
+  getChapterList(id: string) {
+    return this.httpservice.get(this.Chapterapi + '/GetDetailByBCode?BatchCode=' + id);
+  }
+
+  getChapterDetail(bID: string, chID: string) {
+    debugger
+    return this.httpservice.get(this.Chapterapi + '/GetDetailByBCHCode?BatchCode=' + bID + '&chapterCode='+chID);
+  }
+
+  editChapterDetail(bID: string, chID: string) {
+    //return this.httpservice.get(this.Chapterapi + '/GetDetailByBCHCode?BatchCode=' + bID.batchCode + '&chapterCode=' + chID.chapterCode, bID, chID);
+  }
+  //ChapterList
+
 }

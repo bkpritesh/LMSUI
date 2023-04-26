@@ -7,9 +7,9 @@
   <!-- Course table START -->
   <div class="table-responsive border-0 rounded-3">
     <!-- Table START -->
-    <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+    <!--<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">-->
       <!-- Table head -->
-      <thead>
+      <!--<thead>
         <tr>
           <th scope="col" class="border-0 rounded-start">#</th>
           <th scope="col" class="border-0">Banner</th>
@@ -19,38 +19,38 @@
           <th scope="col" class="morder-0">Address</th>
           <th scope="col" class="border-0 rounded-end">Action</th>
         </tr>
-      </thead>
+      </thead>-->
       <!-- Table body START -->
-      <tbody>
+      <!--<tbody>-->
         <!-- Table row -->
-        <tr *ngFor="let course of CourseList">
+        <!--<tr *ngFor="let course of CourseList">-->
           <!--Table data-->
-          <td>{{course.courseBanner}}</td>
+          <!--<td>{{course.courseBanner}}</td>-->
           <!--Table data-->
-          <td> {{course.courseName}}</td>
+          <!--<td> {{course.courseName}}</td>-->
           <!--Table data-->
-          <td> {{course.description}}</td>
+          <!--<td> {{course.description}}</td>-->
           <!--Table data-->
-          <td>{{course.lectures}} lectures</td>
+          <!--<td>{{course.lectures}} lectures</td>-->
           <!--Table data-->
-          <td>
+          <!--<td>
             <span class="list-inline-item h6 fw-light" *ngIf="(course.level===1)"><i class="fas fa-signal text-success me-2"></i>Beginner</span>
             <span class="list-inline-item h6 fw-light" *ngIf="(course.level===2)"><i class="fas fa-signal text-success me-2"></i>Intermediate</span>
             <span class="list-inline-item h6 fw-light" *ngIf="(course.level===3)"><i class="fas fa-signal text-success me-2"></i>Advance</span>
-          </td>
+          </td>-->
           <!--Table data-->
-          <td> <a class="btn btn-dark" > View Assessment </a></td>
+          <!--<td> <a class="btn btn-dark" > View Assessment </a></td>-->
           <!--Table data-->
-          <td>
+          <!--<td>
             <button class="btn btn-sm btn-success me-1 mb-1 mb-md-0" data-bs-toggle="modal" routerLink="/CourseList/AssessmentList/{{course.courseCode}}">
               View Assessment
-            </button>
+            </button>-->
             <!--<button class="btn btn-sm btn-danger mb-0">Delete</button>--> <!-- [attr.cid]="cate.categoryId" (click)="openDeleteFormModal(cate.categoryId)"-->
-          </td>
-        </tr>
+          <!--</td>
+        </tr>-->
         <!-- Table row -->
-      </tbody>
-    </table>
+      <!--</tbody>
+    </table>-->
   </div>
 </div>
 
