@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ServiceService } from '../../Service/service.service';
+import { ServiceService } from '../../../Service/service.service';
 import { AuthserviceService } from '../../../account/AuthService/authservice.service';
 import { Assessment } from '../../../modal/Assessment';
 import { Course } from '../../../modal/Course';

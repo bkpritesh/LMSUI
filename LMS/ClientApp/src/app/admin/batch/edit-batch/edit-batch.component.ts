@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../../../modal/Course';
-import { ServiceService } from '../../Service/service.service';
+import { ServiceService } from '../../../Service/service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Batch } from '../../../modal/Batch';
 import { Student } from '../../../modal/Student';
@@ -56,10 +56,10 @@ export class EditBatchComponent implements OnInit {
     //  this.batch.batchCode = res.batchCode;
     //});
 
-    this.apibased.gotoBatchData(this.batchId).subscribe(res => {
-      debugger;
-      console.log(res);
-    });
+    //this.apibased.gotoBatchData(this.batchId).subscribe(res => {
+    //  debugger;
+    //  console.log(res);
+    //});
 
    
 

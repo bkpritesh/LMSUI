@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../../../modal/Course';
-import { ServiceService } from '../../Service/service.service';
+import { ServiceService } from '../../../Service/service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -8,7 +8,6 @@ import { AuthserviceService } from '../../../account/AuthService/authservice.ser
 import { Batch } from '../../../modal/Batch';
 import { Student } from '../../../modal/Student';
 import { Instructor } from '../../../modal/Instructor';
-import { data } from 'jquery';
 
 @Component({
   selector: 'app-batch',

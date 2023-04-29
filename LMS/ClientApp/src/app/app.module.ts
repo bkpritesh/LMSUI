@@ -4,6 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
+
+import { ServiceService } from './Service/service.service';
+
 import { AccountModule } from './account/account.module';
 import { LayoutModule } from './layout/layout.module';
 import { AdminModule } from './admin/admin.module';
@@ -17,6 +20,7 @@ import { InstructorModule } from './instructor/instructor.module';
 import { StudentModule } from './student/student.module';
 import { ExamModule } from './exam/exam.module';
 
+import { AngularEditorModule } from '@kolkov/angular-editor';
 const routes: Routes = [
   
 ];
@@ -35,7 +39,9 @@ const routes: Routes = [
     DatepickerModule,
     BrowserAnimationsModule,
     ControlsModule,
+    AngularEditorModule,
 
+ 
     RouterModule.forRoot(routes),
     AccountModule,
     LayoutModule,
@@ -45,6 +51,7 @@ const routes: Routes = [
     ExamModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
+    ServiceService,
     //{ provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

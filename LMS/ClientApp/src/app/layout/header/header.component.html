@@ -108,7 +108,7 @@
 
 
       <!-- Sidebar Instructor menu START -->
-      <ul class="navbar-nav flex-column" id="navbar-sidebar" *ngIf="accountType==='Instuctor'">
+      <ul class="navbar-nav flex-column" id="navbar-sidebar" *ngIf="accountType==='Instructor'">
 
         <!-- Menu item 1 -->
         <li class="nav-item"><a routerLink="/dashboard" class="nav-link"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
@@ -133,8 +133,7 @@
           </a>
           <!--submenu-->
           <ul class="nav collapse flex-column" id="collapsebatchpage" data-bs-parent="#navbar-sidebar">
-            <li class="nav-item"> <a class="nav-link" routerLink="/Batch">List of Batch</a></li>
-            <li class="nav-item"> <a class="nav-link" routerLink="/Batch/addBatch">Add Batch</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/Instructor/BatchList">List of Batch</a></li>
             <li class="nav-item"> <a class="nav-link" routerLink="/Batch/Syllabus">Syllabus Upload</a></li>
           </ul>
         </li>

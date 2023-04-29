@@ -5,9 +5,9 @@ import { ToastrService } from 'ngx-toastr';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DatepickerOptions, DatepickerModule } from 'ng2-datepicker';
 import { getYear } from 'date-fns';
-import { Student } from '../../../modal/Student';
+import { Student } from '../../../modal/Student';   
 import { Category } from '../../../modal/category';
-import { ServiceService } from '../../Service/service.service';
+import { ServiceService } from '../../../Service/service.service';
 import { data } from 'jquery';
 
 @Component({

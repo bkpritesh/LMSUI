@@ -9,7 +9,7 @@
 
         <!-- Card header -->
         <div class="card-header border-bottom">
-          <h2 class="card-header-title text-center">Chapter : {{ChapterDetail.chapterName}}</h2>
+          <h2 class="card-header-title text-center">Chapter : {{chapterName.chapterName}}</h2>
         </div>
 
         <!-- Card body START -->
@@ -26,36 +26,38 @@
             <!-- Input item -->
             <div class="col-lg-4">
               <label class="form-label">Excepted Date</label>
-              <input type="text" class="form-control" placeholder="Enter Excepted Date" name="expectedDate" id="expectedDate" [(ngModel)]="ChapterDetail.expectedDate" [value]="ChapterDetail.expectedDate">
-              <div class="form-text">Using for Contact and Send Email</div>
+              <!--<ngx-datepicker name="expectedDate" [(ngModel)]="expectedDate" [options]="options" (ngModelChange)="HiddenExpectedField()" required></ngx-datepicker>-->
+              <input type="text" [value]="ChapterDetail.expectedDate" name="expectedDate" [(ngModel)]="ChapterDetail.expectedDate" />
+              <div class="form-text">Date of Exception of chapter</div>
             </div>
 
             <!-- Input item -->
             <div class="col-lg-4">
               <label class="form-label">Completion Date</label>
-              <input type="email" class="form-control" placeholder="Enter Completion Date" name="completionDate" id="completionDate" [(ngModel)]="ChapterDetail.completionDate" [value]="ChapterDetail.completionDate">
-              <div class="form-text">For Copyrights Text</div>
+              <!--<ngx-datepicker name="completionDate" [(ngModel)]="completionDate" [options]="options" (ngModelChange)="HiddenCompletionField()" required></ngx-datepicker>-->
+              <input type="text" [value]="ChapterDetail.completionDate" name="completionDate" [(ngModel)]="ChapterDetail.completionDate" />
+              <div class="form-text">Date for completion of chapter</div>
             </div>
 
             <!-- Textarea item -->
             <div class="col-6">
               <label class="form-label">Meeting Link</label>
               <textarea class="form-control" rows="3" [(ngModel)]="ChapterDetail.meetingLink" [ngModelOptions]="{standalone: true}" [value]="ChapterDetail.meetingLink"></textarea>
-              <div class="form-text">For write brief description of your organization, or a Website.</div>
+              <div class="form-text">Attach Meeting Link</div>
             </div>
 
             <!-- Textarea item -->
             <div class="col-6">
               <label class="form-label">Recording Link</label>
               <textarea class="form-control" rows="3" [(ngModel)]="ChapterDetail.recordingLink" [ngModelOptions]="{standalone: true}" [value]="ChapterDetail.recordingLink"></textarea>
-              <div class="form-text">Enter support Address</div>
+              <div class="form-text">Attach Recording Link</div>
             </div>
 
             <!-- Input item -->
             <div class="col-lg-12">
               <label class="form-label">Resource</label>
-              <input type="email" class="form-control" placeholder="Support Email" [(ngModel)]="ChapterDetail.resource" [ngModelOptions]="{standalone: true}" [value]="ChapterDetail.resource">
-              <div class="form-text">For Support Email</div>
+              <angular-editor #editor [placeholder]="'Enter text here...'" [config]="editorConfig" (input)="onEditorInput($event)"></angular-editor>
+              <div class="form-text">Enter your Resources</div>
             </div>
 
             <!-- Radio items -->
@@ -64,35 +66,35 @@
               <table class="table table-dark-gray">
                 <thead class="text-center">
                   <tr>
-                    <th>Student Name</th>
-                    <th colspan="2">
-                      <div class="row">
-                        <div class="col">Present</div><div class="col">Absent</div>
-                      </div>
-                    </th>
+                    <th for="Presentstudentes">Present Student</th>
+                    <th for="Absentstudentes">Absent Student</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let stud of student">
-                    <td for="attendace">{{stud.FullName}}</td>
-                    <td colspan="2">
-                      <div class="row d-sm-flex">
-                        <!-- Radio -->
-                        <div class="form-check radio-bg-light me-4 col">
-                          <input class="form-check-input" type="radio" name="attendace" id="attendaceP" [(ngModel)]="ChapterDetail.presentStudent" (click)="onselect(stud.StudentCode,true)">
-                            <input type="hidden" id="hiddenField1"   [value]="stud.StudentCode" />
-                          </div>
-                        <!-- Radio -->
-                        <div class="form-check radio-bg-light me-4 col">
-                          <input class="form-check-input" type="radio" name="attendace" id="attendaceA" [(ngModel)]="ChapterDetail.absentStudent" (click)="onselect(stud.StudentCode,false)">                      
-                            <input type="hidden"  id="hiddenField2"  [value]="stud.StudentCode" />
-                          </div>
-                        </div>
+                  <tr>
+                    <td class="col-6">
+                      <ng-multiselect-dropdown [settings]="AttendanceSetting"
+                                               [data]="student"
+                                               [placeholder]="'Select the data'"
+                                               [(ngModel)]="ChapterDetail.presentStudent"
+                                               name="Presentstudentes" id="Presentstudentes" #Presentstudentes="ngModel" ngModel required>
+                      </ng-multiselect-dropdown>
+                    </td>
+                    <td class="col-6">
+                      <ng-multiselect-dropdown [settings]="AttendanceSetting"
+                                               [data]="student"
+                                               [placeholder]="'Select the data'"
+                                               [(ngModel)]="ChapterDetail.absentStudent"
+                                               name="Absentstudentes" id="Absentstudentes" #Absentstudentes="ngModel" ngModel required>
+                      </ng-multiselect-dropdown>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+
+            <input type="hidden" [(ngModel)]="ChapterDetail.isCompleted" value="true" >
+           
 
 
 

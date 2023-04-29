@@ -42,7 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\modal\.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Assessment.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Batch.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modal\Course.ts" />

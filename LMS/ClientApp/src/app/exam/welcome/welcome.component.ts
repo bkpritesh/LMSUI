@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServiceService } from '../../admin/Service/service.service';
+import { ServiceService } from '../../Service/service.service';
 import { Assessment } from '../../modal/Assessment';
 
 

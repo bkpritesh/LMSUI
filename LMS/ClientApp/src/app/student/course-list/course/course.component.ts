@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../../../admin/Service/service.service';
+import { ServiceService } from '../../../Service/service.service';
 import { Category } from '../../../modal/category';
 import { StudentCourse } from '../../../modal/StudentCourse';
 

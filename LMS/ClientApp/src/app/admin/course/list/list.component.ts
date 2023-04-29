@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../../Service/service.service';
+import { ServiceService } from '../../../Service/service.service';
 import { Course } from '../../../modal/Course';
 import { ToastrService } from 'ngx-toastr';
 declare var window: any;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../../Service/service.service';
+import { ServiceService } from '../../../Service/service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Batch } from '../../../modal/Batch';
 import { Course } from '../../../modal/Course';

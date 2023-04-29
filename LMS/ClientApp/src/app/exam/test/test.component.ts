@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServiceService } from '../../admin/Service/service.service';
+import { ServiceService } from '../../Service/service.service';
 import { Observable, interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 import { Exam, answer, assesstANDStudCode, QuizData } from '../../modal/Exam';

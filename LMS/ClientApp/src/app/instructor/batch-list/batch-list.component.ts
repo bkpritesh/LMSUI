@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../../admin/Service/service.service';
+import { ServiceService } from '../../Service/service.service';
 import { InstructorBatch } from '../../modal/InstructorBatch';
 import { InstructorModule } from '../instructor.module';
 
@@ -41,7 +41,8 @@ export class BatchListComponent implements OnInit {
   }
 
   getInstructorCourse() {
-    this.apiservice.getBatchByInstructor(this.InstructorId).subscribe((res:any) => {        
+    this.apiservice.getBatchByInstructor(this.InstructorId).subscribe((res: any) => {
+      debugger
       this.BatchList = res;
       console.log(this.BatchList);
     });    

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { ServiceService } from '../../Service/service.service';
+import { ServiceService } from '../../../Service/service.service';
 import { AuthserviceService } from '../../../account/AuthService/authservice.service';
 import { Batch, BatchDetail } from '../../../modal/Batch';
 import { Router } from '@angular/router';

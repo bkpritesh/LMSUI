@@ -15,6 +15,7 @@ export class ChapterUpdate {
   "resource": string
   "createdDate": string //
   "createdBy": string   //Pass instructorID
+  "modifiedBy": string
 }
 
 export class StudentData {
@@ -24,5 +25,24 @@ export class StudentData {
   "FullName": string
 }
 
+export class SaveChapterUpdate {
+  "batchCode": string
+  "chapterCode": string
+  "expectedDate": string
+  "completionDate": string
+  "isCompleted": boolean
+  "presentStudent": string
+  "absentStudent": string
+  "meetingLink": string
+  "recordingLink": string
+  "resource": string
+  "createdBy": string   //Pass instructorID
+  "modifiedBy": string
+}
 
+
+
+    
+       
+        
 

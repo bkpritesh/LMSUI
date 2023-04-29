@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
-import { Category } from '../../modal/category';
-import { Student } from '../../modal/Student';
+import { environment } from '../../environments/environment';
+import { Category } from '../modal/category';
+import { Student } from '../modal/Student';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
-import { Course } from '../../modal/Course';
-import { Batch, BatchDetail } from '../../modal/Batch';
-import { Assessment } from '../../modal/Assessment';
-import { Instructor } from '../../modal/Instructor';
-import { Exam, QuizData } from '../../modal/Exam';
+import { Course } from '../modal/Course';
+import { Batch, BatchDetail } from '../modal/Batch';
+import { Assessment } from '../modal/Assessment';
+import { Instructor } from '../modal/Instructor';
+import { Exam, QuizData } from '../modal/Exam';
+import { ChapterUpdate, SaveChapterUpdate } from '../modal/ChapterUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class ServiceService implements HttpInterceptor {
   private apiUrl = environment.API_URL;
 
   
-  AccountUrl: string = `${this.apiUrl}/api/Register`;
+  AccountUrl: string = `${this.apiUrl}api/Register`;
 
   AccountDetailByID(id: string) {
     return this.httpservice.get(this.AccountUrl + '/AccountId?AccountId=' + id);
@@ -38,7 +39,7 @@ export class ServiceService implements HttpInterceptor {
 
   //Category Section
 
-  baseURL: string = `${this.apiUrl}/api/Categories`;
+  baseURL: string = `${this.apiUrl}api/Categories`;
 
   getData() {
     debugger
@@ -71,30 +72,30 @@ export class ServiceService implements HttpInterceptor {
 
   //Skills
   getskills(): Observable<any> {
-    return this.httpservice.get<any>(`${this.apiUrl}/api/Education/skills`);
+    return this.httpservice.get<any>(`${this.apiUrl}api/Education/skills`);
   }
   //Skills
 
 
   //Education
   getEducation(): Observable<any> {
-    return this.httpservice.get<any>(`${this.apiUrl}/api/Education/Qualification`);
+    return this.httpservice.get<any>(`${this.apiUrl}api/Education/Qualification`);
   }
   //Education
 
 
   //State & City
   getstate(): Observable<any> {
-    return this.httpservice.get<any>(`${this.apiUrl}/api/StateAndCities`);
+    return this.httpservice.get<any>(`${this.apiUrl}api/StateAndCities`);
   }
 
   getcity(id: string) {
-    return this.httpservice.get(`${this.apiUrl}/api/StateAndCities/cities/${id}`);
+    return this.httpservice.get(`${this.apiUrl}api/StateAndCities/cities/${id}`);
   }
   //State & City
 
   //Document Upload
-  documentapi: string = `${this.apiUrl}/api/DocumentUpload`;
+  documentapi: string = `${this.apiUrl}api/DocumentUpload`;
   addDocument(file: File, AccountId: string, DocumentType: string) {
     const formData = new FormData();
     formData.append('file', file);
@@ -107,10 +108,10 @@ export class ServiceService implements HttpInterceptor {
   //Document Upload
 
   //Course
-  courseapi: string = `${this.apiUrl}/api/Course`;
+  courseapi: string = `${this.apiUrl}api/Course`;
 
   getCourseByCategoryId(id: string) {
-    return this.httpservice.get(`${this.apiUrl}/api/Categories/Course/${id}`)
+    return this.httpservice.get(`${this.apiUrl}api/Categories/Course/${id}`)
   }
 
   getCourseData() {
@@ -145,7 +146,7 @@ export class ServiceService implements HttpInterceptor {
 
 
   //Batch
-  batchapi: string = `${this.apiUrl}/api/Batch`;
+  batchapi: string = `${this.apiUrl}api/Batch`;
 
   getBatch() {
     return this.httpservice.get<Batch[]>(this.batchapi);
@@ -186,7 +187,7 @@ export class ServiceService implements HttpInterceptor {
     formData.append('batchCode', batch.batchCode);
     formData.append('CourseCode', batch.CourseCode);
     debugger
-    return this.httpservice.post(`${this.apiUrl}/api/BatchDetail`, formData);
+    return this.httpservice.post(`${this.apiUrl}api/BatchDetail`, formData);
   }
 
   //Batch
@@ -196,7 +197,7 @@ export class ServiceService implements HttpInterceptor {
 
 
   //Student Section
-  StudentBaseUrl: string = `${this.apiUrl}/api/`;
+  StudentBaseUrl: string = `${this.apiUrl}api/`;
 
   getStudentData() {
     debugger
@@ -241,20 +242,20 @@ export class ServiceService implements HttpInterceptor {
     formData.append('AssessmentName', assessment.AssessmentName);
     formData.append('CourseCode', assessment.CourseCode);
     debugger
-    return this.httpservice.post(`${ this.apiUrl }/api/Assistment`, formData);
+    return this.httpservice.post(`${ this.apiUrl }api/Assistment`, formData);
   }
 
   getAssessmentByCourseCode(id: string) {
-    return this.httpservice.get<Assessment>(`${this.apiUrl}/api/Assistment/CourseCode?CourseCode=` + id);
+    return this.httpservice.get<Assessment>(`${this.apiUrl}api/Assistment/CourseCode?CourseCode=` + id);
   }
 
   getAssessmentExam(id: string): Observable<Exam> {
-    return this.httpservice.get<Exam>(`${this.apiUrl}/api/Assistment/AssessmentCode?AssessmentCode=` + id);
+    return this.httpservice.get<Exam>(`${this.apiUrl}api/Assistment/AssessmentCode?AssessmentCode=` + id);
   }
 
   getAssessmentResult(id: any): Observable<QuizData> {
     debugger
-    return this.httpservice.post<QuizData>(`${ this.apiUrl }/api/Assistment/submit`, id);
+    return this.httpservice.post<QuizData>(`${ this.apiUrl }api/Assistment/submit`, id);
   }
   
   //Assessment
@@ -262,11 +263,22 @@ export class ServiceService implements HttpInterceptor {
 
 
   //Instructor Section
-  InstructorApi: string = `${this.apiUrl}/api/Instructor`;
+  InstructorApi: string = `${this.apiUrl}api/Instructor`;
 
   getInstructor() {
     debugger
     return this.httpservice.get<Instructor[]>(this.InstructorApi );
+  }
+
+  addInstructor(instructor: Instructor): Observable<any> {
+    const httpheaders = { 'content-type': 'application/json' }
+    debugger
+    const body = JSON.stringify(instructor);
+    let options = {
+      headers: httpheaders
+    };
+    debugger
+    return this.httpservice.post(this.InstructorApi + '/Instructor', body, options);
   }
 
   //getInstructorById(id: string): Observable<Instructor> {
@@ -274,6 +286,7 @@ export class ServiceService implements HttpInterceptor {
   //}
 
   getBatchByInstructor(id: string) {
+    debugger
     return this.httpservice.get(this.InstructorApi + '/'+id);
   }
 
@@ -281,7 +294,7 @@ export class ServiceService implements HttpInterceptor {
 
 
   //ChapterList
-  Chapterapi: string = `${this.apiUrl}/api/BatchDetail`; 
+  Chapterapi: string = `${this.apiUrl}api/BatchDetail`; 
 
   getBatchStudent(id: string) {
     return this.httpservice.get(this.Chapterapi + '/' + id);
@@ -296,8 +309,14 @@ export class ServiceService implements HttpInterceptor {
     return this.httpservice.get(this.Chapterapi + '/GetDetailByBCHCode?BatchCode=' + bID + '&chapterCode='+chID);
   }
 
-  editChapterDetail(bID: string, chID: string) {
-    //return this.httpservice.get(this.Chapterapi + '/GetDetailByBCHCode?BatchCode=' + bID.batchCode + '&chapterCode=' + chID.chapterCode, bID, chID);
+  editChapterDetail(bID: string, chID: string, SaveChapterUpdate: SaveChapterUpdate) {
+    const httpheaders = { 'content-type': 'application/json' }
+    debugger
+    const body = JSON.stringify(SaveChapterUpdate);
+    let options = {
+      headers: httpheaders
+    };
+    return this.httpservice.put(this.Chapterapi + '/' + bID + '/' + chID, body, options);
   }
   //ChapterList
 

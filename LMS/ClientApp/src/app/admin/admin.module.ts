@@ -5,7 +5,6 @@ import { DatepickerModule } from 'ng2-datepicker';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ServiceService } from './Service/service.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -16,6 +15,7 @@ import { StudentModule } from './student/student.module';
 import { CourseModule } from './course/course.module';
 import { ControlsModule } from './../controls/controls.module'
 import { BatchModule } from './batch/batch.module';
+import { InstructorModule } from './instructor/instructor.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import { BatchModule } from './batch/batch.module';
     StudentModule,
     ControlsModule,
     BatchModule,
+    InstructorModule,
   ],
   exports: [
     DashboardComponent,
@@ -52,10 +53,9 @@ import { BatchModule } from './batch/batch.module';
     ToastrModule,
     CourseModule,
     StudentModule,
+    InstructorModule,
     ProfileComponent,
   ],
-  providers: [
-    ServiceService
-  ]
+  providers: []
 })
 export class AdminModule { }
