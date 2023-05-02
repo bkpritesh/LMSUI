@@ -22,6 +22,7 @@ const routes: Routes = [
       { path: 'student', loadChildren: () => import('./student/student-routing.module').then(m => m.StudentRoutingModule) },
       { path: 'Batch', loadChildren: () => import('./batch/batch-routing.module').then(m => m.BatchRoutingModule) },
       { path: 'Instructor', loadChildren: () => import('../instructor/instructor.module').then(m => m.InstructorModule) },
+      { path: 'Stud', loadChildren: () => import('../student/student-routing.module').then(m => m.StudentRoutingModule) },
       { path: 'EditProfile', component: ProfileComponent },
     ]
   } 

@@ -36,6 +36,33 @@ export class ServiceService implements HttpInterceptor {
     return this.httpservice.put(this.AccountUrl + '/' + updateData.accountId, updateData);
   }
 
+//Dashboard Section
+
+  DashboradApi: string = `${this.apiUrl}api/DashBoard/`;
+
+  GetAllCount() {
+    return this.httpservice.get(this.DashboradApi + 'GetAllCount');
+  }
+  
+  GetAllCashCount(id:string) {
+    return this.httpservice.get(this.DashboradApi + 'GetPaymentDetailsByYear/' + id);
+  }
+
+  GetCourseEnrollment(id: string) {
+    return this.httpservice.get(this.DashboradApi + id);
+  }
+
+  GetStudentEnrollmentByYear(id: string) {
+    return this.httpservice.get(this.DashboradApi + 'GetCourseCountByYM/' + id); 
+  }
+
+  GetMonthlyPaymentByYear(id: string) {
+    return this.httpservice.get(this.DashboradApi + 'GetPaymentDetailsByYM/' + id);
+  }
+//Dashboard Section
+
+
+
 
   //Category Section
 
@@ -227,6 +254,7 @@ export class ServiceService implements HttpInterceptor {
   }
 
   getStudentCourse(id: string) {
+    debugger
     return this.httpservice.get(this.StudentBaseUrl + 'Student/' + id);
   }
 

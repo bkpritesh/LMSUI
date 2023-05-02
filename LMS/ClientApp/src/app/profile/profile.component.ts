@@ -31,7 +31,8 @@ export class ProfileComponent implements OnInit {
     this.apiservice.AccountDetailByID(this.accountId).subscribe((res: any) => {
       debugger
       this.AccountTypeDetail = res;
-      console.log(this.AccountTypeDetail.profileImg);
+      
+      console.log(this.AccountTypeDetail);
     });
 
 

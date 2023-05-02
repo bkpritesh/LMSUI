@@ -3,17 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { StudentRoutingModule } from './student-routing.module';
 import { CourseListModule } from './course-list/course-list.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
-  declarations: [ ],
+  declarations: [ 
+    DashboardComponent
+  ],
   imports: [
     CommonModule,
     StudentRoutingModule,
     CourseListModule
   ],
   exports: [
-    CourseListModule
+    CourseListModule,
+    DashboardComponent
   ]
 })
 export class StudentModule { }

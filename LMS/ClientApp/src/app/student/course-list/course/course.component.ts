@@ -44,6 +44,7 @@ export class CourseComponent implements OnInit {
   }
 
   getStudentcourse() {
+    debugger
     this.apiservice.getStudentCourse(this.studentId).subscribe((res:any) => {
       debugger
       this.CourseList = res;

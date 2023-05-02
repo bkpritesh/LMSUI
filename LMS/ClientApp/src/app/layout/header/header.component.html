@@ -2,10 +2,8 @@
 <nav class="navbar sidebar navbar-expand-xl navbar-dark bg-dark">
 
   <!-- Navbar brand for xl START -->
-  <div class="d-flex align-items-start">
-    <a class="navbar-brand" href="index-2.html" >
+  <div class="d-flex align-items-start navbar-brand">
       <img class="navbar-brand-item " src="../../../../assets/images/logoName2.png" alt="">
-    </a>
   </div>
   <!-- Navbar brand for xl END -->
 
@@ -18,13 +16,8 @@
         <!-- Menu item 1 -->
         <li class="nav-item"><a routerLink="/dashboard" class="nav-link"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
 
-        <!-- Title -->
-        <!--<li class="nav-item ms-2 my-2">Pages</li>-->
-        <!-- menu item 2 -->
-        <!--<li class="nav-item"> <a class="nav-link" routerLink="/Course"><i class="bi bi-basket fa-fw me-2"></i>Courses</a></li>-->
         <!-- Menu item 2-->
         <li class="nav-item"> <a class="nav-link" routerLink="/category"><i class="fas fa-clipboard-list fa-fw me-2"></i>Category</a></li>
-
 
         <!-- menu item 3 -->
         <li class="nav-item">
@@ -37,7 +30,6 @@
             <li class="nav-item"> <a class="nav-link" routerLink="/course/addcourse">Add Course</a></li>
           </ul>
         </li>
-
 
         <!-- menu item 4 -->
         <li class="nav-item">
@@ -52,7 +44,6 @@
           </ul>
         </li>
 
-
         <!-- Menu item 5-->
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#collapsestudentpage" role="button" aria-expanded="false" aria-controls="collapsestudentpage">
@@ -62,7 +53,18 @@
           <ul class="nav collapse flex-column" id="collapsestudentpage" data-bs-parent="#navbar-sidebar">
             <li class="nav-item"> <a class="nav-link" routerLink="/student">List</a></li>
             <li class="nav-item"> <a class="nav-link" routerLink="/student/InsertStudent">Add Student</a></li>
-            <li class="nav-item"> <a class="nav-link" routerLink="/student/Assessment">Assessment</a></li>
+          </ul>
+        </li>
+
+        <!-- Menu item 6-->
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapseAssessmentpage" role="button" aria-expanded="false" aria-controls="collapseAssessmentpage">
+            <i class="bi bi-bookmark-heart fa-fw me-2"></i>Assessment
+          </a>
+          <!--submenu-->
+          <ul class="nav collapse flex-column" id="collapseAssessmentpage" data-bs-parent="#navbar-sidebar">
+            <li class="nav-item"> <a class="nav-link" routerLink="/student/Assessment">Upload Assessment</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/student/StudentAssessment">Assessment</a></li>
           </ul>
         </li>
       </ul>
@@ -72,10 +74,10 @@
       <ul class="navbar-nav flex-column" id="navbar-sidebar" *ngIf="accountType==='Student'">
 
         <!-- Menu item 1 -->
-        <li class="nav-item"><a routerLink="/dashboard" class="nav-link"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
+        <li class="nav-item"><a routerLink="/Stud/Dashboard" class="nav-link"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
                 
         <!-- Menu item 2-->
-        <li class="nav-item"><a class="nav-link" routerLink="/CourseList"><i class="bi bi-basket fa-fw me-2"></i>My Course</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/Stud/CourseList"><i class="bi bi-basket fa-fw me-2"></i>My Course</a></li>
 
         <!-- menu item 4 -->
         <!--<li class="nav-item">
@@ -111,9 +113,9 @@
       <ul class="navbar-nav flex-column" id="navbar-sidebar" *ngIf="accountType==='Instructor'">
 
         <!-- Menu item 1 -->
-        <li class="nav-item"><a routerLink="/dashboard" class="nav-link"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
+        <li class="nav-item"><a routerLink="/Instructor/Dashboard" class="nav-link"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
 
-        <!-- Menu item 2-->        
+        <!-- Menu item 2-->
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#collapsepage" role="button" aria-expanded="false" aria-controls="collapsepage">
             <i class="bi bi-basket fa-fw me-2"></i>Courses
@@ -147,6 +149,18 @@
           <!--submenu-->
           <ul class="nav collapse flex-column" id="collapsestudentpage" data-bs-parent="#navbar-sidebar">
             <li class="nav-item"> <a class="nav-link" routerLink="/student">List</a></li>
+          </ul>
+        </li>
+
+        <!-- Menu item 6-->
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#collapseAssessmentpage" role="button" aria-expanded="false" aria-controls="collapseAssessmentpage">
+            <i class="bi bi-bookmark-heart fa-fw me-2"></i>Assessment
+          </a>
+          <!--submenu-->
+          <ul class="nav collapse flex-column" id="collapseAssessmentpage" data-bs-parent="#navbar-sidebar">
+            <li class="nav-item"> <a class="nav-link" routerLink="/student/Assessment">Upload Assessment</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/student/StudentAssessment">Assessment</a></li>
           </ul>
         </li>
       </ul>
@@ -187,7 +201,7 @@
             <li class="nav-item ms-2 ms-md-3 dropdown px-md-2">
               <!-- Avatar -->
               <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
+                <img class="avatar-img rounded-circle" src="assets/images/avatar/User.jpg" alt="avatar">
               </a>
 
               <!-- Profile dropdown START -->
@@ -197,7 +211,7 @@
                   <div class="d-flex align-items-center">
                     <!-- Avatar -->
                     <div class="avatar me-3 mb-3">
-                      <img class="avatar-img rounded-circle shadow" src="assets/images/avatar/01.jpg" alt="avatar">
+                      <img class="avatar-img rounded-circle shadow" src="assets/images/avatar/User.jpg" alt="avatar">
                     </div>
                     <div>
                       <a class="h6 mt-2 mt-sm-0">{{accountDeatil.firstName}}&nbsp;{{accountDeatil.lastName}}</a>

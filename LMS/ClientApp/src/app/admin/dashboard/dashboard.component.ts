@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../../app.component';
-import { Observable, takeWhile, timer } from 'rxjs';
+import { ServiceService } from '../../Service/service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,23 +8,43 @@ import { Observable, takeWhile, timer } from 'rxjs';
   ]
 })
 export class DashboardComponent implements OnInit {
-  isLoader: boolean = false;
-  
+  count: any = '';
+  id = '2023';
+  cashCount: any = '';
+  student: any = '';
+  MonthlyEnrollemnt: any = '';
+  MonthlyPayment: any = '';
 
-  constructor() { }
+  constructor(private serviceapi: ServiceService) { }
 
   ngOnInit(): void {
-    //debugger;
-    //var result = document.getElementsByClassName("loading");
-    //this.isLoader = true;
-    //debugger
-    //setTimeout(this.loader, 9000) 
+    this.serviceapi.GetAllCount().subscribe((res: any) => {
+      this.count = res;
+    });
+
+    this.serviceapi.GetAllCashCount(this.id).subscribe((res: any) => {
+      debugger
+      this.cashCount = res;
+    });
+
+    this.serviceapi.GetCourseEnrollment(this.id).subscribe((res: any) => {
+      return this.student = res;
+    });
+
+    this.serviceapi.GetStudentEnrollmentByYear(this.id).subscribe((res: any) => {
+      return this.MonthlyEnrollemnt = res;
+    });
+
+    this.serviceapi.GetMonthlyPaymentByYear(this.id).subscribe((res: any) => {      
+      return this.MonthlyPayment = res;
+    });
+
   }
 
-  //loader() {
-  //  debugger
-  //  this.isLoader = false;
-  //}
+  load() {
+    debugger
+    
+  }
 
 
 

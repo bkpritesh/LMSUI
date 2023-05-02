@@ -9,12 +9,14 @@ import { ChapterListComponent } from './chapter-list/chapter-list.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DatepickerModule } from 'ng2-datepicker';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     BatchListComponent,
     ChapterDetailComponent,
-    ChapterListComponent
+    ChapterListComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { DatepickerModule } from 'ng2-datepicker';
     BatchListComponent,
     ChapterDetailComponent,
     ChapterListComponent,
-    AngularEditorModule
+    AngularEditorModule,
+    DashboardComponent
   ]
 })
 export class InstructorModule { }
